@@ -215,6 +215,9 @@
       background: linear-gradient(135deg, var(--primary), var(--primary-dark));
       color: white;
       text-align: center;
+      min-height: 600px;
+      display: flex;
+      align-items: center;
     }
 
     .hero::before {
@@ -233,6 +236,7 @@
       z-index: 1;
       max-width: 800px;
       margin: 0 auto;
+      width: 100%;
     }
 
     .hero h1 {
@@ -265,12 +269,24 @@
       max-width: 800px;
       margin-left: auto;
       margin-right: auto;
+      position: relative;
+      height: 400px;
     }
 
     .hero-image img {
       width: 100%;
-      height: auto;
+      height: 100%;
+      object-fit: cover;
       display: block;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 1s ease-in-out;
+    }
+
+    .hero-image img.active {
+      opacity: 1;
     }
 
     /* Features Section */
@@ -313,6 +329,9 @@
       box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
       transition: all 0.3s ease;
       border: 1px solid var(--border);
+      height: 100%;
+      display: flex;
+      flex-direction: column;
     }
 
     .feature-card:hover {
@@ -342,6 +361,7 @@
 
     .feature-description {
       color: var(--text-light);
+      flex-grow: 1;
     }
 
     /* Benefits Section */
@@ -936,9 +956,20 @@
         width: 40px;
         height: 40px;
       }
+
+      .hero-image {
+        height: 300px;
+      }
     }
 
     @media (max-width: 480px) {
+      .hero {
+        min-height: 500px;
+        padding: 4rem 1rem;
+        background-size: cover;
+        background-position: center;
+      }
+
       .hero h1 {
         font-size: 2rem;
       }
@@ -965,6 +996,15 @@
         flex-wrap: wrap;
         justify-content: center;
       }
+
+      .hero-image {
+        display: none;
+      }
+    }
+
+    .featurecard-connect {
+      text-decoration: none;
+      color: inherit;
     }
   </style>
 </head>
@@ -981,14 +1021,14 @@
         <a href="roadmaps.html">Roadmaps</a>
         <a href="guidance.html">Guidance</a>
         <a href="blog.html">Blog</a>
-        <a href="about.html">About</a>
+        <a href="files/aboutus.html">About</a>
       </nav>
       <div class="nav-actions">
         <div class="search-bar">
           <i class="fas fa-search search-icon"></i>
           <input type="text" placeholder="Search..." class="search-input">
         </div>
-        <a href="login.html" class="btn btn-outline">Login</a>
+        <a href="files/signinpages.html" class="btn btn-outline">Login</a>
       </div>
     </div>
   </header>
@@ -996,14 +1036,18 @@
   <!-- Hero Section -->
   <section class="hero">
     <div class="hero-content">
-      <h1>Master Tech Skills, Without the Overwhelm</h1>
-      <p>Studyvibes gives you curated roadmaps, real projects, and senior-guided learning — all in one place.</p>
+      <h1>Unlock Your Potential</h1>
+      <p>Feel the StudyVibes. Our innovative platform offers an effortless and seamless approach to learning, empowering students of all ages to achieve a brighter future.</p>
       <div class="hero-buttons">
         <a href="roadmaps.html" class="btn btn-primary">Explore Roadmaps</a>
-        <a href="signup.html" class="btn btn-outline" style="color: white; border-color: white;">Join the Community</a>
+        <a href="https://discord.gg/h6a2H2Kc" class="btn btn-outline" style="color: white; border-color: white;">Join the Community</a>
       </div>
       <div class="hero-image">
-        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="StudyVibes Dashboard">
+        <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Coding 1" class="active">
+        <img src="https://images.unsplash.com/photo-1555066931-4365d14bab8c?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coding 2">
+        <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coding 3">
+        <img src="https://images.unsplash.com/photo-1542831371-29b0f74f9713?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coding 4">
+        <img src="https://images.unsplash.com/photo-1571171637578-41bc2dd41cd2?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Coding 5">
       </div>
     </div>
   </section>
@@ -1016,40 +1060,72 @@
     </div>
     <div class="features-grid">
       <!-- Feature 1 -->
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-road"></i>
+      <a href="roadmaps.html" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-road"></i>
+          </div>
+          <h3 class="feature-title">Structured DSA Learning Paths</h3>
+          <p class="feature-description">Step-by-step roadmaps curated by industry experts and seniors who've been there.</p>
         </div>
-        <h3 class="feature-title">Structured Learning Paths</h3>
-        <p class="feature-description">Step-by-step roadmaps curated by industry experts and seniors who've been there.</p>
-      </div>
+      </a>
       
       <!-- Feature 2 -->
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-project-diagram"></i>
+      <a href="files/projectfiles.html" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-project-diagram"></i>
+          </div>
+          <h3 class="feature-title">Real-World Projects</h3>
+          <p class="feature-description">Build portfolio-worthy projects with guided instructions and starter code.</p>
         </div>
-        <h3 class="feature-title">Real-World Projects</h3>
-        <p class="feature-description">Build portfolio-worthy projects with guided instructions and starter code.</p>
-      </div>
+      </a>
       
       <!-- Feature 3 -->
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-robot"></i>
+      <a href="files/maindsa.html" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-laptop-code"></i>
+          </div>
+          <h3 class="feature-title">DSA & Interview Prep</h3>
+          <p class="feature-description">
+            Master Data Structures & Algorithms through guided roadmaps and real coding problems, then level up your career with industry-level interview preparation, mock questions, and expert tips — all in one place.
+          </p>
         </div>
-        <h3 class="feature-title">AI Tutor Support</h3>
-        <p class="feature-description">Get instant help and explanations from our AI tutor when you're stuck.</p>
-      </div>
+      </a>
       
       <!-- Feature 4 -->
-      <div class="feature-card">
-        <div class="feature-icon">
-          <i class="fas fa-users"></i>
+      <a href="music/stydio.html" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-music"></i>
+          </div>
+          <h3 class="feature-title">Stydio</h3>
+          <p class="feature-description">Immerse yourself in focused study sessions with our curated music playlists designed to boost concentration and productivity.</p>
         </div>
-        <h3 class="feature-title">Senior Mentorship</h3>
-        <p class="feature-description">Connect with seniors who've cracked top companies for guidance and advice.</p>
-      </div>
+      </a>
+      
+      <!-- Feature 5 -->
+      <a href="https://discord.gg/h6a2H2Kc" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-users"></i>
+          </div>
+          <h3 class="feature-title">Senior Mentorship</h3>
+          <p class="feature-description">Connect with seniors who've cracked top companies for guidance and advice.</p>
+        </div>
+      </a>
+      
+      <!-- Feature 6 -->
+      <a href="#" class="featurecard-connect">
+        <div class="feature-card">
+          <div class="feature-icon">
+            <i class="fas fa-comments"></i>
+          </div>
+          <h3 class="feature-title">AI Tutor</h3>
+          <p class="feature-description">Get instant help with coding doubts and concepts through our AI-powered tutor.</p>
+        </div>
+      </a>
     </div>
   </section>
 
@@ -1334,10 +1410,12 @@
       const feedbackBtn = document.getElementById('feedbackBtn');
       const aiChatbot = document.querySelector('.ai-chatbot');
       const searchInput = document.querySelector('.search-input');
-
+      const heroImages = document.querySelectorAll('.hero-image img');
+      
       // State variables
       let isDarkMode = localStorage.getItem('darkMode') === 'true';
       let userCount = 4000;
+      let currentImageIndex = 0;
 
       // Initialize the page
       function init() {
@@ -1356,6 +1434,23 @@
 
         // Animate elements when they come into view
         setupScrollAnimations();
+
+        // Start hero image rotation
+        rotateHeroImages();
+      }
+
+      // Rotate hero images
+      function rotateHeroImages() {
+        setInterval(() => {
+          // Hide current image
+          heroImages[currentImageIndex].classList.remove('active');
+          
+          // Move to next image
+          currentImageIndex = (currentImageIndex + 1) % heroImages.length;
+          
+          // Show next image
+          heroImages[currentImageIndex].classList.add('active');
+        }, 3000); // Change image every 3 seconds
       }
 
       // Set up all event listeners
