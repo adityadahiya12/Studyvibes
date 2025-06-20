@@ -1,0 +1,1103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real-World Projects | StudyVibes</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary: #6366F1;
+      --primary-light: #8183f4;
+      --primary-dark: #4f46e5;
+      --accent: #3f83f8;
+      --text: #1F2937;
+      --text-light: #6B7280;
+      --bg: #FFFFFF;
+      --card-bg: rgba(255, 255, 255, 0.9);
+      --section-bg: #F9FAFB;
+      --border: #E5E7EB;
+      --success: #10B981;
+      --warning: #F59E0B;
+      --error: #EF4444;
+    }
+
+    .dark-mode {
+      --primary: #8183f4;
+      --primary-light: #6366F1;
+      --primary-dark: #4f46e5;
+      --accent: #60A5FA;
+      --text: #F3F4F6;
+      --text-light: #9CA3AF;
+      --bg: #111827;
+      --card-bg: rgba(17, 24, 39, 0.9);
+      --section-bg: #1F2937;
+      --border: #374151;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text);
+      background-color: var(--bg);
+      transition: all 0.3s ease;
+    }
+
+    /* Header & Navigation */
+    .header {
+      position: sticky;
+      top: 0;
+      background-color: var(--card-bg);
+      backdrop-filter: blur(10px);
+      z-index: 100;
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: var(--text);
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.2s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--primary);
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    .nav-actions {
+      display: flex;
+      gap: 1rem;
+      align-items: center;
+    }
+
+    .search-bar {
+      position: relative;
+    }
+
+    .search-input {
+      padding: 0.6rem 1rem 0.6rem 2.5rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: var(--section-bg);
+      color: var(--text);
+      transition: all 0.3s ease;
+      width: 200px;
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+      width: 250px;
+    }
+
+    .search-icon {
+      position: absolute;
+      left: 1rem;
+      top: 50%;
+      transform: translateY(-50%);
+      color: var(--text-light);
+    }
+
+    /* Buttons */
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+    }
+
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+    }
+
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(99, 102, 241, 0.3);
+    }
+
+    .btn-secondary {
+      background-color: var(--section-bg);
+      color: var(--text);
+    }
+
+    .btn-secondary:hover {
+      background-color: var(--border);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 2px solid var(--primary);
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Hero Section */
+    .hero {
+      position: relative;
+      overflow: hidden;
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+    }
+
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.6;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .hero h1 {
+      font-size: 3rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      opacity: 0.9;
+      margin-bottom: 2.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Projects Section */
+    .projects {
+      padding: 6rem 2rem;
+      background-color: var(--bg);
+    }
+
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+
+    .section-title {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      color: var(--text);
+    }
+
+    .section-subtitle {
+      color: var(--text-light);
+      max-width: 600px;
+      margin: 0 auto;
+      font-size: 1.125rem;
+    }
+
+    .project-filters {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .filter-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 20px;
+      background-color: var(--section-bg);
+      color: var(--text);
+      border: none;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      font-weight: 500;
+    }
+
+    .filter-btn.active {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .filter-btn:hover:not(.active) {
+      background-color: var(--border);
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .project-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .project-image {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .project-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 0.75rem;
+      flex-wrap: wrap;
+    }
+
+    .project-tag {
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 4px;
+      background-color: var(--section-bg);
+      color: var(--text-light);
+    }
+
+    .project-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text);
+    }
+
+    .project-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .project-meta {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .project-difficulty {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    .project-actions {
+      display: flex;
+      gap: 0.5rem;
+    }
+
+    .project-btn {
+      padding: 0.5rem 1rem;
+      border-radius: 6px;
+      font-size: 0.875rem;
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    .project-btn-primary {
+      background-color: var(--primary);
+      color: white;
+    }
+
+    .project-btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+
+    .project-btn-outline {
+      background-color: transparent;
+      color: var(--primary);
+      border: 1px solid var(--primary);
+    }
+
+    .project-btn-outline:hover {
+      background-color: rgba(99, 102, 241, 0.1);
+    }
+
+    /* API Demo Section */
+    .api-demo {
+      padding: 6rem 2rem;
+      background-color: var(--section-bg);
+    }
+
+    .api-container {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .api-content {
+      display: flex;
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+
+    .api-image {
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .api-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .api-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .api-input {
+      padding: 0.75rem 1rem;
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      background-color: var(--card-bg);
+      color: var(--text);
+      font-family: 'Inter', sans-serif;
+    }
+
+    .api-input:focus {
+      outline: none;
+      border-color: var(--primary);
+      box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.2);
+    }
+
+    .api-response {
+      margin-top: 2rem;
+      padding: 1.5rem;
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      border: 1px solid var(--border);
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .api-response pre {
+      margin: 0;
+      font-family: 'Courier New', monospace;
+      font-size: 0.875rem;
+      white-space: pre-wrap;
+      word-wrap: break-word;
+    }
+
+    /* GitHub Projects Section */
+    .github-projects {
+      padding: 6rem 2rem;
+      background-color: var(--bg);
+    }
+
+    .github-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+      gap: 2rem;
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .github-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      transition: all 0.3s ease;
+      border: 1px solid var(--border);
+    }
+
+    .github-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+    }
+
+    .github-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1rem;
+    }
+
+    .github-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .github-info {
+      flex-grow: 1;
+    }
+
+    .github-name {
+      font-weight: 600;
+      color: var(--text);
+      margin-bottom: 0.25rem;
+    }
+
+    .github-description {
+      color: var(--text-light);
+      font-size: 0.875rem;
+      margin-bottom: 1rem;
+    }
+
+    .github-stats {
+      display: flex;
+      gap: 1rem;
+      font-size: 0.875rem;
+      color: var(--text-light);
+    }
+
+    .github-stat {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+    }
+
+    /* CTA Section */
+    .cta {
+      padding: 6rem 2rem;
+      background: linear-gradient(135deg, var(--primary), var(--primary-dark));
+      color: white;
+      text-align: center;
+    }
+
+    .cta h2 {
+      font-size: 2.25rem;
+      font-weight: 800;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta p {
+      font-size: 1.125rem;
+      opacity: 0.9;
+      margin-bottom: 2rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+
+    /* Footer */
+    .footer {
+      background-color: var(--section-bg);
+      padding: 4rem 2rem 2rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 3rem;
+    }
+
+    .footer-about {
+      grid-column: 1 / -1;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .footer-description {
+      color: var(--text-light);
+      margin-bottom: 1.5rem;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-link {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      background-color: var(--card-bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--text);
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      background-color: var(--primary);
+      color: white;
+      transform: translateY(-3px);
+    }
+
+    .footer-links h3 {
+      font-size: 1.125rem;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+      color: var(--text);
+    }
+
+    .footer-links ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+    }
+
+    .footer-links a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+
+    .footer-bottom {
+      max-width: 1200px;
+      margin: 3rem auto 0;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: var(--text-light);
+      font-size: 0.875rem;
+    }
+
+    .footer-links-bottom {
+      display: flex;
+      gap: 1.5rem;
+    }
+
+    .footer-links-bottom a {
+      color: var(--text-light);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-links-bottom a:hover {
+      color: var(--primary);
+    }
+
+    /* Floating Elements */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 900;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background-color: var(--primary-dark);
+    }
+
+    .ai-chatbot {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--primary), var(--accent));
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      z-index: 900;
+    }
+
+    .ai-chatbot:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+    }
+
+    .user-counter {
+      position: fixed;
+      top: 100px;
+      right: 20px;
+      background-color: var(--card-bg);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.875rem;
+      font-weight: 600;
+      color: var(--text);
+      z-index: 900;
+      border: 1px solid var(--border);
+    }
+
+    .user-counter::before {
+      content: '';
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--success);
+      animation: pulse 1.5s infinite;
+    }
+
+    @keyframes pulse {
+      0% { opacity: 1; }
+      50% { opacity: 0.5; }
+      100% { opacity: 1; }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .project-card, .github-card {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .project-card:nth-child(1) { animation-delay: 0.1s; }
+    .project-card:nth-child(2) { animation-delay: 0.2s; }
+    .project-card:nth-child(3) { animation-delay: 0.3s; }
+    .project-card:nth-child(4) { animation-delay: 0.4s; }
+    .github-card:nth-child(1) { animation-delay: 0.1s; }
+    .github-card:nth-child(2) { animation-delay: 0.2s; }
+    .github-card:nth-child(3) { animation-delay: 0.3s; }
+
+    /* Loading State */
+    .loading {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 2rem;
+    }
+
+    .spinner {
+      width: 40px;
+      height: 40px;
+      border: 4px solid rgba(99, 102, 241, 0.2);
+      border-top-color: var(--primary);
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+
+    @keyframes spin {
+      to { transform: rotate(360deg); }
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .header-content {
+        padding: 1rem;
+      }
+
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero p {
+        font-size: 1.125rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero-buttons, .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+
+      .api-container {
+        grid-template-columns: 1fr;
+      }
+
+      .api-image {
+        order: -1;
+      }
+
+      .floating-buttons {
+        flex-direction: row;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .floating-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+
+      .hero p {
+        font-size: 1rem;
+      }
+
+      .section-title {
+        font-size: 1.75rem;
+      }
+
+      .projects-grid, .github-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-bottom {
+        flex-direction: column;
+        gap: 1rem;
+        text-align: center;
+      }
+
+      .footer-links-bottom {
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="logo-text">StudyVibes</span>
+      </a>
+      <nav class="nav-links">
+        <a href="\index.html">Home</a>
+        <a href="\roadmaps.html">Roadmaps</a>
+        <a href="\projects.html" class="active">Projects</a>
+        <a href="\blog.html">Blog</a>
+        <a href="aboutus.html">About</a>
+      </nav>
+      <div class="nav-actions">
+        <div class="search-bar">
+          <i class="fas fa-search search-icon"></i>
+          <input type="text" placeholder="Search projects..." class="search-input" id="projectSearch">
+        </div>
+        <a href="signinpages.html" class="btn btn-outline">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <h1>Real-World Projects to Build Your Portfolio</h1>
+      <p>Hands-on projects with real APIs, databases, and frameworks that companies actually use.</p>
+      <div class="hero-buttons">
+        <a href="#projects" class="btn btn-primary">Browse Projects</a>
+        <a href="#api-demo" class="btn btn-outline" style="color: white; border-color: white;">Try API Demo</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Projects Section -->
+  <section class="projects" id="projects">
+    <div class="section-header">
+      <h2 class="section-title">Featured Projects</h2>
+      <p class="section-subtitle">Build these projects to gain practical experience and enhance your portfolio</p>
+    </div>
+    
+    <div class="project-filters">
+      <button class="filter-btn active" data-filter="all">All</button>
+      <button class="filter-btn" data-filter="web">Web Development</button>
+      <button class="filter-btn" data-filter="mobile">Mobile</button>
+      <button class="filter-btn" data-filter="api">API Integration</button>
+      <button class="filter-btn" data-filter="ai">AI/ML</button>
+      <button class="filter-btn" data-filter="beginner">Beginner</button>
+      <button class="filter-btn" data-filter="intermediate">Intermediate</button>
+      <button class="filter-btn" data-filter="advanced">Advanced</button>
+    </div>
+    
+    <div class="projects-grid" id="projectsContainer">
+      <!-- Project 1 - Weather App -->
+      <div class="project-card" data-category="web api beginner">
+        <img src="https://images.unsplash.com/photo-1601134467661-3d775b999c8b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1375&q=80" alt="Weather App" class="project-image">
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">Web</span>
+            <span class="project-tag">API</span>
+            <span class="project-tag">Beginner</span>
+          </div>
+          <h3 class="project-title">Weather Dashboard</h3>
+          <p class="project-description">Build a weather application that fetches real-time data from OpenWeatherMap API and displays forecasts with interactive charts.</p>
+          <div class="project-meta">
+            <span class="project-difficulty">
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            </span>
+            <div class="project-actions">
+              <a href="https://github.com/studyvibes/weather-app" class="project-btn project-btn-primary" target="_blank">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="weather-app-demo.html" class="project-btn project-btn-outline">
+                <i class="fas fa-play"></i> Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 2 - E-commerce API -->
+      <div class="project-card" data-category="api intermediate">
+        <img src="https://images.unsplash.com/photo-1556740738-b6a63e27c4df?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="E-commerce API" class="project-image">
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">API</span>
+            <span class="project-tag">Backend</span>
+            <span class="project-tag">Intermediate</span>
+          </div>
+          <h3 class="project-title">E-commerce REST API</h3>
+          <p class="project-description">Develop a complete RESTful API for an e-commerce platform with Node.js, Express, and MongoDB.</p>
+          <div class="project-meta">
+            <span class="project-difficulty">
+              <i class="fas fa-star"></i>
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+            </span>
+            <div class="project-actions">
+              <a href="https://github.com/studyvibes/ecommerce-api" class="project-btn project-btn-primary" target="_blank">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="api-demo.html" class="project-btn project-btn-outline">
+                <i class="fas fa-play"></i> Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 3 - Task Manager -->
+      <div class="project-card" data-category="web mobile beginner">
+        <img src="https://images.unsplash.com/photo-1484480974693-6ca0a78fb36b?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1472&q=80" alt="Task Manager" class="project-image">
+        <div class="project-content">
+          <div class="project-tags">
+            <span class="project-tag">Web</span>
+            <span class="project-tag">Mobile</span>
+            <span class="project-tag">Beginner</span>
+          </div>
+          <h3 class="project-title">Task Manager App</h3>
+          <p class="project-description">Create a full-stack task management application with React, React Native, and Firebase.</p>
+          <div class="project-meta">
+            <span class="project-difficulty">
+              <i class="fas fa-star"></i>
+              <i class="far fa-star"></i>
+              <i class="far fa-star"></i>
+            </span>
+            <div class="project-actions">
+              <a href="https://github.com/studyvibes/task-manager" class="project-btn project-btn-primary" target="_blank">
+                <i class="fas fa-code"></i> Code
+              </a>
+              <a href="task-manager-demo.html" class="project-btn project-btn-outline">
+                <i class="fas fa-play"></i> Demo
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <!-- Project 4 - Sentiment Analysis -->
+      <div class="project-card" data-category="ai api advanced">
+        <img src="https://images.unsplash.com/photo-1617791160536-598cf32026fb?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Sentiment Analysis" class="project-image">
+        <div class="project-content">
+            <div class="project-tags">
+                <span class="project-tag">AI</span>
+                <span class="project-tag">API</span>
+                <span class="project-tag">Advanced</span>
+            </div>
+            <h3 class="project-title">Sentiment Analysis Tool</h3>
+            <p class="project-description">Build an AI-powered sentiment analysis tool using Python, Flask, and Hugging Face Transformers.</p>
+            <div class="project-meta">
+                <span class="project-difficulty">
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i>
+                </span>
+                <div class="project-actions">
+                <a href="
