@@ -1,0 +1,1070 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Frontend Developer Roadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --text-color: #1f2937;
+            --light-text: #6b7280;
+            --background-color: #ffffff;
+            --card-bg: #f9fafb;
+            --border-color: #e5e7eb;
+        }
+    
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+    
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            padding: 0;
+            max-width: 100vw;
+            overflow-x: hidden;
+        }
+        
+        .header {
+            border: 1px solid black;
+        }        
+        
+        .header-content {
+            max-height: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            padding: 1rem;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 2rem;
+            font-weight: bold;
+            text-decoration: none;
+            color: var(--text-color);
+            gap: 0.625rem;
+        }
+        
+        .logo-icon {
+            width: 8rem;
+            height: 8rem;
+        }
+        
+        .logo-text {
+            font-size: 2rem;
+            font-weight: bold;
+        }
+    
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem 1rem;
+        }
+    
+        header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+    
+        h1 {
+            font-size: 2.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+    
+        .subtitle {
+            font-size: 1.1rem;
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+        }
+    
+        .roadmap-container {
+            position: relative;
+            padding: 2rem 0;
+        }
+    
+        .timeline {
+            position: relative;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+    
+        /* Timeline vertical line */
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--border-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+            border-radius: 2px;
+        }
+    
+        /* Roadmap stage container */
+        .stage {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            margin-bottom: 3rem;
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+    
+        .stage:hover {
+            transform: scale(1.02);
+        }
+    
+        /* Stage circles */
+        .stage::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: var(--background-color);
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+    
+        /* Alternate stage positioning */
+        .left {
+            left: 0;
+        }
+    
+        .right {
+            left: 50%;
+        }
+    
+        /* Arrow for right stages */
+        .right::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            left: 15px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 10px 10px 0;
+            border-color: transparent var(--card-bg) transparent transparent;
+        }
+    
+        /* Arrow for left stages */
+        .left::before {
+            content: " ";
+            height: 0;
+            position: absolute;
+            top: 22px;
+            width: 0;
+            z-index: 1;
+            right: 15px;
+            border: medium solid var(--card-bg);
+            border-width: 10px 0 10px 10px;
+            border-color: transparent transparent transparent var(--card-bg);
+        }
+    
+        /* Stage content */
+        .stage-content {
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+    
+        .stage-content:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+    
+        .stage-title {
+            font-weight: 600;
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: var(--primary-color);
+        }
+    
+        .skills-list {
+            list-style-type: none;
+        }
+    
+        .skills-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+        }
+    
+        .skills-list li::before {
+            content: "•";
+            color: var(--primary-color);
+            font-weight: bold;
+            display: inline-block;
+            width: 1em;
+            margin-left: -1em;
+        }
+    
+        .cta-section {
+            text-align: center;
+            margin-top: 4rem;
+            padding: 2rem;
+        }
+    
+        .cta-button {
+            display: inline-block;
+            padding: 0.8rem 1.8rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            border: 2px solid var(--primary-color);
+            cursor: pointer;
+        }
+    
+        .cta-button:hover {
+            background-color: transparent;
+            color: var(--primary-color);
+        }
+    
+        /* Resources section */
+        .resources-section {
+            padding: 4rem 0;
+            background-color: #f8fafc;
+        }
+        
+        .section-title {
+            text-align: center;
+            font-size: 2rem;
+            color: #2563eb;
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            text-align: center;
+            color: #6b7280;
+            max-width: 700px;
+            margin: 0 auto 3rem;
+            font-size: 1.1rem;
+        }
+        
+        .playlist-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        .playlist-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            cursor: pointer;
+        }
+        
+        .playlist-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .playlist-thumbnail {
+            height: 200px;
+            overflow: hidden;
+        }
+        
+        .playlist-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+        
+        .playlist-card:hover .playlist-thumbnail img {
+            transform: scale(1.1);
+        }
+        
+        .playlist-info {
+            padding: 1.5rem;
+        }
+        
+        .playlist-info h3 {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: #1f2937;
+        }
+        
+        .playlist-info p {
+            color: #6b7280;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+        
+        .playlist-button {
+            display: inline-block;
+            padding: 0.6rem 1.2rem;
+            background-color: #2563eb;
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: background-color 0.3s ease;
+        }
+        
+        .playlist-button:hover {
+            background-color: #1d4ed8;
+        }
+    
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 100;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0,0,0,0.4);
+        }
+    
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 2rem;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 700px;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
+            animation: modalopen 0.3s;
+        }
+    
+        @keyframes modalopen {
+            from {opacity: 0; transform: translateY(-50px);}
+            to {opacity: 1; transform: translateY(0);}
+        }
+    
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+    
+        .close:hover {
+            color: black;
+        }
+    
+        /* Progress tracker */
+        .progress-tracker {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 90;
+        }
+    
+        .progress-tracker h3 {
+            margin-bottom: 0.5rem;
+            color: var(--primary-color);
+        }
+    
+        .progress-bar {
+            width: 100%;
+            background-color: #e5e7eb;
+            border-radius: 4px;
+            margin-bottom: 0.5rem;
+        }
+    
+        .progress {
+            height: 8px;
+            background-color: var(--primary-color);
+            border-radius: 4px;
+            width: 0%;
+            transition: width 0.3s ease;
+        }
+    
+        /* Dark mode toggle */
+        .dark-mode-toggle {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 0.8rem;
+            border-radius: 50%;
+            cursor: pointer;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 90;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+    
+        /* Dark mode styles */
+        body.dark-mode {
+            --primary-color: #3b82f6;
+            --text-color: #f3f4f6;
+            --light-text: #9ca3af;
+            --background-color: #1f2937;
+            --card-bg: #374151;
+            --border-color: #4b5563;
+        }
+    
+        body.dark-mode .playlist-card,
+        body.dark-mode .stage-content {
+            background-color: #4b5563;
+        }
+    
+        body.dark-mode .playlist-info h3,
+        body.dark-mode .stage-title {
+            color: #93c5fd;
+        }
+    
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+    
+            .stage {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+    
+            .stage::before {
+                left: 60px;
+                border: medium solid var(--card-bg);
+                border-width: 10px 10px 10px 0;
+                border-color: transparent var(--card-bg) transparent transparent;
+            }
+    
+            .left::after, .right::after {
+                left: 15px;
+            }
+    
+            .right {
+                left: 0%;
+            }
+    
+            .modal-content {
+                width: 95%;
+                margin: 20% auto;
+            }
+    
+            .progress-tracker {
+                bottom: 10px;
+                right: 10px;
+                font-size: 0.8rem;
+            }
+        }
+    
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: var(--light-text);
+            font-size: 0.9rem;
+            border-top: 1px solid var(--border-color);
+            margin-top: 3rem;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        <header class="header-content">
+            <a href="#logo" class="logo">
+                <img src="\image\studyvibeslogo.png" alt="logo-studyvibes" class="logo-icon" />
+                <span class="logo-text">Studyvibes</span>
+            </a>
+        </header>
+    </div>
+    <div class="container">
+        <header>
+            <h1>Frontend Developer Roadmap</h1>
+            <p class="subtitle">A structured path to becoming a proficient frontend developer in 2023. Follow these steps to build your skills systematically.</p>
+        </header>
+
+        <div class="roadmap-container">
+            <div class="timeline">
+                <!-- Stage 1 -->
+                <div class="stage left" data-stage="1">
+                    <div class="stage-content">
+                        <h2 class="stage-title">1. The Fundamentals</h2>
+                        <ul class="skills-list">
+                            <li>HTML5 (Semantic HTML, Forms, Accessibility)</li>
+                            <li>CSS3 (Flexbox, Grid, Responsive Design)</li>
+                            <li>JavaScript Basics (ES6+ Syntax, DOM Manipulation)</li>
+                            <li>Developer Tools & Debugging</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 2 -->
+                <div class="stage right" data-stage="2">
+                    <div class="stage-content">
+                        <h2 class="stage-title">2. Version Control</h2>
+                        <ul class="skills-list">
+                            <li>Git Fundamentals</li>
+                            <li>GitHub/GitLab/Bitbucket</li>
+                            <li>Branching Strategies</li>
+                            <li>Pull Requests & Code Reviews</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 3 -->
+                <div class="stage left" data-stage="3">
+                    <div class="stage-content">
+                        <h2 class="stage-title">3. Advanced JavaScript</h2>
+                        <ul class="skills-list">
+                            <li>Asynchronous Programming (Promises, Async/Await)</li>
+                            <li>Modules (ESM, CommonJS)</li>
+                            <li>Error Handling</li>
+                            <li>Design Patterns</li>
+                            <li>TypeScript Basics</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 4 -->
+                <div class="stage right" data-stage="4">
+                    <div class="stage-content">
+                        <h2 class="stage-title">4. Frameworks & Libraries</h2>
+                        <ul class="skills-list">
+                            <li>React.js or Vue.js (Fundamentals)</li>
+                            <li>Component-Based Architecture</li>
+                            <li>Single Page Applications</li>
+                            <li>Next.js/Nuxt.js (SSR)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 5 -->
+                <div class="stage left" data-stage="5">
+                    <div class="stage-content">
+                        <h2 class="stage-title">5. Modern Styling</h2>
+                        <ul class="skills-list">
+                            <li>CSS Frameworks (Tailwind, Bootstrap)</li>
+                            <li>CSS-in-JS (Styled Components, Emotion)</li>
+                            <li>CSS Modules</li>
+                            <li>Design Systems</li>
+                            <li>Animation Libraries</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 6 -->
+                <div class="stage right" data-stage="6">
+                    <div class="stage-content">
+                        <h2 class="stage-title">6. State Management</h2>
+                        <ul class="skills-list">
+                            <li>Context API + useReducer</li>
+                            <li>Redux/Redux Toolkit</li>
+                            <li>MobX, Zustand, Jotai</li>
+                            <li>Server State (React Query, SWR)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 7 -->
+                <div class="stage left" data-stage="7">
+                    <div class="stage-content">
+                        <h2 class="stage-title">7. APIs & Backend Basics</h2>
+                        <ul class="skills-list">
+                            <li>RESTful APIs</li>
+                            <li>GraphQL (Apollo, Relay)</li>
+                            <li>Authentication (JWT, OAuth)</li>
+                            <li>Basic Node.js/Express</li>
+                            <li>WebSockets</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 8 -->
+                <div class="stage right" data-stage="8">
+                    <div class="stage-content">
+                        <h2 class="stage-title">8. Testing</h2>
+                        <ul class="skills-list">
+                            <li>Unit Testing (Jest, Vitest)</li>
+                            <li>Component Testing (React Testing Library)</li>
+                            <li>E2E Testing (Cypress, Playwright)</li>
+                            <li>Test-Driven Development</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 9 -->
+                <div class="stage left" data-stage="9">
+                    <div class="stage-content">
+                        <h2 class="stage-title">9. Deployment & DevOps</h2>
+                        <ul class="skills-list">
+                            <li>CI/CD Pipelines</li>
+                            <li>Docker Basics</li>
+                            <li>Hosting (Vercel, Netlify, AWS)</li>
+                            <li>Performance Optimization</li>
+                            <li>Web Vitals</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Stage 10 -->
+                <div class="stage right" data-stage="10">
+                    <div class="stage-content">
+                        <h2 class="stage-title">10. Soft Skills</h2>
+                        <ul class="skills-list">
+                            <li>Agile Methodologies</li>
+                            <li>Communication</li>
+                            <li>Code Review Practices</li>
+                            <li>Technical Writing</li>
+                            <li>Mentorship</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="cta-section">
+            <p style="margin-bottom: 1.5rem; color: var(--light-text);">Ready to start your frontend development journey?</p>
+            <a href="#" class="cta-button" id="downloadBtn">Download the Documentation</a>
+        </div>
+    </div>
+    
+    <section class="resources-section">
+        <div class="container">
+            <h2 class="section-title">Senior-Recommended YouTube Playlists</h2>
+            <p class="section-subtitle">Curated by experienced developers who've mastered these concepts</p>
+            
+            <div class="playlist-grid">
+                <!-- Playlist 1 -->
+                <div class="playlist-card" data-playlist="1">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/tVzUXW6siu0/hqdefault.jpg" alt="Web Development Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>Complete Web Development</h3>
+                        <p>By CodeWithHarry - Perfect for absolute beginners</p>
+                        <a href="https://www.youtube.com/watch?v=tVzUXW6siu0&list=PLu0W_9lII9agq5TrH9XLIKQvv0iaF2X3w" target="_blank" class="playlist-button">Watch Playlist</a>
+                    </div>
+                </div>
+                
+                <!-- Playlist 2 -->
+                <div class="playlist-card" data-playlist="2">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/Vi9bxu-M-ag/hqdefault.jpg" alt="DSA Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>Data Structures & Algorithms</h3>
+                        <p>By Love Babbar - Comprehensive DSA course</p>
+                        <a href="https://www.youtube.com/watch?v=Vi9bxu-M-ag&list=PLDzeHZWIZsTo0wSBcg4-NMIbC0L8evLrD" target="_blank" class="playlist-button">Watch Playlist</a>
+                    </div>
+                </div>
+                
+                <!-- Playlist 3 -->
+                <div class="playlist-card" data-playlist="3">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/9He4UBLyk8Y/hqdefault.jpg" alt="Frontend Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>Frontend Development</h3>
+                        <p>By Traversy Media - Modern frontend technologies</p>
+                        <a href="https://www.youtube.com/watch?v=9He4UBLyk8Y&list=PLWKjhJtqVAbmMuZ3saqRIBimAKIMYkt0E" target="_blank" class="playlist-button">Watch Playlist</a>
+                    </div>
+                </div>
+                
+                <!-- Playlist 4 -->
+                <div class="playlist-card" data-playlist="4">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/eILUmCJhl64/hqdefault.jpg" alt="JavaScript Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>JavaScript Mastery</h3>
+                        <p>By Akshay Saini - Deep dive into JS concepts</p>
+                        <a href="https://www.youtube.com/watch?v=eILUmCJhl64" target="_blank" class="playlist-button">Watch Video</a>
+                    </div>
+                </div>
+                
+                <!-- Playlist 5 -->
+                <div class="playlist-card" data-playlist="5">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/lENeZmjD2zc/hqdefault.jpg" alt="React Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>React JS Crash Course</h3>
+                        <p>By Codevolution - Quick React fundamentals</p>
+                        <a href="https://www.youtube.com/watch?v=lENeZmjD2zc" target="_blank" class="playlist-button">Watch Video</a>
+                    </div>
+                </div>
+                
+                <!-- Playlist 6 -->
+                <div class="playlist-card" data-playlist="6">
+                    <div class="playlist-thumbnail">
+                        <img src="https://i.ytimg.com/vi/RRBF2YWXFtY/hqdefault.jpg" alt="CSS Playlist">
+                    </div>
+                    <div class="playlist-info">
+                        <h3>CSS Complete Guide</h3>
+                        <p>By Web Dev Simplified - Master CSS techniques</p>
+                        <a href="https://www.youtube.com/watch?v=RRBF2YWXFtY" target="_blank" class="playlist-button">Watch Video</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- The Modal -->
+    <div id="stageModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2 id="modalTitle">Stage Details</h2>
+            <div id="modalContent">
+                <p>Detailed information about this stage will appear here.</p>
+            </div>
+            <div id="additionalResources"></div>
+        </div>
+    </div>
+
+    <!-- Progress Tracker -->
+    <div class="progress-tracker">
+        <h3>Your Progress</h3>
+        <div class="progress-bar">
+            <div class="progress" id="progressBar"></div>
+        </div>
+        <p>Completed: <span id="progressText">0%</span></p>
+    </div>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="5"></circle>
+            <path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"></path>
+        </svg>
+    </button>
+
+    <footer>
+        <p>Frontend Developer Roadmap &copy; 2025 | Made with ♥ for developers</p>
+    </footer>
+   
+<script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Stage details for modal
+            const stageDetails = {
+                1: {
+                    title: "The Fundamentals",
+                    description: "This stage covers the essential building blocks for frontend development. You'll learn HTML5 with semantic markup, CSS3 including modern layout techniques like Flexbox and Grid, JavaScript basics, and how to use developer tools effectively.",
+                    resources: [
+                        "Book: 'HTML and CSS: Design and Build Websites' by Jon Duckett",
+                        "Course: 'Modern HTML & CSS From The Beginning' on Udemy",
+                        "Practice: Build simple web pages with semantic HTML and responsive CSS"
+                    ]
+                },
+                2: {
+                    title: "Version Control",
+                    description: "Learn Git fundamentals for tracking changes in your code, collaborating with others using GitHub/GitLab, and understanding branching strategies and pull requests.",
+                    resources: [
+                        "Interactive Tutorial: 'Learn Git Branching' (https://learngitbranching.js.org/)",
+                        "Book: 'Pro Git' by Scott Chacon",
+                        "Practice: Create a GitHub account and contribute to open source projects"
+                    ]
+                },
+                3: {
+                    title: "Advanced JavaScript",
+                    description: "Dive deeper into JavaScript with asynchronous programming, modules, error handling, design patterns, and an introduction to TypeScript.",
+                    resources: [
+                        "Book: 'You Don't Know JS' series by Kyle Simpson",
+                        "Course: 'JavaScript: The Advanced Concepts' on Udemy",
+                        "Tool: TypeScript Handbook (https://www.typescriptlang.org/docs/)"
+                    ]
+                },
+                4: {
+                    title: "Frameworks & Libraries",
+                    description: "Learn popular frontend frameworks like React or Vue, component-based architecture, single page applications, and server-side rendering with Next.js/Nuxt.js.",
+                    resources: [
+                        "Official Documentation: React (https://react.dev/) or Vue (https://vuejs.org/)",
+                        "Course: 'The Complete React Developer Course' on Udemy",
+                        "Practice: Build a portfolio project with your chosen framework"
+                    ]
+                },
+                5: {
+                    title: "Modern Styling",
+                    description: "Explore modern CSS approaches including utility-first frameworks like Tailwind, CSS-in-JS solutions, CSS Modules, design systems, and animation libraries.",
+                    resources: [
+                        "Website: Tailwind CSS Documentation (https://tailwindcss.com/)",
+                        "Course: 'CSS - The Complete Guide' on Udemy",
+                        "Tool: Styled Components (https://styled-components.com/)"
+                    ]
+                },
+                6: {
+                    title: "State Management",
+                    description: "Understand different state management solutions from React's Context API to Redux, MobX, Zustand, and server state management with React Query or SWR.",
+                    resources: [
+                        "Official Documentation: Redux Toolkit (https://redux-toolkit.js.org/)",
+                        "Course: 'React - The Complete Guide' on Udemy",
+                        "Practice: Implement different state solutions in a sample project"
+                    ]
+                },
+                7: {
+                    title: "APIs & Backend Basics",
+                    description: "Learn to work with RESTful APIs and GraphQL, implement authentication, understand basic Node.js/Express, and real-time communication with WebSockets.",
+                    resources: [
+                        "Book: 'GraphQL in Action' by Samer Buna",
+                        "Course: 'Node.js, Express, MongoDB & More' on Udemy",
+                        "Practice: Build a full-stack CRUD application"
+                    ]
+                },
+                8: {
+                    title: "Testing",
+                    description: "Master different testing approaches including unit testing with Jest/Vitest, component testing with React Testing Library, and end-to-end testing with Cypress/Playwright.",
+                    resources: [
+                        "Official Documentation: Jest (https://jestjs.io/)",
+                        "Course: 'Testing React with Jest and React Testing Library' on Udemy",
+                        "Practice: Add tests to your existing projects"
+                    ]
+                },
+                9: {
+                    title: "Deployment & DevOps",
+                    description: "Learn CI/CD pipelines, Docker basics, hosting platforms like Vercel/Netlify, performance optimization techniques, and Core Web Vitals.",
+                    resources: [
+                        "Website: Vercel Documentation (https://vercel.com/docs)",
+                        "Course: 'Docker and Kubernetes: The Complete Guide' on Udemy",
+                        "Tool: Lighthouse for performance auditing"
+                    ]
+                },
+                10: {
+                    title: "Soft Skills",
+                    description: "Develop essential professional skills including Agile methodologies, effective communication, code review practices, technical writing, and mentorship.",
+                    resources: [
+                        "Book: 'Clean Code' by Robert C. Martin",
+                        "Course: 'Agile Crash Course' on Udemy",
+                        "Practice: Participate in open source code reviews"
+                    ]
+                }
+            };
+
+            // Playlist details for modal
+            const playlistDetails = {
+                1: {
+                    title: "Complete Web Development",
+                    description: "This comprehensive playlist covers all aspects of web development from basic to advanced techniques. Perfect for beginners who want a structured learning path.",
+                    duration: "15 hours",
+                    skills: "HTML, CSS, JavaScript, Web Development"
+                },
+                2: {
+                    title: "Data Structures & Algorithms",
+                    description: "Build strong foundations in DSA with this complete playlist covering all essential concepts for coding interviews.",
+                    duration: "8 hours",
+                    skills: "Algorithms, Data Structures, Problem Solving"
+                },
+                3: {
+                    title: "Frontend Development",
+                    description: "Learn modern frontend development with HTML, CSS, JavaScript and popular frameworks like React.",
+                    duration: "6 hours",
+                    skills: "React, JavaScript, Frontend"
+                },
+                4: {
+                    title: "JavaScript Mastery",
+                    description: "Deep dive into JavaScript concepts with this comprehensive tutorial series.",
+                    duration: "4 hours",
+                    skills: "JavaScript, ES6+, Advanced Concepts"
+                },
+                5: {
+                    title: "React JS Crash Course",
+                    description: "Quick introduction to React fundamentals for beginners.",
+                    duration: "5 hours",
+                    skills: "React, Components, State Management"
+                },
+                6: {
+                    title: "CSS Complete Guide",
+                    description: "Master CSS techniques with this comprehensive guide.",
+                    duration: "7 hours",
+                    skills: "CSS, Flexbox, Grid, Animations"
+                }
+            };
+
+            // Get DOM elements
+            const modal = document.getElementById("stageModal");
+            const modalTitle = document.getElementById("modalTitle");
+            const modalContent = document.getElementById("modalContent");
+            const additionalResources = document.getElementById("additionalResources");
+            const closeBtn = document.querySelector(".close");
+            const progressBar = document.getElementById("progressBar");
+            const progressText = document.getElementById("progressText");
+            const downloadBtn = document.querySelector(".cta-button");
+            const darkModeToggle = document.getElementById("darkModeToggle");
+
+            // Track completed stages
+            let completedStages = JSON.parse(localStorage.getItem("completedStages")) || [];
+            
+            // Update progress
+            function updateProgress() {
+                const progress = (completedStages.length / 10) * 100;
+                progressBar.style.width = `${progress}%`;
+                progressText.textContent = `${progress}%`;
+                
+                // Mark completed stages visually
+                document.querySelectorAll(".stage").forEach(stage => {
+                    const stageNum = parseInt(stage.getAttribute("data-stage"));
+                    if (completedStages.includes(stageNum)) {
+                        stage.querySelector(".stage-content").style.borderLeft = "4px solid var(--primary-color)";
+                    } else {
+                        stage.querySelector(".stage-content").style.borderLeft = "none";
+                    }
+                });
+            }
+
+            // Initialize progress
+            updateProgress();
+
+            // Stage click handler
+            document.querySelectorAll(".stage").forEach(stage => {
+                stage.addEventListener("click", function() {
+                    const stageNum = parseInt(this.getAttribute("data-stage"));
+                    const stageData = stageDetails[stageNum];
+                    
+                    modalTitle.textContent = stageData.title;
+                    
+                    let contentHTML = `
+                        <p>${stageData.description}</p>
+                        <h3 style="margin-top: 1.5rem;">Key Topics:</h3>
+                        <ul style="margin-left: 1.5rem;">
+                    `;
+                    
+                    // Get topics from the skills list
+                    const topics = Array.from(this.querySelectorAll(".skills-list li")).map(li => li.textContent.trim());
+                    topics.forEach(topic => {
+                        contentHTML += `<li>${topic}</li>`;
+                    });
+                    
+                    contentHTML += `</ul>`;
+                    
+                    modalContent.innerHTML = contentHTML;
+                    
+                    // Add resources
+                    let resourcesHTML = `<h3 style="margin-top: 1.5rem;">Recommended Resources:</h3><ul style="margin-left: 1.5rem;">`;
+                    stageData.resources.forEach(resource => {
+                        resourcesHTML += `<li>${resource}</li>`;
+                    });
+                    resourcesHTML += `</ul>`;
+                    
+                    additionalResources.innerHTML = resourcesHTML;
+                    
+                    // Toggle completed status
+                    const completeButton = document.createElement("button");
+                    completeButton.className = "cta-button";
+                    completeButton.style.marginTop = "1.5rem";
+                    
+                    if (completedStages.includes(stageNum)) {
+                        completeButton.textContent = "Mark as Incomplete";
+                    } else {
+                        completeButton.textContent = "Mark as Complete";
+                    }
+                    
+                    completeButton.addEventListener("click", () => {
+                        const index = completedStages.indexOf(stageNum);
+                        if (index > -1) {
+                            completedStages.splice(index, 1);
+                        } else {
+                            completedStages.push(stageNum);
+                        }
+                        localStorage.setItem("completedStages", JSON.stringify(completedStages));
+                        updateProgress();
+                        modal.style.display = "none";
+                    });
+
+                    additionalResources.appendChild(completeButton);
+                    modal.style.display = "block";
+                });
+            });
+
+            // Playlist click handler
+            document.querySelectorAll(".playlist-card").forEach(card => {
+                card.addEventListener("click", function(e) {
+                    // Don't open modal if clicking on the actual link
+                    if (e.target.tagName === 'A' || e.target.parentElement.tagName === 'A') {
+                        return;
+                    }
+                    
+                    const playlistNum = parseInt(this.getAttribute("data-playlist"));
+                    const playlistData = playlistDetails[playlistNum];
+                    
+                    modalTitle.textContent = playlistData.title;
+                    
+                    let contentHTML = `
+                        <p>${playlistData.description}</p>
+                        <p><strong>Duration:</strong> ${playlistData.duration}</p>
+                        <p><strong>Skills Covered:</strong> ${playlistData.skills}</p>
+                    `;
+                    
+                    modalContent.innerHTML = contentHTML;
+                    additionalResources.innerHTML = '';
+                    
+                    modal.style.display = "block";
+                });
+            });
+
+            // Modal close
+            closeBtn.addEventListener("click", () => {
+                modal.style.display = "none";
+            });
+
+            // Close modal on outside click
+            window.addEventListener("click", (event) => {
+                if (event.target === modal) {
+                    modal.style.display = "none";
+                }
+            });
+
+            // Download button
+            if (downloadBtn) {
+                downloadBtn.addEventListener("click", (e) => {
+                    e.preventDefault();
+                    const blob = new Blob([JSON.stringify(stageDetails, null, 2)], { type: "application/json" });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement("a");
+                    a.href = url;
+                    a.download = "frontend-roadmap.json";
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                });
+            }
+
+            // Dark mode toggle
+            darkModeToggle.addEventListener("click", () => {
+                document.body.classList.toggle("dark-mode");
+                localStorage.setItem("darkMode", document.body.classList.contains("dark-mode"));
+            });
+
+            // Load dark mode preference
+            if (localStorage.getItem("darkMode") === "true") {
+                document.body.classList.add("dark-mode");
+            }
+        });
+</script>
+    
+</body>
+</html>

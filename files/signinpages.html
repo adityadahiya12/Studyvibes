@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studyvibes - Authentication</title>
+    <link rel="stylesheet" href="studyvibes.css">
+    <style>
+        /* Additional styles specific to auth pages */
+        .auth-container {
+            display: flex;
+            min-height: 100vh;
+            background-color: #f8f9fa;
+        }
+        
+        .auth-left {
+            flex: 1;
+            background: url('usgs-hoS3dzgpHzw-unsplash.jpg') no-repeat center center;
+            background-size: cover;
+            display: none;
+        }
+        
+        .auth-right {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding: 2rem;
+            max-width: 500px;
+            margin: 0 auto;
+        }
+        
+        .auth-form-container {
+            background: white;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        .auth-tabs {
+            display: flex;
+            margin-bottom: 2rem;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .auth-tab {
+            padding: 0.75rem 1.5rem;
+            cursor: pointer;
+            font-weight: 600;
+            color: #64748b;
+            border-bottom: 2px solid transparent;
+        }
+        
+        .auth-tab.active {
+            color: #4f46e5;
+            border-bottom: 2px solid #4f46e5;
+        }
+        
+        .auth-form {
+            display: none;
+        }
+        
+        .auth-form.active {
+            display: block;
+        }
+        
+        .form-group {
+            margin-bottom: 1.5rem;
+        }
+        
+        .form-label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: 500;
+            color: #334155;
+        }
+        
+        .form-input {
+            width: 100%;
+            padding: 0.75rem;
+            border: 1px solid #e2e8f0;
+            border-radius: 4px;
+            font-size: 1rem;
+        }
+        
+        .form-input:focus {
+            outline: none;
+            border-color: #4f46e5;
+            box-shadow: 0 0 0 3px rgba(79, 70, 229, 0.1);
+        }
+        
+        .auth-button {
+            width: 100%;
+            padding: 0.75rem;
+            background-color: #4f46e5;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            margin-top: 1rem;
+        }
+        
+        .auth-button:hover {
+            background-color: #4338ca;
+        }
+        
+        .auth-link {
+            color: #4f46e5;
+            text-decoration: none;
+            font-weight: 500;
+        }
+        
+        .auth-link:hover {
+            text-decoration: underline;
+        }
+        
+        .auth-footer {
+            text-align: center;
+            margin-top: 1.5rem;
+            color: #64748b;
+        }
+        
+        .forgot-password-form {
+            display: none;
+        }
+        
+        @media (min-width: 768px) {
+            .auth-left {
+                display: block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="auth-container">
+        <div class="auth-left">
+            <img src="\image\usgs-hoS3dzgpHzw-unsplash.jpg" alt="Studyvibes Background" style="width: 100%; height: 100%; object-fit: cover;">
+        </div>
+        <div class="auth-right">
+            <div class="auth-form-container">
+                <div class="auth-tabs">
+                    <div class="auth-tab active" onclick="showForm('login-form')">Sign In</div>
+                    <div class="auth-tab" onclick="showForm('register-form')">Register</div>
+                </div>
+                
+                <!-- Login Form -->
+                <form id="login-form" class="auth-form active">
+                    <div class="form-group">
+                        <label for="login-email" class="form-label">Email</label>
+                        <input type="email" id="login-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="login-password" class="form-label">Password</label>
+                        <input type="password" id="login-password" class="form-input" placeholder="Enter your password" required>
+                    </div>
+                    <div class="form-group" style="text-align: right;">
+                        <a href="#" class="auth-link" onclick="showForgotPassword()">Forgot password?</a>
+                    </div>
+                    <button type="submit" class="auth-button">Sign In</button>
+                    <div class="auth-footer">
+                        Don't have an account? <a href="#" class="auth-link" onclick="showForm('register-form')">Register</a>
+                    </div>
+                </form>
+                
+                <!-- Register Form -->
+                <form id="register-form" class="auth-form">
+                    <div class="form-group">
+                        <label for="register-name" class="form-label">Full Name</label>
+                        <input type="text" id="register-name" class="form-input" placeholder="Enter your full name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-email" class="form-label">Email</label>
+                        <input type="email" id="register-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-password" class="form-label">Password</label>
+                        <input type="password" id="register-password" class="form-input" placeholder="Create a password" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="register-confirm-password" class="form-label">Confirm Password</label>
+                        <input type="password" id="register-confirm-password" class="form-input" placeholder="Confirm your password" required>
+                    </div>
+                    <button type="submit" class="auth-button">Create Account</button>
+                    <div class="auth-footer">
+                        Already have an account? <a href="#" class="auth-link" onclick="showForm('login-form')">Sign In</a>
+                    </div>
+                </form>
+                
+                <!-- Forgot Password Form -->
+                <form id="forgot-password-form" class="auth-form forgot-password-form">
+                    <div class="form-group">
+                        <h3>Reset Password</h3>
+                        <p>Enter your email address and we'll send you a link to reset your password.</p>
+                    </div>
+                    <div class="form-group">
+                        <label for="forgot-email" class="form-label">Email</label>
+                        <input type="email" id="forgot-email" class="form-input" placeholder="Enter your email" required>
+                    </div>
+                    <button type="submit" class="auth-button">Send Reset Link</button>
+                    <div class="auth-footer">
+                        <a href="#" class="auth-link" onclick="showForm('login-form')">Back to Sign In</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function showForm(formId) {
+            // Hide all forms
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Show the selected form
+            document.getElementById(formId).classList.add('active');
+            
+            // Update active tab
+            document.querySelectorAll('.auth-tab').forEach(tab => {
+                tab.classList.remove('active');
+            });
+            
+            if (formId === 'login-form') {
+                document.querySelector('.auth-tab:nth-child(1)').classList.add('active');
+            } else if (formId === 'register-form') {
+                document.querySelector('.auth-tab:nth-child(2)').classList.add('active');
+            }
+        }
+        
+        function showForgotPassword() {
+            // Hide all forms
+            document.querySelectorAll('.auth-form').forEach(form => {
+                form.classList.remove('active');
+            });
+            
+            // Hide tabs
+            document.querySelector('.auth-tabs').style.display = 'none';
+            
+            // Show forgot password form
+            document.getElementById('forgot-password-form').classList.add('active');
+        }
+        
+        // Form submission handlers
+        document.getElementById('login-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your login logic here
+            alert('Login functionality will be implemented');
+        });
+        
+        document.getElementById('register-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your registration logic here
+            alert('Registration functionality will be implemented');
+        });
+        
+        document.getElementById('forgot-password-form').addEventListener('submit', function(e) {
+            e.preventDefault();
+            // Add your forgot password logic here
+            alert('Password reset link will be sent (implementation needed)');
+        });
+    </script>
+</body>
+</html>
