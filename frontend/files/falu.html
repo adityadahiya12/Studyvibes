@@ -1,0 +1,1240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Studyvibes - Master Tech Skills, Without the Overwhelm</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #6366F1;
+            --accent: #3f83f8;
+            --dark: #1e293b;
+            --light: #f8fafc;
+            --white: #ffffff;
+            --gray: #64748b;
+            --gradient: linear-gradient(135deg, #6366F1 0%, #3f83f8 100%);
+            --glass: rgba(255, 255, 255, 0.1);
+            --shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+            --shadow-lg: 0 35px 60px -12px rgba(0, 0, 0, 0.3);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            overflow-x: hidden;
+            background: var(--white);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            font-size: 1.5rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--dark);
+            font-weight: 500;
+            transition: color 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--gradient);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .login-btn {
+            background: var(--gradient);
+            color: white;
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .login-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><pattern id="grid" width="50" height="50" patternUnits="userSpaceOnUse"><path d="M 50 0 L 0 0 0 50" fill="none" stroke="%236366f1" stroke-width="0.5" opacity="0.1"/></pattern></defs><rect width="100%" height="100%" fill="url(%23grid)"/></svg>');
+            opacity: 0.3;
+        }
+
+        .hero-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-text h1 {
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--dark) 0%, var(--primary) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .hero-text p {
+            font-size: 1.25rem;
+            color: var(--gray);
+            margin-bottom: 2rem;
+            line-height: 1.6;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary {
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .btn-secondary {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-secondary:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateY(-3px);
+        }
+
+        .hero-visual {
+            position: relative;
+            height: 500px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .dashboard-mockup {
+            width: 100%;
+            height: 400px;
+            background: white;
+            border-radius: 20px;
+            box-shadow: var(--shadow-lg);
+            position: relative;
+            overflow: hidden;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .dashboard-mockup::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 60px;
+            background: var(--gradient);
+            border-radius: 20px 20px 0 0;
+        }
+
+        .dashboard-content {
+            padding: 80px 30px 30px;
+            height: 100%;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+        }
+
+        .progress-bar {
+            height: 8px;
+            background: #e2e8f0;
+            border-radius: 4px;
+            margin: 20px 0;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: var(--gradient);
+            border-radius: 4px;
+            animation: progress 3s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+        }
+
+        @keyframes progress {
+            0% { width: 0%; }
+            50% { width: 75%; }
+            100% { width: 0%; }
+        }
+
+        /* Features Section */
+        .features {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .section-header p {
+            font-size: 1.2rem;
+            color: var(--gray);
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+        }
+
+        .feature-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+            border: 1px solid rgba(99, 102, 241, 0.1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: var(--gradient);
+            transform: scaleX(0);
+            transition: transform 0.3s ease;
+        }
+
+        .feature-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .feature-icon {
+            font-size: 3rem;
+            margin-bottom: 1.5rem;
+            display: block;
+        }
+
+        .feature-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .feature-card p {
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        /* Benefits Section */
+        .benefits {
+            padding: 6rem 0;
+            background: linear-gradient(135deg, #f8fafc 0%, #e2e8f0 100%);
+        }
+
+        .benefits-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+        }
+
+        .benefit-item {
+            text-align: center;
+            padding: 2rem;
+        }
+
+        .benefit-number {
+            font-size: 3rem;
+            font-weight: 800;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            display: block;
+            margin-bottom: 1rem;
+        }
+
+        .benefit-item h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--dark);
+        }
+
+        .benefit-item p {
+            color: var(--gray);
+        }
+
+        /* CTA Section */
+        .cta-section {
+            padding: 6rem 0;
+            background: var(--gradient);
+            color: white;
+            text-align: center;
+        }
+
+        .cta-section h2 {
+            font-size: clamp(2rem, 4vw, 3rem);
+            font-weight: 800;
+            margin-bottom: 1rem;
+        }
+
+        .cta-section p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            opacity: 0.9;
+        }
+
+        .btn-white {
+            background: white;
+            color: var(--primary);
+            padding: 1rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .btn-white:hover {
+            transform: translateY(-3px);
+            box-shadow: var(--shadow);
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .testimonials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+        }
+
+        .testimonial-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            border: 1px solid rgba(99, 102, 241, 0.1);
+        }
+
+        .testimonial-text {
+            font-style: italic;
+            margin-bottom: 1.5rem;
+            color: var(--gray);
+            line-height: 1.6;
+        }
+
+        .testimonial-author {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+        }
+
+        .author-avatar {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background: var(--gradient);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-weight: 700;
+        }
+
+        .author-info h4 {
+            font-weight: 600;
+            color: var(--dark);
+        }
+
+        .author-info p {
+            color: var(--gray);
+            font-size: 0.9rem;
+        }
+
+        /* Blog Preview */
+        .blog-preview {
+            padding: 6rem 0;
+            background: var(--light);
+        }
+
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+        }
+
+        .blog-card {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .blog-image {
+            height: 200px;
+            background: var(--gradient);
+            position: relative;
+        }
+
+        .blog-content {
+            padding: 2rem;
+        }
+
+        .blog-content h3 {
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--dark);
+        }
+
+        .blog-content p {
+            color: var(--gray);
+            margin-bottom: 1rem;
+        }
+
+        .blog-meta {
+            font-size: 0.9rem;
+            color: var(--gray);
+        }
+
+        /* Mobile Section */
+        .mobile-section {
+            padding: 6rem 0;
+            background: white;
+        }
+
+        .mobile-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 4rem;
+            align-items: center;
+        }
+
+        .mobile-mockup {
+            width: 300px;
+            height: 600px;
+            background: var(--dark);
+            border-radius: 30px;
+            padding: 20px;
+            margin: 0 auto;
+            position: relative;
+        }
+
+        .mobile-screen {
+            width: 100%;
+            height: 100%;
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .mobile-header {
+            height: 80px;
+            background: var(--gradient);
+        }
+
+        .mobile-body {
+            padding: 20px;
+            background: linear-gradient(135deg, #f8fafc 0%, #ffffff 100%);
+            height: calc(100% - 80px);
+        }
+
+        /* Footer */
+        footer {
+            background: var(--dark);
+            color: white;
+            padding: 4rem 0 2rem;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 3rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            font-size: 1.2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+
+        .footer-section ul {
+            list-style: none;
+        }
+
+        .footer-section ul li {
+            margin-bottom: 0.5rem;
+        }
+
+        .footer-section ul li a {
+            color: rgba(255, 255, 255, 0.7);
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .footer-section ul li a:hover {
+            color: white;
+        }
+
+        .newsletter {
+            display: flex;
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+
+        .newsletter input {
+            flex: 1;
+            padding: 0.75rem;
+            border: none;
+            border-radius: 10px;
+            background: rgba(255, 255, 255, 0.1);
+            color: white;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .newsletter input::placeholder {
+            color: rgba(255, 255, 255, 0.5);
+        }
+
+        .newsletter button {
+            background: var(--gradient);
+            color: white;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 10px;
+            cursor: pointer;
+            font-weight: 600;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            padding-top: 2rem;
+            text-align: center;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        /* Dark Mode Toggle */
+        .dark-mode-toggle {
+            background: none;
+            border: 2px solid var(--primary);
+            border-radius: 50px;
+            padding: 0.5rem;
+            cursor: pointer;
+            color: var(--primary);
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .dark-mode-toggle:hover {
+            background: var(--primary);
+            color: white;
+        }
+
+        /* User Counter */
+        .user-counter {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--gradient);
+            color: white;
+            padding: 1rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            box-shadow: var(--shadow);
+            z-index: 1000;
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+
+            .hero-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .hero-buttons {
+                justify-content: center;
+            }
+
+            .mobile-content {
+                grid-template-columns: 1fr;
+                text-align: center;
+            }
+
+            .newsletter {
+                flex-direction: column;
+            }
+        }
+
+        /* Scroll Animations */
+        .fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.6s ease;
+        }
+
+        .fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="container">
+            <div class="nav-container">
+                <div class="logo">Studyvibes</div>
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#roadmaps">Roadmaps</a></li>
+                    <li><a href="#projects">Projects</a></li>
+                    <li><a href="#blog">Blog</a></li>
+                    <li><a href="#about">About</a></li>
+                    <li><button class="dark-mode-toggle" id="darkModeToggle">🌙</button></li>
+                    <li><a href="#login" class="login-btn">Login</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero" id="home">
+        <div class="container">
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1>Master Tech Skills, Without the Overwhelm</h1>
+                    <p>Studyvibes gives you curated roadmaps, real projects, and senior-guided learning — all in one place.</p>
+                    <div class="hero-buttons">
+                        <a href="#roadmaps" class="btn-primary">Explore Roadmaps</a>
+                        <a href="#community" class="btn-secondary">Join the Community</a>
+                    </div>
+                </div>
+                <div class="hero-visual">
+                    <div class="dashboard-mockup">
+                        <div class="dashboard-content">
+                            <div style="height: 20px; background: #e2e8f0; border-radius: 4px; margin-bottom: 15px;"></div>
+                            <div style="height: 15px; background: #cbd5e1; border-radius: 4px; width: 70%; margin-bottom: 20px;"></div>
+                            <div class="progress-bar">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div style="height: 15px; background: #cbd5e1; border-radius: 4px; width: 60%; margin-bottom: 15px;"></div>
+                            <div style="height: 15px; background: #cbd5e1; border-radius: 4px; width: 80%; margin-bottom: 15px;"></div>
+                            <div style="height: 15px; background: #cbd5e1; border-radius: 4px; width: 50%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features" id="features">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Why Choose Studyvibes?</h2>
+                <p>Everything you need to accelerate your tech learning journey</p>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🎯</span>
+                    <h3>Structured Learning Paths</h3>
+                    <p>Follow proven roadmaps designed by industry experts. No more confusion about what to learn next.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📦</span>
+                    <h3>Real-World Projects</h3>
+                    <p>Build portfolio-worthy projects that demonstrate your skills to potential employers.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🤖</span>
+                    <h3>AI Tutor Support</h3>
+                    <p>Get instant help with coding problems, concept explanations, and personalized study tips.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">👥</span>
+                    <h3>Senior Mentorship</h3>
+                    <p>Connect with experienced professionals who guide you through challenges and career decisions.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">🔗</span>
+                    <h3>Verified Resources</h3>
+                    <p>Access curated, high-quality learning materials. No more wasting time on outdated content.</p>
+                </div>
+                <div class="feature-card fade-in">
+                    <span class="feature-icon">📊</span>
+                    <h3>Progress Tracking</h3>
+                    <p>Monitor your learning journey with detailed analytics and milestone celebrations.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Benefits Section -->
+    <section class="benefits">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Transform Your Learning Experience</h2>
+                <p>Join thousands of students who've accelerated their tech careers</p>
+            </div>
+            <div class="benefits-grid">
+                <div class="benefit-item fade-in">
+                    <span class="benefit-number">100+</span>
+                    <h3>Hours Saved</h3>
+                    <p>Stop searching for resources. We've curated everything you need.</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <span class="benefit-number">3x</span>
+                    <h3>Faster Learning</h3>
+                    <p>Learn more efficiently with structured paths and expert guidance.</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <span class="benefit-number">90%</span>
+                    <h3>Success Rate</h3>
+                    <p>Students who follow our roadmaps land their dream tech jobs.</p>
+                </div>
+                <div class="benefit-item fade-in">
+                    <span class="benefit-number">24/7</span>
+                    <h3>Support Available</h3>
+                    <p>Get help whenever you need it with our AI tutor and community.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA Section -->
+    <section class="cta-section">
+        <div class="container">
+            <div class="fade-in">
+                <h2>Start Your Learning Journey Today</h2>
+                <p>Join over 4,000 students who are already mastering tech skills with Studyvibes</p>
+                <a href="#roadmaps" class="btn-white">Browse Roadmaps - It's Free</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>What Students Say</h2>
+                <p>Real stories from real students who transformed their careers</p>
+            </div>
+            <div class="testimonials-grid">
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"Studyvibes helped me land my internship at Google – the roadmap clarity is unmatched. I finally knew exactly what to focus on!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">A</div>
+                        <div class="author-info">
+                            <h4>Arjun Patel</h4>
+                            <p>Google Intern</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"I finally understood DSA thanks to their roadmap and project-based practice. The AI tutor explained concepts better than my professors!"</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">S</div>
+                        <div class="author-info">
+                            <h4>Shreya Sharma</h4>
+                            <p>Placed at TCS</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-card fade-in">
+                    <p class="testimonial-text">"The senior mentorship program changed my life. Having someone guide me through complex projects made all the difference."</p>
+                    <div class="testimonial-author">
+                        <div class="author-avatar">R</div>
+                        <div class="author-info">
+                            <h4>Rahul Kumar</h4>
+                            <p>Software Engineer at Microsoft</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Preview -->
+    <section class="blog-preview" id="blog">
+        <div class="container">
+            <div class="section-header fade-in">
+                <h2>Latest from Our Blog</h2>
+                <p>Stay updated with the latest tech trends and career tips</p>
+            </div>
+            <div class="blog-grid">
+                <div class="blog-card fade-in">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>How I Got My Internship with Just 1 Month of Prep</h3>
+                        <p>A detailed breakdown of the exact strategy that landed me a dream internship in record time.</p>
+                        <div class="blog-meta">3 days ago • 5 min read</div>
+                    </div>
+                </div>
+                <div class="blog-card fade-in">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>Top Project Ideas for Your Resume in 2025</h3>
+                        <p>15 cutting-edge project ideas that will make your portfolio stand out to recruiters.</p>
+                        <div class="blog-meta">1 week ago • 8 min read</div>
+                    </div>
+                </div>
+                <div class="blog-card fade-in">
+                    <div class="blog-image"></div>
+                    <div class="blog-content">
+                        <h3>Complete DSA Roadmap: Zero to Hero</h3>
+                        <p>Master data structures and algorithms with our comprehensive, beginner-friendly guide.</p>
+                        <div class="blog-meta">2 weeks ago • 12 min read</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Mobile Section -->
+    <section class="mobile-section">
+        <div class="container">
+            <div class="mobile-content">
+                <div class="mobile-text fade-in">
+                    <h2>Learn Anywhere, Anytime</h2>
+                    <p>Studyvibes is built for every screen and every moment. Continue your learning journey whether you're on your laptop, tablet, or phone.</p>
+                    <ul style="list-style: none; padding: 0; margin: 2rem 0;">
+                        <li style="margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="color: var(--primary);">✓</span> Offline mode for uninterrupted learning
+                        </li>
+                        <li style="margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="color: var(--primary);">✓</span> Sync progress across all devices
+                        </li>
+                        <li style="margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="color: var(--primary);">✓</span> Mobile-optimized coding practice
+                        </li>
+                        <li style="margin: 1rem 0; display: flex; align-items: center; gap: 0.5rem;">
+                            <span style="color: var(--primary);">✓</span> Push notifications for study reminders
+                        </li>
+                    </ul>
+                    <p style="font-weight: 600; color: var(--primary);">Built for every screen, anytime.</p>
+                </div>
+                <div class="mobile-mockup fade-in">
+                    <div class="mobile-screen">
+                        <div class="mobile-header"></div>
+                        <div class="mobile-body">
+                            <div style="height: 15px; background: #e2e8f0; border-radius: 4px; margin-bottom: 10px;"></div>
+                            <div style="height: 12px; background: #cbd5e1; border-radius: 4px; width: 60%; margin-bottom: 15px;"></div>
+                            <div class="progress-bar" style="margin: 15px 0;">
+                                <div class="progress-fill"></div>
+                            </div>
+                            <div style="height: 12px; background: #cbd5e1; border-radius: 4px; width: 80%; margin-bottom: 10px;"></div>
+                            <div style="height: 12px; background: #cbd5e1; border-radius: 4px; width: 70%; margin-bottom: 10px;"></div>
+                            <div style="height: 12px; background: #cbd5e1; border-radius: 4px; width: 90%;"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Studyvibes</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">Empowering the next generation of tech professionals with curated learning paths and mentorship.</p>
+                    <div style="display: flex; gap: 1rem;">
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">📘</a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">🐦</a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">💼</a>
+                        <a href="#" style="color: rgba(255, 255, 255, 0.7); font-size: 1.5rem;">📷</a>
+                    </div>
+                </div>
+                <div class="footer-section">
+                    <h3>Learning</h3>
+                    <ul>
+                        <li><a href="#roadmaps">Roadmaps</a></li>
+                        <li><a href="#projects">Projects</a></li>
+                        <li><a href="#resources">Resources</a></li>
+                        <li><a href="#practice">Practice</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Community</h3>
+                    <ul>
+                        <li><a href="#mentors">Find Mentors</a></li>
+                        <li><a href="#forums">Discussion Forums</a></li>
+                        <li><a href="#events">Events</a></li>
+                        <li><a href="#success-stories">Success Stories</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Company</h3>
+                    <ul>
+                        <li><a href="#about">About Us</a></li>
+                        <li><a href="#careers">Careers</a></li>
+                        <li><a href="#blog">Blog</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h3>Stay Updated</h3>
+                    <p style="color: rgba(255, 255, 255, 0.7); margin-bottom: 1rem;">Get weekly tips, roadmap updates & job prep hacks.</p>
+                    <div class="newsletter">
+                        <input type="email" placeholder="Enter your email">
+                        <button type="submit">Subscribe</button>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Studyvibes. All rights reserved. | <a href="#privacy" style="color: rgba(255, 255, 255, 0.7);">Privacy Policy</a> | <a href="#terms" style="color: rgba(255, 255, 255, 0.7);">Terms of Service</a></p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- User Counter (Floating) -->
+    <div class="user-counter" id="userCounter">
+        🔥 4,247 students learning now
+    </div>
+
+    <!-- AI Chatbot Bubble -->
+    <div style="position: fixed; bottom: 100px; right: 20px; z-index: 1000;">
+        <button style="width: 60px; height: 60px; border-radius: 50%; background: var(--gradient); border: none; color: white; font-size: 1.5rem; cursor: pointer; box-shadow: var(--shadow); transition: all 0.3s ease;" onmouseover="this.style.transform='scale(1.1)'" onmouseout="this.style.transform='scale(1)'">
+            🤖
+        </button>
+    </div>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                document.querySelector(this.getAttribute('href')).scrollIntoView({
+                    behavior: 'smooth'
+                });
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in').forEach(el => {
+            observer.observe(el);
+        });
+
+        // Dark mode toggle
+        const darkModeToggle = document.getElementById('darkModeToggle');
+        const body = document.body;
+
+        darkModeToggle.addEventListener('click', () => {
+            body.style.filter = body.style.filter === 'invert(1) hue-rotate(180deg)' ? '' : 'invert(1) hue-rotate(180deg)';
+            darkModeToggle.textContent = body.style.filter ? '☀️' : '🌙';
+        });
+
+        // Dynamic user counter
+        const userCounter = document.getElementById('userCounter');
+        let currentCount = 4247;
+
+        setInterval(() => {
+            const change = Math.floor(Math.random() * 5) - 2; // Random change between -2 and +2
+            currentCount = Math.max(4200, currentCount + change);
+            userCounter.textContent = `🔥 ${currentCount.toLocaleString()} students learning now`;
+        }, 5000);
+
+        // Navbar background on scroll
+        window.addEventListener('scroll', () => {
+            const nav = document.querySelector('nav');
+            if (window.scrollY > 100) {
+                nav.style.background = 'rgba(255, 255, 255, 0.98)';
+                nav.style.boxShadow = '0 2px 20px rgba(0, 0, 0, 0.1)';
+            } else {
+                nav.style.background = 'rgba(255, 255, 255, 0.95)';
+                nav.style.boxShadow = 'none';
+            }
+        });
+
+        // Newsletter subscription
+        document.querySelector('.newsletter button').addEventListener('click', (e) => {
+            e.preventDefault();
+            const email = document.querySelector('.newsletter input').value;
+            if (email) {
+                alert('Thanks for subscribing! You\'ll receive our weekly updates soon.');
+                document.querySelector('.newsletter input').value = '';
+            }
+        });
+
+        // Mobile menu toggle (for smaller screens)
+        const navLinks = document.querySelector('.nav-links');
+        const mobileMenuBtn = document.createElement('button');
+        mobileMenuBtn.innerHTML = '☰';
+        mobileMenuBtn.style.cssText = `
+            display: none;
+            background: none;
+            border: none;
+            font-size: 1.5rem;
+            color: var(--primary);
+            cursor: pointer;
+            @media (max-width: 768px) {
+                display: block;
+            }
+        `;
+
+        // Insert mobile menu button
+        document.querySelector('.nav-container').appendChild(mobileMenuBtn);
+
+        mobileMenuBtn.addEventListener('click', () => {
+            navLinks.style.display = navLinks.style.display === 'flex' ? 'none' : 'flex';
+            if (window.innerWidth <= 768) {
+                navLinks.style.cssText = `
+                    position: absolute;
+                    top: 100%;
+                    left: 0;
+                    right: 0;
+                    background: white;
+                    flex-direction: column;
+                    padding: 2rem;
+                    box-shadow: var(--shadow);
+                    border-radius: 0 0 20px 20px;
+                `;
+            }
+        });
+
+        // Typing animation for hero title
+        const heroTitle = document.querySelector('.hero-text h1');
+        const titleText = heroTitle.textContent;
+        heroTitle.textContent = '';
+        
+        let i = 0;
+        const typeTitle = () => {
+            if (i < titleText.length) {
+                heroTitle.textContent += titleText.charAt(i);
+                i++;
+                setTimeout(typeTitle, 50);
+            }
+        };
+        
+        // Start typing animation after a short delay
+        setTimeout(typeTitle, 1000);
+
+        // Add parallax effect to hero section
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const hero = document.querySelector('.hero');
+            const heroContent = document.querySelector('.hero-content');
+            
+            if (scrolled < hero.offsetHeight) {
+                heroContent.style.transform = `translateY(${scrolled * 0.5}px)`;
+            }
+        });
+
+        // Add click animation to CTA buttons
+        document.querySelectorAll('.btn-primary, .btn-secondary, .btn-white').forEach(btn => {
+            btn.addEventListener('click', function(e) {
+                const ripple = document.createElement('span');
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                const x = e.clientX - rect.left - size / 2;
+                const y = e.clientY - rect.top - size / 2;
+                
+                ripple.style.cssText = `
+                    width: ${size}px;
+                    height: ${size}px;
+                    left: ${x}px;
+                    top: ${y}px;
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(255, 255, 255, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                this.style.position = 'relative';
+                this.style.overflow = 'hidden';
+                this.appendChild(ripple);
+                
+                setTimeout(() => ripple.remove(), 600);
+            });
+        });
+
+        // CSS for ripple animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

@@ -1,0 +1,1384 @@
+  <!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Roadmap | StudyVibes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-light: #93c5fd;
+        --primary-dark: #1d4ed8;
+        --text-color: #1e293b;
+        --light-text: #64748b;
+        --background-color: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --section-bg: #f1f5f9;
+      }
+
+      /* Dark Mode Variables */
+      .dark-mode {
+        --primary-color: #3b82f6;
+        --primary-light: #60a5fa;
+        --primary-dark: #2563eb;
+        --text-color: #f8fafc;
+        --light-text: #cbd5e1;
+        --background-color: #1e293b;
+        --card-bg: #334155;
+        --border-color: #475569;
+        --section-bg: #0f172a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        transition: all 0.3s ease;
+      }
+
+      /* Header Styles */
+      .header {
+        background-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+            /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+        padding: 3rem 1rem;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        opacity: 0.6;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, white, #e0e0e0);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.8rem 1.8rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+            /* Resources Section */
+      .resources-section {
+        padding: 4rem 0;
+      }
+
+      .resources-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+        gap: 2rem;
+      }
+
+      .resource-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        text-align: center;
+      }
+
+      .resource-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .resource-icon {
+        width: 60px;
+        height: 60px;
+        background-color: var(--primary-light);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        color: var(--primary-color);
+        font-size: 1.5rem;
+      }
+
+      .resource-card-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+      }
+
+      .resource-card-description {
+        color: var(--light-text);
+        font-size: 0.9rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .resource-download {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .resource-download:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* Quiz Section */
+      .quiz-section {
+        padding: 4rem 0;
+        background-color: var(--section-bg);
+        border-radius: 12px;
+        margin: 3rem 0;
+      }
+
+      .quiz-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .quiz-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 2rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+      }
+
+      .quiz-question {
+        font-size: 1.1rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+      }
+
+      .quiz-options {
+        display: grid;
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+
+      .quiz-option {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        padding: 1rem;
+        background-color: var(--border-color);
+        border-radius: 8px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+      }
+
+      .quiz-option:hover {
+        background-color: var(--light-text);
+        color: white;
+      }
+
+      .quiz-option input {
+        width: 18px;
+        height: 18px;
+      }
+
+      .quiz-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+        margin-top: 1rem;
+      }
+
+      .quiz-submit:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* Challenge Section */
+      .challenge-section {
+        padding: 4rem 0;
+      }
+
+      .challenge-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .challenge-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .challenge-tabs {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .challenge-tab {
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        background-color: var(--border-color);
+        color: var(--text-color);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .challenge-tab.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .challenge-tab:hover:not(.active) {
+        background-color: var(--light-text);
+        color: white;
+      }
+
+      .challenge-content {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+
+      .challenge-problems {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .challenge-problem {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .challenge-problem:last-child {
+        border-bottom: none;
+      }
+
+      .challenge-problem-title {
+        font-weight: 500;
+        color: var(--text-color);
+      }
+
+      .challenge-problem-link {
+        color: var(--primary-color);
+        text-decoration: none;
+        font-weight: 500;
+      }
+
+      .challenge-problem-link:hover {
+        text-decoration: underline;
+      }
+
+      .challenge-problem-check {
+        width: 20px;
+        height: 20px;
+        border: 2px solid var(--border-color);
+        border-radius: 4px;
+        cursor: pointer;
+      }
+
+      .challenge-leaderboard {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .leaderboard-title {
+        font-size: 1.2rem;
+        margin-bottom: 1.5rem;
+        color: var(--text-color);
+      }
+
+      .leaderboard-list {
+        list-style-type: none;
+      }
+
+      .leaderboard-item {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .leaderboard-item:last-child {
+        border-bottom: none;
+      }
+
+      .leaderboard-user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .leaderboard-rank {
+        width: 24px;
+        height: 24px;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .leaderboard-name {
+        font-weight: 500;
+      }
+
+      .leaderboard-score {
+        font-weight: 600;
+        color: var(--primary-color);
+      }
+
+      /* Discussion Section */
+      .discussion-section {
+        padding: 4rem 0;
+        background-color: var(--section-bg);
+        border-radius: 12px;
+        margin: 3rem 0;
+      }
+
+      .discussion-container {
+        max-width: 800px;
+        margin: 0 auto;
+      }
+
+      .discussion-header {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        margin-bottom: 2rem;
+      }
+
+      .discussion-title {
+        font-size: 1.5rem;
+        color: var(--primary-color);
+      }
+
+      .discussion-form {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        margin-bottom: 2rem;
+      }
+
+      .form-group {
+        margin-bottom: 1.5rem;
+      }
+
+      .form-label {
+        display: block;
+        margin-bottom: 0.5rem;
+        font-weight: 500;
+      }
+
+      .form-input {
+        width: 100%;
+        padding: 0.8rem;
+        border: 1px solid var(--border-color);
+        border-radius: 6px;
+        font-family: inherit;
+        background-color: var(--background-color);
+        color: var(--text-color);
+      }
+
+      .form-textarea {
+        min-height: 120px;
+        resize: vertical;
+      }
+
+      .form-submit {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.8rem 1.8rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        border: none;
+        cursor: pointer;
+      }
+
+      .form-submit:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .discussion-list {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      }
+
+      .discussion-item {
+        padding: 1.5rem 0;
+        border-bottom: 1px solid var(--border-color);
+      }
+
+      .discussion-item:last-child {
+        border-bottom: none;
+      }
+
+      .discussion-user {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1rem;
+      }
+
+      .discussion-avatar {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: var(--border-color);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        color: var(--text-color);
+        font-weight: 600;
+      }
+
+      .discussion-user-info {
+        flex-grow: 1;
+      }
+
+      .discussion-user-name {
+        font-weight: 600;
+        margin-bottom: 0.2rem;
+      }
+
+      .discussion-time {
+        font-size: 0.8rem;
+        color: var(--light-text);
+      }
+
+      .discussion-content {
+        margin-bottom: 1rem;
+        line-height: 1.6;
+      }
+
+      .discussion-actions {
+        display: flex;
+        gap: 1rem;
+      }
+
+      .discussion-action {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--light-text);
+        text-decoration: none;
+        font-size: 0.9rem;
+      }
+
+      .discussion-action:hover {
+        color: var(--primary-color);
+      }
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .footer-description {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+            .footer-link {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-link:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* Dark Mode Toggle */
+      .dark-mode-toggle {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 99;
+        border: none;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .journey-path::before {
+          left: 40px;
+        }
+
+        .stage {
+          padding-left: 80px;
+          padding-right: 0;
+        }
+
+        .stage-left, .stage-right {
+          justify-content: flex-start;
+          padding-left: 80px;
+          padding-right: 0;
+          text-align: left;
+        }
+
+        .stage::after {
+          left: 40px;
+          right: auto;
+        }
+
+        .stage-left .stage-content {
+          border-right: none;
+          border-left: 4px solid var(--primary-color);
+        }
+
+        .stage-left .skills-list li::after {
+          display: none;
+        }
+
+        .stage-left .skills-list li::before {
+          display: inline;
+        }
+
+        .stage-left .stage-title {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          padding: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .challenge-content {
+          grid-template-columns: 1fr;
+        }
+
+        .topics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .problems-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .roadmap-title, .section-title {
+          font-size: 1.5rem;
+        }
+      }
+ 
+</style>
+</head>
+
+
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+          </div>
+          <span class="logo-text">StudyVibes</span>
+        </a>
+        <nav class="nav-links">
+          <a href="\index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="\roadmaps.html"><i class="fas fa-map"></i> Roadmap</a>
+          <a href="aboutus.html"><i class="fas fa-book"></i>About</a>
+          <a href="#practice"><i class="fas fa-code"></i> Practice</a>
+          <a href="#resources"><i class="fas fa-download"></i> Resources</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Master Data Structures & Algorithms</h1>
+          <p class="subtitle">Start your DSA journey with well-organized resources, problem sets, and visual guides to crack placements and coding interviews.</p>
+          <div class="cta-buttons">
+            <a href="\roadmap.html" class="btn btn-primary">
+              <i class="fas fa-map-marked-alt"></i> Explore Roadmap
+            </a>
+            <a href="https://discord.gg/h6a2H2Kc" class="btn btn-outline">
+              <i class="fas fa-laptop-code"></i> Join Discord
+            </a>
+          </div>
+        </div>
+      </section>
+            <!-- Resources Section -->
+      <section id="resources" class="resources-section">
+        <div class="section-header">
+          <h2 class="section-title">Tools & Cheat Sheets</h2>
+          <p class="section-subtitle">Download handy references and study materials</p>
+        </div>
+
+        <div class="resources-grid">
+          <!-- Resource 1 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-clock"></i>
+            </div>
+            <h3 class="resource-card-title">Big-O Cheat Sheet</h3>
+            <p class="resource-card-description">Complete reference for time and space complexity of all algorithms</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Resource 2 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-sort-amount-down"></i>
+            </div>
+            <h3 class="resource-card-title">Sorting Algorithms</h3>
+            <p class="resource-card-description">Visual guide to all sorting algorithms with implementations</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Resource 3 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-project-diagram"></i>
+            </div>
+            <h3 class="resource-card-title">Graph Algorithms</h3>
+            <p class="resource-card-description">Cheat sheet for graph traversal and shortest path algorithms</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Resource 4 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-chess"></i>
+            </div>
+            <h3 class="resource-card-title">DP Patterns</h3>
+            <p class="resource-card-description">Common dynamic programming patterns with examples</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+
+          <!-- Resource 5 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-road"></i>
+            </div>
+            <h3 class="resource-card-title">DSA Roadmap</h3>
+            <p class="resource-card-description">Visual learning path for mastering DSA</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PNG
+            </a>
+          </div>
+
+          <!-- Resource 6 -->
+          <div class="resource-card">
+            <div class="resource-icon">
+              <i class="fas fa-book"></i>
+            </div>
+            <h3 class="resource-card-title">Interview Guide</h3>
+            <p class="resource-card-description">Top 100 DSA interview questions with solutions</p>
+            <a href="#" class="resource-download">
+              <i class="fas fa-download"></i> Download PDF
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Quiz Section -->
+      <section class="quiz-section">
+        <div class="section-header">
+          <h2 class="section-title">DSA Quizzes</h2>
+          <p class="section-subtitle">Test your knowledge with interactive quizzes</p>
+        </div>
+
+        <div class="quiz-container">
+          <!-- Quiz 1 -->
+          <div class="quiz-card">
+            <h3 class="quiz-question">1. What is the time complexity of binary search on a sorted array of size n?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="a">
+                O(1)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="b">
+                O(log n)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="c">
+                O(n)
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q1" value="d">
+                O(n log n)
+              </label>
+            </div>
+          </div>
+
+          <!-- Quiz 2 -->
+          <div class="quiz-card">
+            <h3 class="quiz-question">2. Which data structure uses LIFO (Last In First Out) principle?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="a">
+                Queue
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="b">
+                Stack
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="c">
+                Linked List
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q2" value="d">
+                Tree
+              </label>
+            </div>
+          </div>
+
+          <!-- Quiz 3 -->
+          <div class="quiz-card">
+            <h3 class="quiz-question">3. In dynamic programming, what technique stores results of subproblems to avoid recomputation?</h3>
+            <div class="quiz-options">
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="a">
+                Divide and Conquer
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="b">
+                Memoization
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="c">
+                Greedy Approach
+              </label>
+              <label class="quiz-option">
+                <input type="radio" name="q3" value="d">
+                Backtracking
+              </label>
+            </div>
+          </div>
+
+          <button class="quiz-submit">
+            <i class="fas fa-paper-plane"></i> Submit Answers
+          </button>
+        </div>
+      </section>
+
+      <!-- Challenge Section -->
+      <section class="challenge-section">
+        <div class="challenge-header">
+          <h2 class="challenge-title">Weekly DSA Challenge</h2>
+          <div class="challenge-tabs">
+            <button class="challenge-tab active">Problems</button>
+            <button class="challenge-tab">Leaderboard</button>
+          </div>
+        </div>
+
+        <div class="challenge-content">
+          <div class="challenge-problems">
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">Two Sum</span>
+              <a href="#" class="challenge-problem-check"></a>
+              <a href="https://leetcode.com/problems/two-sum/" target="_blank" class="challenge-problem-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">Valid Parentheses</span>
+              <a href="#" class="challenge-problem-check"></a>
+              <a href="https://leetcode.com/problems/valid-parentheses/" target="_blank" class="challenge-problem-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">Merge Intervals</span>
+              <a href="#" class="challenge-problem-check"></a>
+                <a href="https://leetcode.com/problems/merge-intervals/" target="_blank" class="challenge-problem-link">
+                    <i class="fas fa-external-link-alt"></i>
+                </a>
+            </div>
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">Longest Substring Without Repeating Characters</span>
+              <a href="#" class="challenge-problem-check"></a>
+              <a href="https://leetcode.com/problems/longest-substring-without-repeating-characters/" target="_blank" class="challenge-problem-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">Product of Array Except Self</span>
+              <a href="#" class="challenge-problem-check"></a>
+              <a href="https://leetcode.com/problems/product-of-array-except-self/" target="_blank" class="challenge-problem-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+                       </div>
+            <div class="challenge-problem">
+              <span class="challenge-problem-title">House Robber</span>
+              <a href="#" class="challenge-problem-check"></a>
+              <a href="https://leetcode.com/problems/house-robber/" target="_blank" class="challenge-problem-link">
+                <i class="fas fa-external-link-alt"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="challenge-leaderboard">
+            <h3 class="leaderboard-title">Top Performers</h3>
+            <ul class="leaderboard-list">
+              <li class="leaderboard-item">
+                <div class="leaderboard-user">
+                  <span class="leaderboard-rank">1</span>
+                  <span class="leaderboard-name">Alex Johnson</span>
+                </div>
+                <span class="leaderboard-score">5/5</span>
+              </li>
+              <li class="leaderboard-item">
+                <div class="leaderboard-user">
+                  <span class="leaderboard-rank">2</span>
+                  <span class="leaderboard-name">Sarah Williams</span>
+                </div>
+                <span class="leaderboard-score">4/5</span>
+              </li>
+              <li class="leaderboard-item">
+                <div class="leaderboard-user">
+                  <span class="leaderboard-rank">3</span>
+                  <span class="leaderboard-name">Michael Brown</span>
+                </div>
+                <span class="leaderboard-score">4/5</span>
+              </li>
+              <li class="leaderboard-item">
+                <div class="leaderboard-user">
+                  <span class="leaderboard-rank">4</span>
+                  <span class="leaderboard-name">Emily Davis</span>
+                </div>
+                <span class="leaderboard-score">3/5</span>
+              </li>
+              <li class="leaderboard-item">
+                <div class="leaderboard-user">
+                  <span class="leaderboard-rank">5</span>
+                  <span class="leaderboard-name">David Wilson</span>
+                </div>
+                <span class="leaderboard-score">3/5</span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      <!-- Discussion Section -->
+      <section class="discussion-section">
+        <div class="discussion-container">
+          <div class="discussion-header">
+            <h2 class="discussion-title">Community Discussions</h2>
+            <button class="form-submit">
+              <i class="fas fa-plus"></i> New Post
+            </button>
+          </div>
+
+          <form class="discussion-form">
+            <div class="form-group">
+              <label class="form-label">Title</label>
+              <input type="text" class="form-input" placeholder="What's your question?">
+            </div>
+            <div class="form-group">
+              <label class="form-label">Content</label>
+              <textarea class="form-input form-textarea" placeholder="Describe your question in detail..."></textarea>
+            </div>
+            <button type="submit" class="form-submit">
+              <i class="fas fa-paper-plane"></i> Post Question
+            </button>
+          </form>
+
+          <div class="discussion-list">
+            <!-- Discussion 1 -->
+            <div class="discussion-item">
+              <div class="discussion-user">
+                <div class="discussion-avatar">AJ</div>
+                <div class="discussion-user-info">
+                  <div class="discussion-user-name">Alex Johnson</div>
+                  <div class="discussion-time">2 hours ago</div>
+                </div>
+              </div>
+              <div class="discussion-content">
+                <h4>How to optimize space in DP problems?</h4>
+                <p>I'm working on the 0/1 Knapsack problem and trying to reduce the space complexity from O(nW) to O(W). Any suggestions on how to approach this optimization?</p>
+              </div>
+              <div class="discussion-actions">
+                <a href="#" class="discussion-action">
+                  <i class="far fa-comment"></i> 5 Replies
+                </a>
+                <a href="#" class="discussion-action">
+                  <i class="far fa-heart"></i> Like
+                </a>
+              </div>
+            </div>
+
+            <!-- Discussion 2 -->
+            <div class="discussion-item">
+              <div class="discussion-user">
+                <div class="discussion-avatar">SW</div>
+                <div class="discussion-user-info">
+                  <div class="discussion-user-name">Sarah Williams</div>
+                  <div class="discussion-time">1 day ago</div>
+                </div>
+              </div>
+              <div class="discussion-content">
+                <h4>Best resources for graph algorithms?</h4>
+                <p>I'm preparing for interviews and want to strengthen my graph algorithm skills. What are the best resources (books, videos, problems) you recommend for mastering graph algorithms?</p>
+              </div>
+              <div class="discussion-actions">
+                <a href="#" class="discussion-action">
+                  <i class="far fa-comment"></i> 12 Replies
+                </a>
+                <a href="#" class="discussion-action">
+                  <i class="far fa-heart"></i> Like
+                </a>
+              </div>
+            </div>
+
+            <!-- Discussion 3 -->
+            <div class="discussion-item">
+              <div class="discussion-user">
+                <div class="discussion-avatar">MB</div>
+                <div class="discussion-user-info">
+                  <div class="discussion-user-name">Michael Brown</div>
+                  <div class="discussion-time">3 days ago</div>
+                </div>
+              </div>
+              <div class="discussion-content">
+                <h4>Time complexity of recursive algorithms</h4>
+                <p>I'm having trouble calculating time complexity for recursive algorithms like Tower of Hanoi. Can someone explain how to approach these calculations systematically?</p>
+              </div>
+              <div class="discussion-actions">
+                <a href="#" class="discussion-action">
+                  <i class="far fa-comment"></i> 8 Replies
+                </a>
+                <a href="#" class="discussion-action">
+                  <i class="far fa-heart"></i> Like
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon">
+           <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+          </div>
+          <span class="footer-logo-text">StudyVibes</span>
+        </div>
+        <p class="footer-description">
+          Master Data Structures and Algorithms with our comprehensive learning platform. 
+          Join thousands of students preparing for coding interviews and placements.
+        </p>
+        <div class="footer-links">
+          <a href="\index.html" class="footer-link">Home</a>
+          <a href="\roadmap.html" class="footer-link">Roadmap</a>
+          <a href="#" class="footer-link">Topics</a>
+          <a href="#" class="footer-link">Practice</a>
+          <a href="#" class="footer-link">Resources</a>
+          <a href="aboutus.html" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2023 StudyVibes. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+
+      // Check for saved user preference
+      if (localStorage.getItem('darkMode')) {
+        body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          localStorage.removeItem('darkMode');
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      });
+
+      // Tab functionality for practice section
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          // Here you would filter the problems based on the selected tab
+        });
+      });
+
+      // Tab functionality for challenge section
+      const challengeTabs = document.querySelectorAll('.challenge-tab');
+      challengeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          challengeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          const challengeContent = document.querySelector('.challenge-content');
+          if (tab.textContent === 'Problems') {
+            challengeContent.style.gridTemplateColumns = '1fr';
+            document.querySelector('.challenge-leaderboard').style.display = 'none';
+            document.querySelector('.challenge-problems').style.display = 'block';
+          } else {
+            challengeContent.style.gridTemplateColumns = '1fr 1fr';
+            document.querySelector('.challenge-leaderboard').style.display = 'block';
+            document.querySelector('.challenge-problems').style.display = 'block';
+          }
+        });
+      });
+
+      // Quiz submission
+      const quizSubmit = document.querySelector('.quiz-submit');
+      quizSubmit.addEventListener('click', () => {
+        alert('Quiz submitted! Check your answers.');
+        // Here you would normally validate the answers and show results
+      });
+    </script>
+  </body>
+</html>

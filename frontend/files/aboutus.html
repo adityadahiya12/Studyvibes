@@ -1,0 +1,966 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About StudyVibes - Empowering Student Developers</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;       /* Primary blue */
+      --primary-light: #93c5fd;       /* Lighter blue */
+      --primary-dark: #1d4ed8;        /* Darker blue */
+      --text-color: #1e293b;          /* Dark gray for text */
+      --light-text: #64748b;          /* Medium gray for secondary text */
+      --background-color: #f8fafc;    /* Light background */
+      --card-bg: #ffffff;             /* White for cards */
+      --border-color: #e2e8f0;        /* Light gray for borders */
+      --success-color: #10b981;       /* Green for success */
+      --warning-color: #f59e0b;       /* Yellow for warning */
+      --error-color: #ef4444;         /* Red for error */
+      --section-bg: #f1f5f9;          /* Very light gray for sections */
+    }
+
+    /* Dark Mode Variables */
+    .dark-mode {
+      --primary-color: #3b82f6;       /* Bright blue */
+      --primary-light: #60a5fa;       /* Lighter blue */
+      --primary-dark: #2563eb;        /* Primary blue */
+      --text-color: #f8fafc;          /* Light text */
+      --light-text: #cbd5e1;          /* Light gray for secondary text */
+      --background-color: #1e293b;    /* Dark background */
+      --card-bg: #334155;             /* Dark gray for cards */
+      --border-color: #475569;        /* Dark gray for borders */
+      --section-bg: #0f172a;          /* Very dark blue for sections */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: all 0.3s ease;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Hero Section */
+    .about-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+      margin-top: 1rem;
+    }
+
+    .about-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.6;
+    }
+
+    .about-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, white, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* About Sections */
+    .about-section {
+      margin-bottom: 4rem;
+      padding: 2rem;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .about-section:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1.5rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 0;
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    .section-content {
+      display: flex;
+      gap: 2rem;
+      align-items: center;
+    }
+
+    .section-text {
+      flex: 1;
+    }
+
+    .section-image {
+      flex: 1;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .section-image img {
+      width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    p {
+      margin-bottom: 1rem;
+      color: var(--light-text);
+      line-height: 1.7;
+    }
+
+    /* Team Section */
+    .team-section {
+      padding: 4rem 0;
+      background-color: var(--section-bg);
+      border-radius: 12px;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .team-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .team-avatar {
+      width: 150px;
+      height: 150px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--primary-light);
+    }
+
+    .team-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .team-title {
+      color: var(--light-text);
+      margin-bottom: 1rem;
+      font-size: 0.9rem;
+    }
+
+    .team-bio {
+      margin-bottom: 1.5rem;
+      font-size: 0.95rem;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+    }
+
+    .social-link {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      padding: 4rem 0;
+    }
+
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-top: 2rem;
+    }
+
+    .testimonial-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .testimonial-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .testimonial-quote {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      color: var(--text-color);
+      position: relative;
+    }
+
+    .testimonial-quote::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary-light);
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      opacity: 0.3;
+    }
+
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .author-avatar {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .author-info {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .author-name {
+      font-weight: 600;
+    }
+
+    .author-title {
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    /* Call to Action */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 4rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Floating Action Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 900;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background-color: var(--primary-dark);
+    }
+
+    .floating-button i {
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .copyright {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .header-content {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .section-content {
+        flex-direction: column;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .about-hero {
+        padding: 3rem 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+
+      .floating-buttons {
+        flex-direction: row;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .floating-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .about-section, .team-card, .testimonial-card {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .about-section:nth-child(1) { animation-delay: 0.1s; }
+    .about-section:nth-child(2) { animation-delay: 0.2s; }
+    .about-section:nth-child(3) { animation-delay: 0.3s; }
+    .team-card:nth-child(1) { animation-delay: 0.1s; }
+    .team-card:nth-child(2) { animation-delay: 0.2s; }
+    .team-card:nth-child(3) { animation-delay: 0.3s; }
+    .testimonial-card:nth-child(1) { animation-delay: 0.1s; }
+    .testimonial-card:nth-child(2) { animation-delay: 0.2s; }
+    .testimonial-card:nth-child(3) { animation-delay: 0.3s; }
+    .addyportfolio {
+      text-decoration: none;
+      color: var(--primary-color);
+      transition: color 0.3s ease;
+    }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="logo-text">StudyVibes</span>
+      </a>
+      <nav class="nav-links">
+        <a href="\index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="\roadmaps.html"><i class="fas fa-road"></i> Roadmaps</a>
+        <a href="\guidance.html"><i class="fas fa-lightbulb"></i> Guidance</a>
+        <a href="\blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="signinpages.html" class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="about-hero">
+      <div class="about-hero-content">
+        <h1>Empowering the Next Generation of Developers</h1>
+        <p class="subtitle">StudyVibes was born from a student's struggle to find clear learning paths in tech. Now we're helping thousands navigate their education journey with confidence.</p>
+      </div>
+    </section>
+
+    <!-- Our Mission Section -->
+    <section class="about-section">
+      <h2 class="section-title">Our Mission</h2>
+      <div class="section-content">
+        <div class="section-text">
+          <p>At StudyVibes, we believe every student deserves access to clear, structured learning paths in technology. The internet is overflowing with resources, but knowing what to learn and in what order is half the battle.</p>
+          <p>Our mission is to eliminate the confusion and overwhelm that comes with learning tech skills. We curate the best resources, organize them into logical roadmaps, and provide real-world projects to help you build practical experience.</p>
+          <p>We're not just another learning platform - we're your study buddy, your roadmap creator, and your cheerleader throughout your tech education journey.</p>
+        </div>
+        <div class="section-image">
+          <img src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80" alt="Students collaborating">
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-section">
+      <h2 class="section-title">Our Story</h2>
+      <div class="section-content">
+        <div class="section-image">
+          <img src="https://images.unsplash.com/photo-1521791055366-0d553872125f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Founder working on laptop">
+        </div>
+        <div class="section-text">
+          <p>StudyVibes began in 2025 when Addy Chaudhary, a 7th semester Computer Science student, found himself overwhelmed by the sheer number of technologies he needed to learn. Like many students, he spent more time searching for what to learn next than actually learning.</p>
+          <p>Frustrated by this common problem, Addy started creating structured roadmaps for himself - organized learning paths with curated resources. When he shared these with classmates, the response was overwhelming. Everyone wanted access to these clear, student-tested learning paths.</p>
+          <p>What started as personal notes has grown into StudyVibes - a platform helping thousands of students worldwide cut through the noise and focus on what really matters in their tech education.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Senior Connection Section -->
+    <section class="about-section">
+      <h2 class="section-title">Senior Connection</h2>
+      <div class="section-content">
+        <div class="section-text">
+          <p>One thing that sets StudyVibes apart is our focus on connecting students with experienced mentors. We know how valuable it is to learn from those who've walked the path before you.</p>
+          <p>Our platform facilitates mentorship between junior and senior students, allowing knowledge to flow naturally between generations of tech learners. Got stuck on a concept? Need career advice? Our senior connection program pairs you with experienced students who can help.</p>
+          <p>We believe in paying it forward - today's mentees become tomorrow's mentors, creating a virtuous cycle of knowledge sharing in the student community.</p>
+        </div>
+        <div class="section-image">
+          <img src="https://images.unsplash.com/photo-1600880292203-757bb62b4baf?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Mentorship session">
+        </div>
+      </div>
+    </section>
+
+    <!-- Meet the Team Section -->
+    <section class="team-section">
+      <h2 class="section-title" style="text-align: center;">Meet Our Founder</h2>
+      <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--light-text);">The passionate student behind StudyVibes</p>
+      
+      <div class="team-grid">
+        <div class="team-card">
+          <img src="okaddy.jpg" alt="Addy Chaudhary" class="team-avatar">
+          <a href="https://adityadahiya12.github.io/Personal_portfolio/" class="addyportfolio"><h3 class="team-name">Addy Chaudhary</h3></a>
+          <p class="team-title">Founder & Lead Developer</p>
+          <p class="team-bio">7th semester B.Tech Computer Science student passionate about making tech education accessible and structured. Created StudyVibes to solve the problems he faced as a learning student.</p>
+          <div class="social-links">
+            <a href="https://github.com/adityadahiya12" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="https://linkedin.com/in/aditya-44b2a0271" class="social-link"><i class="fab fa-linkedin"></i></a>
+            
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials Section -->
+    <section class="testimonials-section">
+      <h2 class="section-title" style="text-align: center;">What Students Say</h2>
+      <p class="section-subtitle" style="text-align: center; max-width: 700px; margin: 0 auto 2rem; color: var(--light-text);">Hear from our community of learners</p>
+      
+      <div class="testimonials-grid">
+        <!-- Testimonial 1 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            StudyVibes saved me hundreds of hours of searching for quality resources. Their web development roadmap took me from beginner to job-ready in just 6 months!
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Priya K." class="author-avatar">
+            <div class="author-info">
+              <span class="author-name">Priya K.</span>
+              <span class="author-title">Computer Science Student</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 2 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            As someone who struggled with where to start in data science, the structured roadmaps were a game-changer. The project suggestions helped me build an impressive portfolio.
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Rahul S." class="author-avatar">
+            <div class="author-info">
+              <span class="author-name">Rahul S.</span>
+              <span class="author-title">Aspiring Data Scientist</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Testimonial 3 -->
+        <div class="testimonial-card">
+          <div class="testimonial-quote">
+            The senior connection program helped me navigate my final year projects and internship search. Having a mentor who recently went through the same process was invaluable.
+          </div>
+          <div class="testimonial-author">
+            <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya P." class="author-avatar">
+            <div class="author-info">
+              <span class="author-name">Ananya P.</span>
+              <span class="author-title">Final Year Engineering Student</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <h2 class="cta-title">Ready to Transform Your Learning Journey?</h2>
+      <p>Join thousands of students who are mastering tech skills with structured roadmaps and community support.</p>
+      <div class="cta-buttons">
+        <a href="roadmaps.html" class="btn btn-primary">
+          <i class="fas fa-road"></i> Explore Roadmaps
+        </a>
+        <a href="signinpages.html" class="btn btn-outline">
+          <i class="fas fa-user-plus"></i> Join Now
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-button" id="darkModeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="floating-button" id="scrollToTopBtn" title="Scroll to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="floating-button" id="feedbackBtn" title="Give Feedback">
+      <i class="fas fa-comment"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="footer-logo-text">StudyVibes</span>
+      </div>
+      <p class="footer-description">
+        Empowering students and junior developers with structured roadmaps and curated resources to accelerate their learning journey in computer science.
+      </p>
+      <div class="footer-links">
+        <a href="" class="footer-link">Home</a>
+        <a href="" class="footer-link">Roadmaps</a>
+        <a href="#" class="footer-link">Guidance</a>
+        <a href="#" class="footer-link">Blog</a>
+        <a href="aboutus.html" class="footer-link">About Us</a>
+        <a href="signinpages.html" class="footer-link">Login</a>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+      </div>
+      <p class="copyright">
+        &copy; 2025 StudyVibes. All rights reserved. Made with <i class="fas fa-heart" style="color: #ff5252;"></i> for developers.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      const feedbackBtn = document.getElementById('feedbackBtn');
+
+      // State variables
+      let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+      // Initialize the page
+      function init() {
+        // Set dark mode if enabled
+        if (isDarkMode) {
+          document.body.classList.add('dark-mode');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+        }
+
+        // Set up event listeners
+        setupEventListeners();
+
+        // Animate elements when they come into view
+        setupScrollAnimations();
+      }
+
+      // Set up all event listeners
+      function setupEventListeners() {
+        // Theme toggle
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Scroll to top
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Feedback button
+        feedbackBtn.addEventListener('click', () => {
+          alert('Thank you for your feedback! Please email us at feedback@studyvibes.com');
+        });
+
+        // Show scroll to top button when scrolling
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'flex';
+          } else {
+            scrollToTopBtn.style.display = 'none';
+          }
+        });
+      }
+
+      // Toggle dark/light mode
+      function toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode');
+        
+        if (isDarkMode) {
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          darkModeToggle.title = 'Toggle Dark Mode';
+          localStorage.setItem('darkMode', 'false');
+        }
+      }
+
+      // Set up scroll animations
+      function setupScrollAnimations() {
+        const animateOnScroll = () => {
+          const elements = document.querySelectorAll('.about-section, .team-card, .testimonial-card');
+          
+          elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }
+          });
+        };
+
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+      }
+
+      // Initialize the page
+      init();
+    });
+  </script>
+</body>
+</html>

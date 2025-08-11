@@ -1,0 +1,1299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyVibes - Guidance from Industry Experts & Seniors</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;       /* Primary blue */
+      --primary-light: #93c5fd;       /* Lighter blue */
+      --primary-dark: #1d4ed8;        /* Darker blue */
+      --text-color: #1e293b;          /* Dark gray for text */
+      --light-text: #64748b;          /* Medium gray for secondary text */
+      --background-color: #f8fafc;    /* Light background */
+      --card-bg: #ffffff;             /* White for cards */
+      --border-color: #e2e8f0;        /* Light gray for borders */
+      --success-color: #10b981;       /* Green for success */
+      --warning-color: #f59e0b;       /* Yellow for warning */
+      --error-color: #ef4444;         /* Red for error */
+      --section-bg: #f1f5f9;          /* Very light gray for sections */
+    }
+
+    /* Dark Mode Variables */
+    .dark-mode {
+      --primary-color: #3b82f6;       /* Bright blue */
+      --primary-light: #60a5fa;       /* Lighter blue */
+      --primary-dark: #2563eb;        /* Primary blue */
+      --text-color: #f8fafc;          /* Light text */
+      --light-text: #cbd5e1;          /* Light gray for secondary text */
+      --background-color: #1e293b;    /* Dark background */
+      --card-bg: #334155;             /* Dark gray for cards */
+      --border-color: #475569;        /* Dark gray for borders */
+      --section-bg: #0f172a;          /* Very dark blue for sections */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: all 0.3s ease;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 2rem;
+    }
+
+    /* Hero Section */
+    .guidance-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+      margin-top: 1rem;
+    }
+
+    .guidance-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.6;
+    }
+
+    .guidance-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, white, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+    }
+
+    /* Section Styles */
+    .section-header {
+      text-align: center;
+      margin-bottom: 3rem;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      color: var(--primary-color);
+      margin-bottom: 1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .section-title::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+      border-radius: 2px;
+    }
+
+    .section-subtitle {
+      color: var(--light-text);
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Mentor Spotlight */
+    .mentor-section {
+      padding: 4rem 0;
+    }
+
+    .mentor-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .mentor-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .mentor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .mentor-badge {
+      position: absolute;
+      top: 1rem;
+      right: 1rem;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+    }
+
+    .mentor-avatar {
+      width: 120px;
+      height: 120px;
+      border-radius: 50%;
+      object-fit: cover;
+      margin: 0 auto 1.5rem;
+      border: 4px solid var(--primary-light);
+    }
+
+    .mentor-name {
+      font-size: 1.5rem;
+      font-weight: 700;
+      margin-bottom: 0.5rem;
+      color: var(--primary-color);
+    }
+
+    .mentor-role {
+      color: var(--light-text);
+      margin-bottom: 0.5rem;
+      font-size: 1rem;
+    }
+
+    .mentor-company {
+      display: inline-block;
+      background-color: var(--section-bg);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+    }
+
+    .mentor-tip {
+      font-style: italic;
+      margin: 1.5rem 0;
+      padding: 1rem;
+      background-color: var(--section-bg);
+      border-radius: 8px;
+      position: relative;
+    }
+
+    .mentor-tip::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary-light);
+      position: absolute;
+      top: -1rem;
+      left: 0.5rem;
+      opacity: 0.3;
+    }
+
+    .mentor-social {
+      display: flex;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+
+    .social-link {
+      color: var(--primary-color);
+      font-size: 1.2rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      color: var(--primary-dark);
+      transform: translateY(-3px);
+    }
+
+    /* Placement Stories */
+    .stories-section {
+      padding: 4rem 0;
+      background-color: var(--section-bg);
+      border-radius: 12px;
+    }
+
+    .stories-container {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .story-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      margin-bottom: 2rem;
+      transition: all 0.3s ease;
+    }
+
+    .story-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .story-header {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .story-avatar {
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .story-author {
+      font-weight: 600;
+    }
+
+    .story-company {
+      font-size: 0.9rem;
+      color: var(--light-text);
+    }
+
+    .story-content p {
+      margin-bottom: 1rem;
+    }
+
+    .story-highlight {
+      background-color: rgba(147, 197, 253, 0.2);
+      padding: 1rem;
+      border-left: 4px solid var(--primary-color);
+      margin: 1rem 0;
+      font-style: italic;
+    }
+
+    /* Ask Section */
+    .ask-section {
+      padding: 4rem 0;
+    }
+
+    .ask-form {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: var(--card-bg);
+      padding: 2rem;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .form-input, .form-textarea {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .form-textarea {
+      min-height: 150px;
+      resize: vertical;
+    }
+
+    .form-input:focus, .form-textarea:focus {
+      outline: none;
+      border-color: var(--primary-color);
+      box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+    }
+
+    .form-submit {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .form-submit:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Resources Section */
+    .resources-section {
+      padding: 4rem 0;
+      background-color: var(--section-bg);
+      border-radius: 12px;
+    }
+
+    .resources-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 1.5rem;
+    }
+
+    .resource-card {
+      background-color: var(--card-bg);
+      border-radius: 8px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      border-left: 4px solid var(--primary-color);
+    }
+
+    .resource-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .resource-type {
+      display: inline-block;
+      background-color: var(--primary-light);
+      color: var(--primary-dark);
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 1rem;
+      text-transform: uppercase;
+    }
+
+    .resource-title {
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    .resource-desc {
+      font-size: 0.9rem;
+      color: var(--light-text);
+      margin-bottom: 1rem;
+    }
+
+    .resource-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      color: var(--primary-color);
+      font-weight: 500;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .resource-link:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    /* Quotes Section */
+    .quotes-section {
+      padding: 4rem 0;
+    }
+
+    .quotes-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+
+    .quote-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      position: relative;
+      border-top: 4px solid var(--primary-color);
+    }
+
+    .quote-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .quote-text {
+      font-style: italic;
+      margin-bottom: 1.5rem;
+      position: relative;
+      padding-left: 1.5rem;
+    }
+
+    .quote-text::before {
+      content: '"';
+      font-size: 3rem;
+      color: var(--primary-light);
+      position: absolute;
+      top: -1rem;
+      left: -1rem;
+      opacity: 0.3;
+    }
+
+    .quote-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+    }
+
+    .quote-avatar {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .quote-name {
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .quote-role {
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    /* CTA Section */
+    .cta-section {
+      text-align: center;
+      padding: 4rem 0;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      border-radius: 12px;
+      margin-bottom: 4rem;
+    }
+
+    .cta-title {
+      font-size: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      cursor: pointer;
+      border: none;
+      font-size: 1rem;
+    }
+
+    .btn-primary {
+      background-color: white;
+      color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+    }
+
+    .btn-outline {
+      background-color: transparent;
+      color: white;
+      border: 2px solid white;
+    }
+
+    .btn-outline:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      transform: translateY(-2px);
+    }
+
+    /* Floating Action Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 900;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background-color: var(--primary-dark);
+    }
+
+    .floating-button i {
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .copyright {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .header-content {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .guidance-hero {
+        padding: 3rem 1rem;
+      }
+
+      .cta-buttons {
+        flex-direction: column;
+        align-items: center;
+      }
+
+      .btn {
+        width: 100%;
+        max-width: 250px;
+        justify-content: center;
+      }
+
+      .floating-buttons {
+        flex-direction: row;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .floating-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .mentor-card, .story-card, .resource-card, .quote-card {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .mentor-card:nth-child(1) { animation-delay: 0.1s; }
+    .mentor-card:nth-child(2) { animation-delay: 0.2s; }
+    .mentor-card:nth-child(3) { animation-delay: 0.3s; }
+    .mentor-card:nth-child(4) { animation-delay: 0.4s; }
+    .story-card:nth-child(1) { animation-delay: 0.1s; }
+    .story-card:nth-child(2) { animation-delay: 0.2s; }
+    .resource-card:nth-child(1) { animation-delay: 0.1s; }
+    .resource-card:nth-child(2) { animation-delay: 0.2s; }
+    .resource-card:nth-child(3) { animation-delay: 0.3s; }
+    .quote-card:nth-child(1) { animation-delay: 0.1s; }
+    .quote-card:nth-child(2) { animation-delay: 0.2s; }
+    .quote-card:nth-child(3) { animation-delay: 0.3s; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="image/studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="logo-text">StudyVibes</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="roadmaps.html"><i class="fas fa-road"></i> Roadmaps</a>
+        <a href="guidance.html" class="active"><i class="fas fa-lightbulb"></i> Guidance</a>
+        <a href="blog.html"><i class="fas fa-blog"></i> Blog</a>
+        <a href="files/signinpages.html" class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main class="container">
+    <!-- Hero Section -->
+    <section class="guidance-hero">
+      <div class="guidance-hero-content">
+        <h1>Guidance from Those Who've Been There</h1>
+        <p class="subtitle">Get real-world advice from seniors placed at top companies. Learn from their journeys, mistakes, and success strategies to fast-track your career.</p>
+      </div>
+    </section>
+
+    <!-- Mentor Spotlight -->
+    <section class="mentor-section">
+      <div class="section-header">
+        <h2 class="section-title">Meet Our Mentors</h2>
+        <p class="section-subtitle">Learn from students who've cracked placements at top tech companies</p>
+      </div>
+
+      <div class="mentor-grid">
+        <!-- Mentor 1 -->
+        <div class="mentor-card">
+          <span class="mentor-badge">Google</span>
+          <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="Priya Sharma" class="mentor-avatar">
+          <h3 class="mentor-name">Priya Sharma</h3>
+          <p class="mentor-role">Software Engineer Intern</p>
+          <span class="mentor-company">Google</span>
+          <p class="mentor-tip">"Focus on problem-solving patterns, not just leetcode problems. Understand the underlying concepts that can be applied across multiple problems."</p>
+          <div class="mentor-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Mentor 2 -->
+        <div class="mentor-card">
+          <span class="mentor-badge">Microsoft</span>
+          <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Rahul Verma" class="mentor-avatar">
+          <h3 class="mentor-name">Rahul Verma</h3>
+          <p class="mentor-role">Product Manager</p>
+          <span class="mentor-company">Microsoft</span>
+          <p class="mentor-tip">"Build at least 2 substantial projects that solve real problems. Companies value your ability to identify problems and create solutions."</p>
+          <div class="mentor-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+
+        <!-- Mentor 3 -->
+        <div class="mentor-card">
+          <span class="mentor-badge">Amazon</span>
+          <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="Ananya Patel" class="mentor-avatar">
+          <h3 class="mentor-name">Ananya Patel</h3>
+          <p class="mentor-role">SDE Intern</p>
+          <span class="mentor-company">Amazon</span>
+          <p class="mentor-tip">"Start preparing early, but don't burn out. Consistency beats last-minute cramming. 2 hours daily for 6 months is better than 12 hours daily for 1 month."</p>
+          <div class="mentor-social">
+            <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+            <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+            <a href="#" class="social-link"><i class="fas fa-envelope"></i></a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Placement Stories -->
+    <section class="stories-section">
+      <div class="section-header">
+        <h2 class="section-title">Placement Stories</h2>
+        <p class="section-subtitle">Real journeys from campus to corporate</p>
+      </div>
+
+      <div class="stories-container">
+        <!-- Story 1 -->
+        <div class="story-card">
+          <div class="story-header">
+            <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Arjun Mehta" class="story-avatar">
+            <div>
+              <div class="story-author">Arjun Mehta</div>
+              <div class="story-company">SDE at Infosys | 2024 Batch</div>
+            </div>
+          </div>
+          <div class="story-content">
+            <p>I never thought I'd get placed in my third year itself. My journey started when I attended a workshop on competitive programming in my second year. I was struggling with basic problems while others were solving mediums easily.</p>
+            
+            <div class="story-highlight">
+              The turning point was when I stopped comparing myself to others and focused on my own progress.
+            </div>
+            
+            <p>I created a study plan focusing on data structures first, then algorithms. I solved 300+ problems on LeetCode and participated in every contest. The key was consistency - even during exams, I solved at least one problem daily.</p>
+            
+            <p>When interview season came, I was ready. The Infosys interview had 3 technical rounds focusing on problem-solving and system design. My preparation paid off and I got the offer!</p>
+          </div>
+        </div>
+
+        <!-- Story 2 -->
+        <div class="story-card">
+          <div class="story-header">
+            <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Neha Gupta" class="story-avatar">
+            <div>
+              <div class="story-author">Neha Gupta</div>
+              <div class="story-company">Data Analyst at TCS | 2023 Batch</div>
+            </div>
+          </div>
+          <div class="story-content">
+            <p>As a statistics major, I wasn't sure about my tech career prospects. I started learning Python and SQL through online courses, but felt lost about how to apply these skills.</p>
+            
+            <p>I reached out to seniors through StudyVibes who guided me towards data science. They suggested specific projects I could build to showcase my skills. I created a COVID-19 data analysis dashboard and a stock prediction model.</p>
+            
+            <div class="story-highlight">
+              The projects became talking points in my interviews and helped me stand out from candidates with just coursework.
+            </div>
+            
+            <p>TCS was impressed with my practical approach and offered me a role in their analytics division. My advice? Build things, even if they're small. Show your thought process and willingness to learn.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Ask a Senior -->
+    <section class="ask-section">
+      <div class="section-header">
+        <h2 class="section-title">Ask Your Senior</h2>
+        <p class="section-subtitle">Get personalized advice from our mentor network</p>
+      </div>
+
+      <div class="ask-form">
+        <form id="mentorQuestionForm">
+          <div class="form-group">
+            <label for="name" class="form-label">Your Name</label>
+            <input type="text" id="name" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" id="email" class="form-input" required>
+          </div>
+          
+          <div class="form-group">
+            <label for="questionType" class="form-label">Question About</label>
+            <select id="questionType" class="form-input" required>
+              <option value="">Select topic</option>
+              <option value="placement">Placement Preparation</option>
+              <option value="internship">Internship Search</option>
+              <option value="projects">Project Guidance</option>
+              <option value="career">Career Advice</option>
+              <option value="other">Other</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label for="question" class="form-label">Your Question</label>
+            <textarea id="question" class="form-textarea" required></textarea>
+          </div>
+          
+          <button type="submit" class="form-submit">
+            <i class="fas fa-paper-plane"></i> Submit Question
+          </button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Resources Section -->
+    <section class="resources-section">
+      <div class="section-header">
+        <h2 class="section-title">Resources Shared by Mentors</h2>
+        <p class="section-subtitle">Curated learning materials recommended by placed seniors</p>
+      </div>
+
+      <div class="resources-grid">
+        <!-- Resource 1 -->
+        <div class="resource-card">
+          <span class="resource-type">PDF Guide</span>
+          <h3 class="resource-title">Coding Interview Cheatsheet</h3>
+          <p class="resource-desc">All patterns you need for technical interviews with example problems</p>
+          <a href="#" class="resource-link">
+            <i class="fas fa-download"></i> Download
+          </a>
+        </div>
+
+        <!-- Resource 2 -->
+        <div class="resource-card">
+          <span class="resource-type">Video Playlist</span>
+          <h3 class="resource-title">System Design Fundamentals</h3>
+          <p class="resource-desc">10 videos covering scalability, databases, caching and more</p>
+          <a href="#" class="resource-link">
+            <i class="fab fa-youtube"></i> Watch
+          </a>
+        </div>
+
+        <!-- Resource 3 -->
+        <div class="resource-card">
+          <span class="resource-type">GitHub Repo</span>
+          <h3 class="resource-title">Project Ideas for Resume</h3>
+          <p class="resource-desc">50+ project ideas with starter code and implementation guides</p>
+          <a href="#" class="resource-link">
+            <i class="fab fa-github"></i> View Repository
+          </a>
+        </div>
+
+        <!-- Resource 4 -->
+        <div class="resource-card">
+          <span class="resource-type">Google Doc</span>
+          <h3 class="resource-title">Behavioral Questions Bank</h3>
+          <p class="resource-desc">100+ interview questions with sample answers from FAANG engineers</p>
+          <a href="#" class="resource-link">
+            <i class="fas fa-file-alt"></i> Open Document
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Quotes Section -->
+    <section class="quotes-section">
+      <div class="section-header">
+        <h2 class="section-title">Words of Wisdom</h2>
+        <p class="section-subtitle">Motivational advice from our mentors</p>
+      </div>
+
+      <div class="quotes-grid">
+        <!-- Quote 1 -->
+        <div class="quote-card">
+          <p class="quote-text">
+            Your degree gets you the interview, your skills get you the job. Focus on building practical skills beyond the curriculum.
+          </p>
+          <div class="quote-author">
+            <img src="https://randomuser.me/api/portraits/men/65.jpg" alt="Sanjay Kumar" class="quote-avatar">
+            <div>
+              <div class="quote-name">Sanjay Kumar</div>
+              <div class="quote-role">SDE at Amazon | IIT Delhi</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote 2 -->
+        <div class="quote-card">
+          <p class="quote-text">
+            Rejection is redirection. Every 'no' brings you closer to the right 'yes'. Keep applying and improving.
+          </p>
+          <div class="quote-author">
+            <img src="https://randomuser.me/api/portraits/women/43.jpg" alt="Priyanka Joshi" class="quote-avatar">
+            <div>
+              <div class="quote-name">Priyanka Joshi</div>
+              <div class="quote-role">Product Manager at Microsoft | NIT Trichy</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Quote 3 -->
+        <div class="quote-card">
+          <p class="quote-text">
+            The tech industry values what you can do more than where you learned it. Build, contribute, showcase your work.
+          </p>
+          <div class="quote-author">
+            <img src="https://randomuser.me/api/portraits/men/33.jpg" alt="Rohan Malhotra" class="quote-avatar">
+            <div>
+              <div class="quote-name">Rohan Malhotra</div>
+              <div class="quote-role">Data Scientist at Google | BITS Pilani</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section class="cta-section">
+      <h2 class="cta-title">Want to Become a Mentor?</h2>
+      <p>Share your knowledge and help the next generation of students succeed</p>
+      <div class="cta-buttons">
+        <a href="#" class="btn btn-primary">
+          <i class="fas fa-user-graduate"></i> Apply as Mentor
+        </a>
+        <a href="#" class="btn btn-outline">
+          <i class="fas fa-share-alt"></i> Share Your Story
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-button" id="darkModeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="floating-button" id="scrollToTopBtn" title="Scroll to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="floating-button" id="feedbackBtn" title="Give Feedback">
+      <i class="fas fa-comment"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="image/studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="footer-logo-text">StudyVibes</span>
+      </div>
+      <p class="footer-description">
+        Connecting students with mentors and resources to navigate their tech education journey successfully.
+      </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="roadmaps.html" class="footer-link">Roadmaps</a>
+        <a href="guidance.html" class="footer-link">Guidance</a>
+        <a href="blog.html" class="footer-link">Blog</a>
+        <a href="files/aboutus.html" class="footer-link">About Us</a>
+        <a href="files/signinpages.html" class="footer-link">Login</a>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+      </div>
+      <p class="copyright">
+        &copy; 2025 StudyVibes. All rights reserved. Made with <i class="fas fa-heart" style="color: #ff5252;"></i> for developers.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const mentorQuestionForm = document.getElementById('mentorQuestionForm');
+
+      // State variables
+      let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+      // Initialize the page
+      function init() {
+        // Set dark mode if enabled
+        if (isDarkMode) {
+          document.body.classList.add('dark-mode');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+        }
+
+        // Set up event listeners
+        setupEventListeners();
+
+        // Animate elements when they come into view
+        setupScrollAnimations();
+      }
+
+      // Set up all event listeners
+      function setupEventListeners() {
+        // Theme toggle
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Scroll to top
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Feedback button
+        feedbackBtn.addEventListener('click', () => {
+          alert('Thank you for your feedback! Please email us at feedback@studyvibes.com');
+        });
+
+        // Mentor question form
+        mentorQuestionForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Thank you for your question! A mentor will respond within 48 hours.');
+          e.target.reset();
+        });
+
+        // Show scroll to top button when scrolling
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'flex';
+          } else {
+            scrollToTopBtn.style.display = 'none';
+          }
+        });
+      }
+
+      // Toggle dark/light mode
+      function toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode');
+        
+        if (isDarkMode) {
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          darkModeToggle.title = 'Toggle Dark Mode';
+          localStorage.setItem('darkMode', 'false');
+        }
+      }
+
+      // Set up scroll animations
+      function setupScrollAnimations() {
+        const animateOnScroll = () => {
+          const elements = document.querySelectorAll('.mentor-card, .story-card, .resource-card, .quote-card');
+          
+          elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }
+          });
+        };
+
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+      }
+
+      // Initialize the page
+      init();
+    });
+  </script>
+</body>
+</html>

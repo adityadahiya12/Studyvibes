@@ -1,0 +1,1689 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DSA Roadmap | StudyVibes</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+      :root {
+        --primary-color: #2563eb;
+        --primary-light: #93c5fd;
+        --primary-dark: #1d4ed8;
+        --text-color: #1e293b;
+        --light-text: #64748b;
+        --background-color: #f8fafc;
+        --card-bg: #ffffff;
+        --border-color: #e2e8f0;
+        --success-color: #10b981;
+        --warning-color: #f59e0b;
+        --error-color: #ef4444;
+        --section-bg: #f1f5f9;
+      }
+
+      /* Dark Mode Variables */
+      .dark-mode {
+        --primary-color: #3b82f6;
+        --primary-light: #60a5fa;
+        --primary-dark: #2563eb;
+        --text-color: #f8fafc;
+        --light-text: #cbd5e1;
+        --background-color: #1e293b;
+        --card-bg: #334155;
+        --border-color: #475569;
+        --section-bg: #0f172a;
+      }
+
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+
+      body {
+        font-family: 'Inter', sans-serif;
+        line-height: 1.6;
+        color: var(--text-color);
+        background-color: var(--background-color);
+        transition: all 0.3s ease;
+      }
+
+      /* Header Styles */
+      .header {
+        background-color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        position: sticky;
+        top: 0;
+        z-index: 100;
+      }
+
+      .header-content {
+        max-width: 1280px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 1rem 2rem;
+      }
+
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .logo-icon {
+        width: 36px;
+        height: 36px;
+        object-fit: contain;
+      }
+
+      .logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+        color: white;
+        letter-spacing: 0.5px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 1.5rem;
+        align-items: center;
+      }
+
+      .nav-links a {
+        color: white;
+        text-decoration: none;
+        font-weight: 500;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        transition: all 0.2s ease;
+        padding: 0.5rem 0;
+        position: relative;
+      }
+
+      .nav-links a:hover {
+        opacity: 0.9;
+        transform: translateY(-2px);
+      }
+
+      .nav-links a::after {
+        content: '';
+        position: absolute;
+        bottom: 0;
+        left: 0;
+        width: 0;
+        height: 2px;
+        background-color: white;
+        transition: width 0.3s ease;
+      }
+
+      .nav-links a:hover::after {
+        width: 100%;
+      }
+
+      /* Main Container */
+      .container {
+        max-width: 1200px;
+        margin: 0 auto;
+        padding: 2rem;
+      }
+
+      /* Hero Section */
+      .hero {
+        text-align: center;
+        margin-bottom: 3rem;
+        position: relative;
+        overflow: hidden;
+        padding: 3rem 1rem;
+        border-radius: 12px;
+        background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+        color: white;
+        box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+        opacity: 0.6;
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+      }
+
+      h1 {
+        font-size: 2.8rem;
+        font-weight: 800;
+        margin-bottom: 1rem;
+        background: linear-gradient(to right, white, #e0e0e0);
+        -webkit-background-clip: text;
+        background-clip: text;
+        -webkit-text-fill-color: transparent;
+        line-height: 1.2;
+      }
+
+      .subtitle {
+        font-size: 1.2rem;
+        color: rgba(255, 255, 255, 0.9);
+        max-width: 700px;
+        margin: 0 auto 2rem;
+        line-height: 1.6;
+      }
+
+      .cta-buttons {
+        display: flex;
+        gap: 1rem;
+        justify-content: center;
+        margin-top: 2rem;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 0.8rem 1.8rem;
+        border-radius: 8px;
+        font-weight: 600;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        cursor: pointer;
+        border: none;
+        font-size: 1rem;
+      }
+
+      .btn-primary {
+        background-color: white;
+        color: var(--primary-color);
+        box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+      }
+
+      .btn-outline {
+        background-color: transparent;
+        color: white;
+        border: 2px solid white;
+      }
+
+      .btn-outline:hover {
+        background-color: rgba(255, 255, 255, 0.1);
+        transform: translateY(-2px);
+      }
+
+      /* Roadmap Styles */
+      .roadmap-container {
+        margin: 4rem 0;
+      }
+
+      .roadmap-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .roadmap-title {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        position: relative;
+        display: inline-block;
+      }
+
+      .roadmap-title::after {
+        content: '';
+        position: absolute;
+        bottom: -8px;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+        border-radius: 2px;
+      }
+
+      .roadmap-description {
+        color: var(--light-text);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Journey Path */
+      .journey-path {
+        position: relative;
+        padding: 2rem 0;
+      }
+
+      /* Timeline center line */
+      .journey-path::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 4px;
+        background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+        border-radius: 2px;
+        z-index: 1;
+      }
+
+      /* Stage Container */
+      .stage {
+        display: flex;
+        margin-bottom: 3rem;
+        position: relative;
+        transition: all 0.3s ease;
+      }
+
+      .stage:hover {
+        transform: translateY(-5px);
+      }
+
+      /* Left and Right Stages */
+      .stage-left {
+        justify-content: flex-start;
+        padding-right: 50%;
+        text-align: right;
+      }
+
+      .stage-right {
+        justify-content: flex-end;
+        padding-left: 50%;
+        text-align: left;
+      }
+
+      /* Stage Content */
+      .stage-content {
+        width: 100%;
+        max-width: 500px;
+        padding: 1.5rem;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        position: relative;
+        transition: all 0.3s ease;
+        border-left: 4px solid transparent;
+      }
+
+      .stage-left .stage-content {
+        border-right: 4px solid var(--primary-color);
+      }
+
+      .stage-right .stage-content {
+        border-left: 4px solid var(--primary-color);
+      }
+
+      .stage-content:hover {
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        transform: translateY(-5px);
+      }
+
+      /* Stage Dot */
+      .stage::after {
+        content: '';
+        position: absolute;
+        top: 20px;
+        width: 24px;
+        height: 24px;
+        border-radius: 50%;
+        background-color: var(--background-color);
+        border: 4px solid var(--primary-color);
+        z-index: 2;
+      }
+
+      .stage-left::after {
+        right: calc(50% - 12px);
+      }
+
+      .stage-right::after {
+        left: calc(50% - 12px);
+      }
+
+      /* Stage Title */
+      .stage-title {
+        font-size: 1.3rem;
+        font-weight: 700;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .stage-left .stage-title {
+        justify-content: flex-end;
+      }
+
+      /* Skills List */
+      .skills-list {
+        list-style-type: none;
+      }
+
+      .skills-list li {
+        padding: 0.5rem 0;
+        display: flex;
+        align-items: center;
+        position: relative;
+      }
+
+      .stage-left .skills-list li {
+        justify-content: flex-end;
+      }
+
+      .skills-list li::before {
+        content: '▹';
+        color: var(--primary-color);
+        margin-right: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      .stage-left .skills-list li::before {
+        display: none;
+      }
+
+      .stage-left .skills-list li::after {
+        content: '▹';
+        color: var(--primary-color);
+        margin-left: 0.5rem;
+        font-size: 1.2rem;
+      }
+
+      /* Topic Cards Section */
+      .topics-section {
+        padding: 4rem 0;
+        background-color: var(--section-bg);
+        border-radius: 12px;
+        margin: 3rem 0;
+      }
+
+      .section-header {
+        text-align: center;
+        margin-bottom: 3rem;
+      }
+
+      .section-title {
+        font-size: 2rem;
+        color: var(--primary-color);
+        margin-bottom: 1rem;
+      }
+
+      .section-subtitle {
+        color: var(--light-text);
+        max-width: 700px;
+        margin: 0 auto;
+      }
+
+      /* Topic Cards Grid */
+      .topics-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+        gap: 2rem;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .topic-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+        display: flex;
+        flex-direction: column;
+        height: 100%;
+      }
+
+      .topic-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .topic-header {
+        padding: 1.5rem 1.5rem 0;
+      }
+
+      .topic-title {
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+      }
+
+      .topic-description {
+        color: var(--light-text);
+        margin-bottom: 1rem;
+        font-size: 0.95rem;
+      }
+
+      .topic-difficulty {
+        display: inline-block;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+        margin-bottom: 1rem;
+      }
+
+      .difficulty-easy {
+        background-color: rgba(16, 185, 129, 0.1);
+        color: var(--success-color);
+      }
+
+      .difficulty-medium {
+        background-color: rgba(245, 158, 11, 0.1);
+        color: var(--warning-color);
+      }
+
+      .difficulty-hard {
+        background-color: rgba(239, 68, 68, 0.1);
+        color: var(--error-color);
+      }
+
+      .topic-body {
+        padding: 0 1.5rem 1.5rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+      }
+
+      .topic-languages {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 1.5rem;
+      }
+
+      .language-tag {
+        background-color: var(--border-color);
+        color: var(--text-color);
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 500;
+      }
+
+      .topic-actions {
+        display: flex;
+        justify-content: space-between;
+        gap: 0.5rem;
+        margin-top: auto;
+      }
+
+      .topic-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1rem;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        font-size: 0.9rem;
+        flex: 1;
+        text-align: center;
+      }
+
+      .topic-button-primary {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .topic-button-primary:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      .topic-button-secondary {
+        background-color: var(--border-color);
+        color: var(--text-color);
+      }
+
+      .topic-button-secondary:hover {
+        background-color: var(--light-text);
+        color: white;
+        transform: translateY(-2px);
+      }
+
+      /* Practice Section */
+      .practice-section {
+        padding: 4rem 0;
+      }
+
+      .filter-tabs {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+        justify-content: center;
+      }
+
+      .filter-tab {
+        padding: 0.6rem 1.2rem;
+        border-radius: 6px;
+        background-color: var(--border-color);
+        color: var(--text-color);
+        font-weight: 500;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        border: none;
+      }
+
+      .filter-tab.active {
+        background-color: var(--primary-color);
+        color: white;
+      }
+
+      .filter-tab:hover:not(.active) {
+        background-color: var(--light-text);
+        color: white;
+      }
+
+      .problems-list {
+        display: grid;
+        grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+        gap: 1.5rem;
+      }
+
+      .problem-card {
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        padding: 1.5rem;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .problem-card:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .problem-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--primary-color);
+      }
+
+      .problem-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: var(--light-text);
+      }
+
+      .problem-difficulty {
+        font-weight: 600;
+      }
+
+      .difficulty-text-easy {
+        color: var(--success-color);
+      }
+
+      .difficulty-text-medium {
+        color: var(--warning-color);
+      }
+
+      .difficulty-text-hard {
+        color: var(--error-color);
+      }
+
+      .problem-platform {
+        display: flex;
+        align-items: center;
+        gap: 0.3rem;
+      }
+
+      .problem-description {
+        margin-bottom: 1.5rem;
+        font-size: 0.95rem;
+        color: var(--text-color);
+      }
+
+      .problem-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        padding: 0.6rem 1.2rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .problem-link:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+      /* Video Section */
+      .video-section {
+        padding: 4rem 0;
+        background-color: var(--section-bg);
+        border-radius: 12px;
+        margin: 3rem 0;
+      }
+
+      .video-carousel {
+        display: flex;
+        gap: 2rem;
+        overflow-x: auto;
+        padding: 1rem 0;
+        scrollbar-width: thin;
+        scrollbar-color: var(--primary-color) var(--border-color);
+      }
+
+      .video-carousel::-webkit-scrollbar {
+        height: 8px;
+      }
+
+      .video-carousel::-webkit-scrollbar-track {
+        background: var(--border-color);
+        border-radius: 10px;
+      }
+
+      .video-carousel::-webkit-scrollbar-thumb {
+        background-color: var(--primary-color);
+        border-radius: 10px;
+      }
+
+      .video-card {
+        min-width: 300px;
+        background-color: var(--card-bg);
+        border-radius: 12px;
+        overflow: hidden;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+        transition: all 0.3s ease;
+      }
+
+      .video-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+      }
+
+      .video-thumbnail {
+        position: relative;
+        height: 180px;
+        overflow: hidden;
+      }
+
+      .video-thumbnail img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.5s ease;
+      }
+
+      .video-card:hover .video-thumbnail img {
+        transform: scale(1.05);
+      }
+
+      .video-level {
+        position: absolute;
+        top: 1rem;
+        right: 1rem;
+        background-color: var(--primary-color);
+        color: white;
+        padding: 0.25rem 0.75rem;
+        border-radius: 20px;
+        font-size: 0.8rem;
+        font-weight: 600;
+      }
+
+      .video-play {
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 50px;
+        height: 50px;
+        background-color: rgba(255, 255, 255, 0.8);
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        opacity: 0;
+        transition: all 0.3s ease;
+      }
+
+      .video-card:hover .video-play {
+        opacity: 1;
+      }
+
+      .video-info {
+        padding: 1.5rem;
+      }
+
+      .video-title {
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
+        color: var(--text-color);
+      }
+
+      .video-meta {
+        display: flex;
+        justify-content: space-between;
+        margin-bottom: 1rem;
+        font-size: 0.9rem;
+        color: var(--light-text);
+      }
+
+      .video-duration {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+      }
+
+      .video-button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0.5rem;
+        width: 100%;
+        padding: 0.6rem;
+        background-color: var(--primary-color);
+        color: white;
+        border-radius: 6px;
+        font-weight: 500;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .video-button:hover {
+        background-color: var(--primary-dark);
+        transform: translateY(-2px);
+      }
+
+    
+
+      /* Footer */
+      footer {
+        background-color: var(--primary-color);
+        color: white;
+        padding: 3rem 2rem;
+        text-align: center;
+        margin-top: 4rem;
+      }
+
+      .footer-content {
+        max-width: 1200px;
+        margin: 0 auto;
+      }
+
+      .footer-logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+        margin-bottom: 1.5rem;
+      }
+
+      .footer-logo-text {
+        font-size: 1.5rem;
+        font-weight: 700;
+      }
+
+      .footer-description {
+        max-width: 600px;
+        margin: 0 auto 2rem;
+        opacity: 0.9;
+        line-height: 1.6;
+      }
+
+      .footer-links {
+        display: flex;
+        justify-content: center;
+        gap: 2rem;
+        margin-bottom: 2rem;
+        flex-wrap: wrap;
+      }
+
+            .footer-link {
+        color: white;
+        text-decoration: none;
+        transition: all 0.3s ease;
+      }
+
+      .footer-link:hover {
+        opacity: 0.8;
+        text-decoration: underline;
+      }
+
+      .footer-social {
+        display: flex;
+        justify-content: center;
+        gap: 1.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .social-icon {
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background-color: rgba(255, 255, 255, 0.1);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        transition: all 0.3s ease;
+      }
+
+      .social-icon:hover {
+        background-color: rgba(255, 255, 255, 0.2);
+        transform: translateY(-3px);
+      }
+
+      .footer-copyright {
+        font-size: 0.9rem;
+        opacity: 0.8;
+      }
+
+      /* Dark Mode Toggle */
+      .dark-mode-toggle {
+        position: fixed;
+        bottom: 2rem;
+        right: 2rem;
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        background-color: var(--primary-color);
+        color: white;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        cursor: pointer;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        z-index: 99;
+        border: none;
+      }
+
+      /* Responsive Styles */
+      @media (max-width: 1024px) {
+        .journey-path::before {
+          left: 40px;
+        }
+
+        .stage {
+          padding-left: 80px;
+          padding-right: 0;
+        }
+
+        .stage-left, .stage-right {
+          justify-content: flex-start;
+          padding-left: 80px;
+          padding-right: 0;
+          text-align: left;
+        }
+
+        .stage::after {
+          left: 40px;
+          right: auto;
+        }
+
+        .stage-left .stage-content {
+          border-right: none;
+          border-left: 4px solid var(--primary-color);
+        }
+
+        .stage-left .skills-list li::after {
+          display: none;
+        }
+
+        .stage-left .skills-list li::before {
+          display: inline;
+        }
+
+        .stage-left .stage-title {
+          justify-content: flex-start;
+        }
+      }
+
+      @media (max-width: 768px) {
+        .header-content {
+          padding: 1rem;
+        }
+
+        .nav-links {
+          gap: 1rem;
+        }
+
+        h1 {
+          font-size: 2.2rem;
+        }
+
+        .subtitle {
+          font-size: 1rem;
+        }
+
+        .cta-buttons {
+          flex-direction: column;
+          gap: 0.5rem;
+        }
+
+        .btn {
+          width: 100%;
+          justify-content: center;
+        }
+
+        .challenge-content {
+          grid-template-columns: 1fr;
+        }
+
+        .topics-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .problems-list {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      @media (max-width: 480px) {
+        .header-content {
+          flex-direction: column;
+          gap: 1rem;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: space-between;
+        }
+
+        h1 {
+          font-size: 1.8rem;
+        }
+
+        .roadmap-title, .section-title {
+          font-size: 1.5rem;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <!-- Header Section -->
+    <header class="header">
+      <div class="header-content">
+        <a href="#" class="logo">
+          <div class="logo-icon">
+            <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+          </div>
+          <span class="logo-text">StudyVibes</span>
+        </a>
+        <nav class="nav-links">
+          <a href="\index.html"><i class="fas fa-home"></i> Home</a>
+          <a href="\roadmapsd.html"><i class="fas fa-map"></i> Roadmap</a>
+          <a href="\guidance"><i class="fas fa-book"></i> Guidance</a>
+          <a href="#practice"><i class="fas fa-code"></i> Practice</a>
+          <a href="#resources"><i class="fas fa-download"></i> Resources</a>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="container">
+      <!-- Hero Section -->
+      <section class="hero">
+        <div class="hero-content">
+          <h1>Master Data Structures & Algorithms</h1>
+          <p class="subtitle">Start your DSA journey with well-organized resources, problem sets, and visual guides to crack placements and coding interviews.</p>
+          <div class="cta-buttons">
+            <a href="\roadmaps.htmll" class="btn btn-primary">
+              <i class="fas fa-map-marked-alt"></i> Explore Roadmap
+            </a>
+            <a href="https://discord.gg/h6a2H2Kc" class="btn btn-outline">
+              <i class="fas fa-laptop-code"></i> Join Now
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- DSA Roadmap Section -->
+      <section id="roadmap" class="roadmap-container">
+        <div class="roadmap-header">
+          <h2 class="roadmap-title">DSA Learning Roadmap</h2>
+          <p class="roadmap-description">Follow this structured path to master Data Structures and Algorithms systematically.</p>
+        </div>
+
+        <div class="journey-path">
+          <!-- Stage 1 -->
+          <div class="stage stage-left">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-bolt"></i> Basics</h3>
+              <ul class="skills-list">
+                <li>Time & Space Complexity</li>
+                <li>Big-O Notation</li>
+                <li>Recursion</li>
+                <li>Basic Problem Solving</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 2 -->
+          <div class="stage stage-right">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-th-large"></i> Arrays</h3>
+              <ul class="skills-list">
+                <li>1D & 2D Arrays</li>
+                <li>Prefix Sum</li>
+                <li>Sliding Window</li>
+                <li>Binary Search</li>
+                <li>Two Pointers</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 3 -->
+          <div class="stage stage-left">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-link"></i> Linked Lists</h3>
+              <ul class="skills-list">
+                <li>Singly & Doubly Linked</li>
+                <li>Circular Lists</li>
+                <li>Fast & Slow Pointers</li>
+                <li>Merge & Reverse Operations</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 4 -->
+          <div class="stage stage-right">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-layer-group"></i> Stacks & Queues</h3>
+              <ul class="skills-list">
+                <li>Implementation</li>
+                <li>Monotonic Stacks</li>
+                <li>Priority Queues</li>
+                <li>Deque Applications</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 5 -->
+          <div class="stage stage-left">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-tree"></i> Trees</h3>
+              <ul class="skills-list">
+                <li>Binary Trees</li>
+                <li>BST Operations</li>
+                <li>Tree Traversals</li>
+                <li>AVL & Red-Black Trees</li>
+                <li>Trie Data Structure</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 6 -->
+          <div class="stage stage-right">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-project-diagram"></i> Graphs</h3>
+              <ul class="skills-list">
+                <li>Representation</li>
+                <li>BFS & DFS</li>
+                <li>Shortest Path Algorithms</li>
+                <li>Minimum Spanning Tree</li>
+                <li>Topological Sorting</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 7 -->
+          <div class="stage stage-left">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-chess"></i> Dynamic Programming</h3>
+              <ul class="skills-list">
+                <li>Memoization & Tabulation</li>
+                <li>0/1 Knapsack</li>
+                <li>LCS & LIS</li>
+                <li>Matrix Chain Multiplication</li>
+                <li>DP on Trees & Graphs</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 8 -->
+          <div class="stage stage-right">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-undo"></i> Backtracking</h3>
+              <ul class="skills-list">
+                <li>N-Queens</li>
+                <li>Sudoku Solver</li>
+                <li>Subsets & Permutations</li>
+                <li>Combinatorial Problems</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Stage 9 -->
+          <div class="stage stage-left">
+            <div class="stage-content">
+              <h3 class="stage-title"><i class="fas fa-coins"></i> Greedy Algorithms</h3>
+              <ul class="skills-list">
+                <li>Activity Selection</li>
+                <li>Fractional Knapsack</li>
+                <li>Huffman Coding</li>
+                <li>Job Sequencing</li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Topic-wise Cards Section -->
+      <section id="topics" class="topics-section">
+        <div class="section-header">
+          <h2 class="section-title">DSA Topics</h2>
+          <p class="section-subtitle">Explore all major data structures and algorithms with comprehensive resources</p>
+        </div>
+
+        <div class="topics-grid">
+          <!-- Card 1 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Binary Search</h3>
+              <p class="topic-description">Efficient searching algorithm for sorted arrays</p>
+              <span class="topic-difficulty difficulty-easy">Easy</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+                <span class="language-tag">Python</span>
+                <span class="language-tag">JavaScript</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 2 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Linked Lists</h3>
+              <p class="topic-description">Linear data structure with dynamic memory allocation</p>
+              <span class="topic-difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+                <span class="language-tag">Python</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 3 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Binary Trees</h3>
+              <p class="topic-description">Hierarchical data structure with at most two children per node</p>
+              <span class="topic-difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+                <span class="language-tag">Python</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 4 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Graph Algorithms</h3>
+              <p class="topic-description">Representation and traversal of graph data structures</p>
+              <span class="topic-difficulty difficulty-hard">Hard</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 5 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Dynamic Programming</h3>
+              <p class="topic-description">Optimization technique using memoization and tabulation</p>
+              <span class="topic-difficulty difficulty-hard">Hard</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+                <span class="language-tag">Python</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Card 6 -->
+          <div class="topic-card">
+            <div class="topic-header">
+              <h3 class="topic-title">Sorting Algorithms</h3>
+              <p class="topic-description">Efficient ways to arrange data in specific order</p>
+              <span class="topic-difficulty difficulty-medium">Medium</span>
+            </div>
+            <div class="topic-body">
+              <div class="topic-languages">
+                <span class="language-tag">C++</span>
+                <span class="language-tag">Java</span>
+                <span class="language-tag">Python</span>
+                <span class="language-tag">JavaScript</span>
+              </div>
+              <div class="topic-actions">
+                <a href="#" class="topic-button topic-button-primary">
+                  <i class="fas fa-book"></i> Learn
+                </a>
+                <a href="#" class="topic-button topic-button-secondary">
+                  <i class="fas fa-code"></i> Practice
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Practice Section -->
+      <section id="practice" class="practice-section">
+        <div class="section-header">
+          <h2 class="section-title">Practice Problems</h2>
+          <p class="section-subtitle">Sharpen your skills with curated problems from top platforms</p>
+        </div>
+
+        <div class="filter-tabs">
+          <button class="filter-tab active">All</button>
+          <button class="filter-tab">Easy</button>
+          <button class="filter-tab">Medium</button>
+          <button class="filter-tab">Hard</button>
+          <button class="filter-tab">LeetCode</button>
+          <button class="filter-tab">GeeksforGeeks</button>
+          <button class="filter-tab">CodeStudio</button>
+        </div>
+
+        <div class="problems-list">
+          <!-- Problem 1 -->
+          <div class="problem-card">
+            <h3 class="problem-title">Two Sum</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-easy">Easy</span>
+              <span class="problem-platform">
+                <i class="fab fa-leetcode"></i> LeetCode
+              </span>
+            </div>
+            <p class="problem-description">Given an array of integers, return indices of the two numbers such that they add up to a specific target.</p>
+            <a href="https://leetcode.com/problems/two-sum/" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+
+          <!-- Problem 2 -->
+          <div class="problem-card">
+            <h3 class="problem-title">Reverse Linked List</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-easy">Easy</span>
+              <span class="problem-platform">
+                <i class="fas fa-laptop-code"></i> GeeksforGeeks
+              </span>
+            </div>
+            <p class="problem-description">Reverse a singly linked list in-place and return its new head.</p>
+            <a href="https://practice.geeksforgeeks.org/problems/reverse-a-linked-list/1" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+
+          <!-- Problem 3 -->
+          <div class="problem-card">
+            <h3 class="problem-title">Merge Intervals</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-medium">Medium</span>
+              <span class="problem-platform">
+                <i class="fab fa-leetcode"></i> LeetCode
+              </span>
+            </div>
+            <p class="problem-description">Given a collection of intervals, merge all overlapping intervals.</p>
+            <a href="https://leetcode.com/problems/merge-intervals/" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+
+          <!-- Problem 4 -->
+          <div class="problem-card">
+            <h3 class="problem-title">Word Break</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-medium">Medium</span>
+              <span class="problem-platform">
+                <i class="fas fa-laptop-code"></i> CodeStudio
+              </span>
+            </div>
+            <p class="problem-description">Given a string and a dictionary of words, determine if the string can be segmented into space-separated words.</p>
+            <a href="https://www.codingninjas.com/codestudio/problems/word-break_1094901" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+
+          <!-- Problem 5 -->
+          <div class="problem-card">
+            <h3 class="problem-title">Trapping Rain Water</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-hard">Hard</span>
+              <span class="problem-platform">
+                <i class="fab fa-leetcode"></i> LeetCode
+              </span>
+            </div>
+            <p class="problem-description">Given n non-negative integers representing an elevation map, compute how much water it can trap after raining.</p>
+            <a href="https://leetcode.com/problems/trapping-rain-water/" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+
+          <!-- Problem 6 -->
+          <div class="problem-card">
+            <h3 class="problem-title">N-Queens</h3>
+            <div class="problem-meta">
+              <span class="problem-difficulty difficulty-text-hard">Hard</span>
+              <span class="problem-platform">
+                <i class="fas fa-laptop-code"></i> GeeksforGeeks
+              </span>
+            </div>
+            <p class="problem-description">The N-Queens puzzle is the problem of placing N chess queens on an N×N chessboard so that no two queens threaten each other.</p>
+            <a href="https://practice.geeksforgeeks.org/problems/n-queen-problem0315/1" target="_blank" class="problem-link">
+              <i class="fas fa-external-link-alt"></i> Solve Problem
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Video Section -->
+      <section id="videos" class="video-section">
+        <div class="section-header">
+          <h2 class="section-title">Video Tutorials</h2>
+          <p class="section-subtitle">Learn from expert-curated video playlists</p>
+        </div>
+
+        <div class="video-carousel">
+          <!-- Video 1 -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://i.ytimg.com/vi/RBSGKlAvoiM/maxresdefault.jpg" alt="DSA Course">
+              <span class="video-level">Beginner</span>
+              <div class="video-play">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Data Structures & Algorithms Course</h3>
+              <div class="video-meta">
+                <span>FreeCodeCamp</span>
+                <span class="video-duration">
+                  <i class="far fa-clock"></i> 6h 30m
+                </span>
+              </div>
+              <a href="https://youtu.be/RBSGKlAvoiM" target="_blank" class="video-button">
+                <i class="fab fa-youtube"></i> Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 2 -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://i.ytimg.com/vi/8hly31xKli0/maxresdefault.jpg" alt="CS Dojo">
+              <span class="video-level">Beginner</span>
+              <div class="video-play">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Data Structures Easy to Advanced Course</h3>
+              <div class="video-meta">
+                <span>CS Dojo</span>
+                <span class="video-duration">
+                  <i class="far fa-clock"></i> 8h 12m
+                </span>
+              </div>
+              <a href="https://youtu.be/8hly31xKli0" target="_blank" class="video-button">
+                <i class="fab fa-youtube"></i> Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 3 -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://i.ytimg.com/vi/0IAPZzGSbME/maxresdefault.jpg" alt="DP Course">
+              <span class="video-level">Advanced</span>
+              <div class="video-play">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Dynamic Programming Course</h3>
+              <div class="video-meta">
+                <span>take U forward</span>
+                <span class="video-duration">
+                  <i class="far fa-clock"></i> 11h 42m
+                </span>
+              </div>
+              <a href="https://youtu.be/0IAPZzGSbME" target="_blank" class="video-button">
+                <i class="fab fa-youtube"></i> Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 4 -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://i.ytimg.com/vi/09_LlHjoEiY/maxresdefault.jpg" alt="Graph Algorithms">
+              <span class="video-level">Intermediate</span>
+              <div class="video-play">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Graph Algorithms Course</h3>
+              <div class="video-meta">
+                <span>WilliamFiset</span>
+                <span class="video-duration">
+                  <i class="far fa-clock"></i> 6h 44m
+                </span>
+              </div>
+              <a href="https://youtu.be/09_LlHjoEiY" target="_blank" class="video-button">
+                <i class="fab fa-youtube"></i> Watch Now
+              </a>
+            </div>
+          </div>
+
+          <!-- Video 5 -->
+          <div class="video-card">
+            <div class="video-thumbnail">
+              <img src="https://i.ytimg.com/vi/AEaGrq-_Qjk/maxresdefault.jpg" alt="Tree Data Structure">
+              <span class="video-level">Intermediate</span>
+              <div class="video-play">
+                <i class="fas fa-play"></i>
+              </div>
+            </div>
+            <div class="video-info">
+              <h3 class="video-title">Tree Data Structure Course</h3>
+              <div class="video-meta">
+                <span>mycodeschool</span>
+                <span class="video-duration">
+                  <i class="far fa-clock"></i> 3h 18m
+                </span>
+              </div>
+              <a href="https://youtu.be/AEaGrq-_Qjk" target="_blank" class="video-button">
+                <i class="fab fa-youtube"></i> Watch Now
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+
+
+
+    <!-- Footer -->
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <div class="logo-icon">
+            <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+          </div>
+          <span class="footer-logo-text">StudyVibes</span>
+        </div>
+        <p class="footer-description">
+          Master Data Structures and Algorithms with our comprehensive learning platform. 
+          Join thousands of students preparing for coding interviews and placements.
+        </p>
+        <div class="footer-links">
+          <a href="\index.html" class="footer-link">Home</a>
+          <a href="\roadmap.html" class="footer-link">Roadmap</a>
+          <a href="#" class="footer-link">Topics</a>
+          <a href="#" class="footer-link">Practice</a>
+          <a href="#" class="footer-link">Resources</a>
+          <a href="aboutus.html" class="footer-link">About Us</a>
+          <a href="#" class="footer-link">Contact</a>
+          <a href="#" class="footer-link">Privacy Policy</a>
+        </div>
+        <div class="footer-social">
+          <a href="#" class="social-icon">
+            <i class="fab fa-twitter"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-youtube"></i>
+          </a>
+          <a href="#" class="social-icon">
+            <i class="fab fa-discord"></i>
+          </a>
+        </div>
+        <p class="footer-copyright">
+          &copy; 2025 StudyVibes. All rights reserved.
+        </p>
+      </div>
+    </footer>
+
+    <!-- Dark Mode Toggle -->
+    <button class="dark-mode-toggle" id="darkModeToggle">
+      <i class="fas fa-moon"></i>
+    </button>
+
+    <script>
+      // Dark Mode Toggle
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const body = document.body;
+
+      // Check for saved user preference
+      if (localStorage.getItem('darkMode')) {
+        body.classList.add('dark-mode');
+        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+      }
+
+      darkModeToggle.addEventListener('click', () => {
+        body.classList.toggle('dark-mode');
+        
+        if (body.classList.contains('dark-mode')) {
+          localStorage.setItem('darkMode', 'enabled');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+        } else {
+          localStorage.removeItem('darkMode');
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+        }
+      });
+
+      // Tab functionality for practice section
+      const filterTabs = document.querySelectorAll('.filter-tab');
+      filterTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          filterTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          // Here you would filter the problems based on the selected tab
+        });
+      });
+
+      // Tab functionality for challenge section
+      const challengeTabs = document.querySelectorAll('.challenge-tab');
+      challengeTabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          challengeTabs.forEach(t => t.classList.remove('active'));
+          tab.classList.add('active');
+          
+          const challengeContent = document.querySelector('.challenge-content');
+          if (tab.textContent === 'Problems') {
+            challengeContent.style.gridTemplateColumns = '1fr';
+            document.querySelector('.challenge-leaderboard').style.display = 'none';
+            document.querySelector('.challenge-problems').style.display = 'block';
+          } else {
+            challengeContent.style.gridTemplateColumns = '1fr 1fr';
+            document.querySelector('.challenge-leaderboard').style.display = 'block';
+            document.querySelector('.challenge-problems').style.display = 'block';
+          }
+        });
+      });
+
+      // Quiz submission
+      const quizSubmit = document.querySelector('.quiz-submit');
+      quizSubmit.addEventListener('click', () => {
+        alert('Quiz submitted! Check your answers.');
+        // Here you would normally validate the answers and show results
+      });
+    </script>
+  </body>
+</html>

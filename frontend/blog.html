@@ -1,0 +1,1640 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>StudyVibes Blog - Learn, Grow, Succeed</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <style>
+    :root {
+      --primary-color: #2563eb;       /* Primary blue */
+      --primary-light: #93c5fd;       /* Lighter blue */
+      --primary-dark: #1d4ed8;        /* Darker blue */
+      --text-color: #1e293b;          /* Dark gray for text */
+      --light-text: #64748b;          /* Medium gray for secondary text */
+      --background-color: #f8fafc;    /* Light background */
+      --card-bg: #ffffff;             /* White for cards */
+      --border-color: #e2e8f0;        /* Light gray for borders */
+      --success-color: #10b981;       /* Green for success */
+      --warning-color: #f59e0b;       /* Yellow for warning */
+      --error-color: #ef4444;         /* Red for error */
+      --section-bg: #f1f5f9;          /* Very light gray for sections */
+    }
+
+    /* Dark Mode Variables */
+    .dark-mode {
+      --primary-color: #3b82f6;       /* Bright blue */
+      --primary-light: #60a5fa;       /* Lighter blue */
+      --primary-dark: #2563eb;        /* Primary blue */
+      --text-color: #f8fafc;          /* Light text */
+      --light-text: #cbd5e1;          /* Light gray for secondary text */
+      --background-color: #1e293b;    /* Dark background */
+      --card-bg: #334155;             /* Dark gray for cards */
+      --border-color: #475569;        /* Dark gray for borders */
+      --section-bg: #0f172a;          /* Very dark blue for sections */
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      line-height: 1.6;
+      color: var(--text-color);
+      background-color: var(--background-color);
+      transition: all 0.3s ease;
+    }
+
+    /* Header Styles */
+    .header {
+      background-color: var(--primary-color);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .header-content {
+      max-width: 1280px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1rem 2rem;
+    }
+
+    .logo {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+    }
+
+    .logo-icon {
+      width: 36px;
+      height: 36px;
+      object-fit: contain;
+    }
+
+    .logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: white;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 1.5rem;
+      align-items: center;
+    }
+
+    .nav-links a {
+      color: white;
+      text-decoration: none;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.2s ease;
+      padding: 0.5rem 0;
+      position: relative;
+    }
+
+    .nav-links a:hover {
+      opacity: 0.9;
+      transform: translateY(-2px);
+    }
+
+    .nav-links a::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: white;
+      transition: width 0.3s ease;
+    }
+
+    .nav-links a:hover::after {
+      width: 100%;
+    }
+
+    /* Main Container */
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 2rem;
+      display: grid;
+      grid-template-columns: 1fr 300px;
+      gap: 2rem;
+    }
+
+    .main-content {
+      grid-column: 1;
+    }
+
+    .sidebar {
+      grid-column: 2;
+    }
+
+    /* Hero Section */
+    .blog-hero {
+      text-align: center;
+      margin-bottom: 3rem;
+      position: relative;
+      overflow: hidden;
+      padding: 5rem 1rem;
+      border-radius: 12px;
+      background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+      color: white;
+      box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+      margin-top: 1rem;
+      background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1471&q=80');
+      background-size: cover;
+      background-position: center;
+      background-blend-mode: overlay;
+    }
+
+    .blog-hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+      opacity: 0.6;
+    }
+
+    .blog-hero-content {
+      position: relative;
+      z-index: 1;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      font-weight: 800;
+      margin-bottom: 1rem;
+      background: linear-gradient(to right, white, #e0e0e0);
+      -webkit-background-clip: text;
+      background-clip: text;
+      -webkit-text-fill-color: transparent;
+      line-height: 1.2;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: rgba(255, 255, 255, 0.9);
+      margin: 0 auto 2rem;
+      line-height: 1.6;
+      max-width: 600px;
+    }
+
+    /* Search Section */
+    .search-section {
+      margin-bottom: 2rem;
+    }
+
+    .search-form {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .search-input {
+      flex-grow: 1;
+      padding: 0.8rem 1.2rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+    }
+
+    .search-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .search-button {
+      padding: 0 1.8rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .search-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Tags Filter */
+    .tags-section {
+      margin-bottom: 2rem;
+    }
+
+    .tags-title {
+      font-size: 1rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+      color: var(--light-text);
+    }
+
+    .tags-container {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+    }
+
+    .tag {
+      display: inline-block;
+      padding: 0.4rem 0.8rem;
+      background-color: var(--section-bg);
+      border-radius: 20px;
+      font-size: 0.8rem;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .tag:hover, .tag.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Blog Grid */
+    .blog-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+      gap: 2rem;
+      margin-bottom: 3rem;
+    }
+
+    .blog-card {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .blog-image {
+      height: 200px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .blog-content {
+      padding: 1.5rem;
+      flex-grow: 1;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .blog-meta {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    .blog-author {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .author-avatar {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      object-fit: cover;
+    }
+
+    .blog-date {
+      margin-left: 0.5rem;
+    }
+
+    .blog-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .blog-tag {
+      font-size: 0.7rem;
+      padding: 0.2rem 0.6rem;
+      background-color: var(--section-bg);
+      border-radius: 20px;
+      color: var(--primary-color);
+    }
+
+    .blog-title {
+      font-size: 1.25rem;
+      font-weight: 700;
+      margin-bottom: 0.75rem;
+      color: var(--text-color);
+    }
+
+    .blog-excerpt {
+      color: var(--light-text);
+      margin-bottom: 1.5rem;
+      flex-grow: 1;
+    }
+
+    .blog-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: auto;
+    }
+
+    .read-more {
+      color: var(--primary-color);
+      font-weight: 600;
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .read-more:hover {
+      color: var(--primary-dark);
+      text-decoration: underline;
+    }
+
+    .blog-actions {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .action-button {
+      background: none;
+      border: none;
+      color: var(--light-text);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+      font-size: 0.8rem;
+    }
+
+    .action-button:hover {
+      color: var(--primary-color);
+    }
+
+    /* Rating System */
+    .rating {
+      display: flex;
+      gap: 0.2rem;
+      align-items: center;
+    }
+
+    .star {
+      color: var(--light-text);
+      font-size: 0.9rem;
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+
+    .star:hover, .star.active {
+      color: #fbbf24; /* Yellow for stars */
+    }
+
+    .rating-count {
+      font-size: 0.8rem;
+      color: var(--light-text);
+      margin-left: 0.3rem;
+    }
+
+    /* Featured Carousel */
+    .featured-section {
+      margin-bottom: 3rem;
+    }
+
+    .featured-carousel {
+      display: flex;
+      gap: 2rem;
+      overflow-x: auto;
+      padding-bottom: 1rem;
+      scroll-snap-type: x mandatory;
+    }
+
+    .featured-carousel::-webkit-scrollbar {
+      height: 6px;
+    }
+
+    .featured-carousel::-webkit-scrollbar-track {
+      background: var(--section-bg);
+      border-radius: 10px;
+    }
+
+    .featured-carousel::-webkit-scrollbar-thumb {
+      background: var(--primary-light);
+      border-radius: 10px;
+    }
+
+    .featured-card {
+      min-width: 450px;
+      scroll-snap-align: start;
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      transition: all 0.3s ease;
+    }
+
+    .featured-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+    }
+
+    .featured-image {
+      height: 250px;
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .featured-content {
+      padding: 1.5rem;
+    }
+
+    .featured-badge {
+      display: inline-block;
+      background-color: var(--primary-color);
+      color: white;
+      padding: 0.25rem 0.75rem;
+      border-radius: 20px;
+      font-size: 0.7rem;
+      font-weight: 600;
+      margin-bottom: 0.5rem;
+    }
+
+    /* Sidebar */
+    .sidebar-section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      margin-bottom: 2rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .sidebar-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .category-list {
+      list-style: none;
+    }
+
+    .category-item {
+      margin-bottom: 0.5rem;
+    }
+
+    .category-link {
+      display: block;
+      padding: 0.5rem 0;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .category-link:hover {
+      color: var(--primary-color);
+      padding-left: 0.5rem;
+    }
+
+    .category-count {
+      float: right;
+      color: var(--light-text);
+      font-size: 0.8rem;
+    }
+
+    /* Submit Blog Section */
+    .submit-section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+      text-align: center;
+    }
+
+    .submit-title {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--primary-color);
+    }
+
+    .submit-description {
+      color: var(--light-text);
+      margin-bottom: 1.5rem;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .submit-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.8rem 1.8rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+
+    .submit-button:hover {
+      background-color: var(--primary-dark);
+      transform: translateY(-2px);
+    }
+
+    /* Newsletter Section */
+    .newsletter-section {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      padding: 1.5rem;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    .newsletter-title {
+      font-size: 1.1rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+
+    .newsletter-form {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .newsletter-input {
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .newsletter-input:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .newsletter-button {
+      padding: 0.8rem;
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .newsletter-button:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Recent Posts */
+    .recent-posts {
+      list-style: none;
+    }
+
+    .recent-post {
+      margin-bottom: 1rem;
+      padding-bottom: 1rem;
+      border-bottom: 1px solid var(--border-color);
+    }
+
+    .recent-post:last-child {
+      margin-bottom: 0;
+      padding-bottom: 0;
+      border-bottom: none;
+    }
+
+    .recent-post-link {
+      display: block;
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .recent-post-link:hover {
+      color: var(--primary-color);
+    }
+
+    .recent-post-title {
+      font-weight: 600;
+      margin-bottom: 0.3rem;
+    }
+
+    .recent-post-date {
+      font-size: 0.8rem;
+      color: var(--light-text);
+    }
+
+    /* Pagination */
+    .pagination {
+      display: flex;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-top: 2rem;
+    }
+
+    .page-link {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 40px;
+      height: 40px;
+      border-radius: 8px;
+      background-color: var(--card-bg);
+      color: var(--text-color);
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .page-link:hover, .page-link.active {
+      background-color: var(--primary-color);
+      color: white;
+    }
+
+    /* Modal for Blog Submission */
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.5);
+      z-index: 1000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: var(--card-bg);
+      border-radius: 12px;
+      width: 90%;
+      max-width: 600px;
+      padding: 2rem;
+      box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+    }
+
+    .modal-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 1.5rem;
+    }
+
+    .modal-title {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--primary-color);
+    }
+
+    .close-modal {
+      background: none;
+      border: none;
+      font-size: 1.5rem;
+      cursor: pointer;
+      color: var(--light-text);
+    }
+
+    .blog-form .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .blog-form .form-label {
+      display: block;
+      margin-bottom: 0.5rem;
+      font-weight: 500;
+    }
+
+    .blog-form .form-input, 
+    .blog-form .form-textarea,
+    .blog-form .form-select {
+      width: 100%;
+      padding: 0.8rem 1rem;
+      border: 1px solid var(--border-color);
+      border-radius: 8px;
+      font-family: 'Inter', sans-serif;
+      background-color: var(--background-color);
+      color: var(--text-color);
+    }
+
+    .blog-form .form-textarea {
+      min-height: 150px;
+    }
+
+    .blog-form .form-input:focus, 
+    .blog-form .form-textarea:focus,
+    .blog-form .form-select:focus {
+      outline: none;
+      border-color: var(--primary-color);
+    }
+
+    .form-submit {
+      background-color: var(--primary-color);
+      color: white;
+      border: none;
+      padding: 0.8rem 1.8rem;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+    }
+
+    .form-submit:hover {
+      background-color: var(--primary-dark);
+    }
+
+    /* Floating Action Buttons */
+    .floating-buttons {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+      z-index: 900;
+    }
+
+    .floating-button {
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      background-color: var(--primary-color);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+      cursor: pointer;
+      transition: all 0.3s ease;
+      border: none;
+    }
+
+    .floating-button:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+      background-color: var(--primary-dark);
+    }
+
+    .floating-button i {
+      font-size: 1.2rem;
+    }
+
+    /* Footer */
+    footer {
+      background-color: var(--primary-color);
+      color: white;
+      padding: 3rem 2rem;
+      text-align: center;
+      margin-top: 4rem;
+    }
+
+    .footer-content {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+
+    .footer-logo {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-logo-text {
+      font-size: 1.5rem;
+      font-weight: 700;
+    }
+
+    .footer-description {
+      max-width: 600px;
+      margin: 0 auto 2rem;
+      opacity: 0.9;
+      line-height: 1.6;
+    }
+
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 2rem;
+      margin-bottom: 2rem;
+      flex-wrap: wrap;
+    }
+
+    .footer-link {
+      color: white;
+      text-decoration: none;
+      transition: all 0.3s ease;
+    }
+
+    .footer-link:hover {
+      opacity: 0.8;
+      text-decoration: underline;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .social-link {
+      color: white;
+      font-size: 1.5rem;
+      transition: all 0.3s ease;
+    }
+
+    .social-link:hover {
+      transform: translateY(-3px);
+      opacity: 0.9;
+    }
+
+    .copyright {
+      opacity: 0.8;
+      font-size: 0.9rem;
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 992px) {
+      .header-content {
+        padding: 1rem;
+      }
+
+      h1 {
+        font-size: 2.2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+
+      .container {
+        grid-template-columns: 1fr;
+      }
+
+      .sidebar {
+        grid-column: 1;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 2rem;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .header-content {
+        flex-direction: column;
+        gap: 1rem;
+      }
+
+      .nav-links {
+        gap: 1rem;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .blog-hero {
+        padding: 3rem 1rem;
+      }
+
+      .featured-card {
+        min-width: 300px;
+      }
+
+      .sidebar {
+        grid-template-columns: 1fr;
+      }
+
+      .floating-buttons {
+        flex-direction: row;
+        bottom: 10px;
+        left: 10px;
+      }
+
+      .floating-button {
+        width: 40px;
+        height: 40px;
+      }
+    }
+
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.8rem;
+      }
+
+      .section-title {
+        font-size: 1.5rem;
+      }
+
+      .blog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-links {
+        flex-direction: column;
+        gap: 1rem;
+      }
+    }
+
+    /* Animations */
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(20px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    .blog-card, .featured-card, .sidebar-section {
+      animation: fadeInUp 0.5s ease forwards;
+      opacity: 0;
+    }
+
+    .blog-card:nth-child(1) { animation-delay: 0.1s; }
+    .blog-card:nth-child(2) { animation-delay: 0.2s; }
+    .blog-card:nth-child(3) { animation-delay: 0.3s; }
+    .blog-card:nth-child(4) { animation-delay: 0.4s; }
+    .featured-card:nth-child(1) { animation-delay: 0.1s; }
+    .featured-card:nth-child(2) { animation-delay: 0.2s; }
+    .sidebar-section:nth-child(1) { animation-delay: 0.1s; }
+    .sidebar-section:nth-child(2) { animation-delay: 0.2s; }
+  </style>
+</head>
+<body>
+  <!-- Header -->
+  <header class="header">
+    <div class="header-content">
+      <a href="index.html" class="logo">
+        <img src="image/studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="logo-text">StudyVibes</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html"><i class="fas fa-home"></i> Home</a>
+        <a href="roadmaps.html"><i class="fas fa-road"></i> Roadmaps</a>
+        <a href="guidance.html"><i class="fas fa-lightbulb"></i> Guidance</a>
+        <a href="blog.html" class="active"><i class="fas fa-blog"></i> Blog</a>
+        <a href="files/signinpages.html" class="btn btn-outline" style="padding: 0.5rem 1rem;"><i class="fas fa-user-plus"></i> Sign Up</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Main Content -->
+  <main>
+    <!-- Hero Section -->
+    <section class="blog-hero">
+      <div class="blog-hero-content">
+        <h1>StudyVibes Blog</h1>
+        <p class="subtitle">Explore tips, tutorials, and insights from the minds shaping tomorrow's tech world. Learn, grow, and succeed with our community.</p>
+      </div>
+    </section>
+
+    <div class="container">
+      <!-- Main Content -->
+      <div class="main-content">
+        <!-- Search Section -->
+        <section class="search-section">
+          <form class="search-form">
+            <input type="text" placeholder="Search articles..." class="search-input">
+            <button type="submit" class="search-button">
+              <i class="fas fa-search"></i>
+            </button>
+          </form>
+        </section>
+
+        <!-- Tags Filter -->
+        <section class="tags-section">
+          <div class="tags-title">Filter by Tags:</div>
+          <div class="tags-container">
+            <span class="tag active">All</span>
+            <span class="tag">#WebDev</span>
+            <span class="tag">#DataScience</span>
+            <span class="tag">#CareerTips</span>
+            <span class="tag">#Placement</span>
+            <span class="tag">#Projects</span>
+            <span class="tag">#Roadmaps</span>
+            <span class="tag">#Interview</span>
+          </div>
+        </section>
+
+        <!-- Featured Carousel -->
+        <section class="featured-section">
+          <h2 class="section-title">Featured Articles</h2>
+          <div class="featured-carousel">
+            <!-- Featured 1 -->
+            <article class="featured-card">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Featured Article" class="featured-image">
+              <div class="featured-content">
+                <span class="featured-badge">Featured</span>
+                <h3 class="blog-title">How I Cracked Google's Coding Interview in 3 Months</h3>
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/men/32.jpg" alt="Author" class="author-avatar">
+                    Rahul Sharma
+                  </span>
+                  <span class="blog-date">May 15, 2023</span>
+                </div>
+                <p class="blog-excerpt">A step-by-step guide to preparing for FAANG interviews with limited time and resources...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-count">(42)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Featured 2 -->
+            <article class="featured-card">
+              <img src="https://images.unsplash.com/photo-1461749280684-dccba630e2f6?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1469&q=80" alt="Featured Article" class="featured-image">
+              <div class="featured-content">
+                <span class="featured-badge">Popular</span>
+                <h3 class="blog-title">10 Must-Do Projects for Your Web Dev Portfolio</h3>
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/women/44.jpg" alt="Author" class="author-avatar">
+                    Priya Patel
+                  </span>
+                  <span class="blog-date">June 2, 2023</span>
+                </div>
+                <p class="blog-excerpt">Projects that will make your portfolio stand out and impress recruiters...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="rating-count">(56)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+        </section>
+
+        <!-- Blog Grid -->
+        <section class="blog-grid-section">
+          <h2 class="section-title">Latest Articles</h2>
+          <div class="blog-grid">
+            <!-- Blog 1 -->
+            <article class="blog-card">
+              <img src="https://images.unsplash.com/photo-1517694712202-14dd9538aa97?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Blog Post" class="blog-image">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/men/22.jpg" alt="Author" class="author-avatar">
+                    Arjun Mehta
+                  </span>
+                  <span class="blog-date">June 10, 2023</span>
+                </div>
+                <div class="blog-tags">
+                  <span class="blog-tag">#WebDev</span>
+                  <span class="blog-tag">#Career</span>
+                </div>
+                <h3 class="blog-title">From College to Corporate: My First Month as a Software Engineer</h3>
+                <p class="blog-excerpt">What they don't teach you in college about working in the tech industry...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-count">(28)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Blog 2 -->
+            <article class="blog-card">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Blog Post" class="blog-image">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/women/33.jpg" alt="Author" class="author-avatar">
+                    Neha Gupta
+                  </span>
+                  <span class="blog-date">June 5, 2023</span>
+                </div>
+                <div class="blog-tags">
+                  <span class="blog-tag">#DataScience</span>
+                  <span class="blog-tag">#Projects</span>
+                </div>
+                <h3 class="blog-title">Building Your First Data Science Project: A Step-by-Step Guide</h3>
+                <p class="blog-excerpt">How to go from zero to your first complete data science project that gets noticed...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-count">(35)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Blog 3 -->
+            <article class="blog-card">
+              <img src="https://images.unsplash.com/photo-1547658719-da2b51169166?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1528&q=80" alt="Blog Post" class="blog-image">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/men/45.jpg" alt="Author" class="author-avatar">
+                    Rohan Kumar
+                  </span>
+                  <span class="blog-date">May 28, 2023</span>
+                </div>
+                <div class="blog-tags">
+                  <span class="blog-tag">#Interview</span>
+                  <span class="blog-tag">#Placement</span>
+                </div>
+                <h3 class="blog-title">Common Technical Interview Mistakes and How to Avoid Them</h3>
+                <p class="blog-excerpt">The top 10 mistakes I've seen candidates make and how you can avoid them...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="rating-count">(47)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <!-- Blog 4 -->
+            <article class="blog-card">
+              <img src="https://images.unsplash.com/photo-1563986768609-322da13575f3?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1470&q=80" alt="Blog Post" class="blog-image">
+              <div class="blog-content">
+                <div class="blog-meta">
+                  <span class="blog-author">
+                    <img src="https://randomuser.me/api/portraits/women/55.jpg" alt="Author" class="author-avatar">
+                    Ananya Joshi
+                  </span>
+                  <span class="blog-date">May 20, 2023</span>
+                </div>
+                <div class="blog-tags">
+                  <span class="blog-tag">#Roadmaps</span>
+                  <span class="blog-tag">#WebDev</span>
+                </div>
+                <h3 class="blog-title">The Complete 2023 Frontend Developer Roadmap</h3>
+                <p class="blog-excerpt">Everything you need to learn to become a job-ready frontend developer this year...</p>
+                <div class="blog-footer">
+                  <a href="#" class="read-more">Read More <i class="fas fa-arrow-right"></i></a>
+                  <div class="rating">
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star active">★</span>
+                    <span class="star">★</span>
+                    <span class="rating-count">(39)</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <!-- Pagination -->
+          <div class="pagination">
+            <a href="#" class="page-link active">1</a>
+            <a href="#" class="page-link">2</a>
+            <a href="#" class="page-link">3</a>
+            <a href="#" class="page-link">4</a>
+            <a href="#" class="page-link">
+              <i class="fas fa-chevron-right"></i>
+            </a>
+          </div>
+        </section>
+
+        <!-- Submit Blog Section -->
+        <section class="submit-section">
+          <h2 class="submit-title">Share Your Knowledge</h2>
+          <p class="submit-description">Have valuable insights to share with the student community? Contribute to our blog and help others learn from your experiences.</p>
+          <button id="openSubmitModal" class="submit-button">
+            <i class="fas fa-pen-fancy"></i> Submit Your Article
+          </button>
+        </section>
+      </div>
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <!-- Categories -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-title">
+            <i class="fas fa-folder-open"></i> Categories
+          </h3>
+          <ul class="category-list">
+            <li class="category-item">
+              <a href="#" class="category-link">
+                Web Development
+                <span class="category-count">42</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                Data Science
+                <span class="category-count">28</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                Career & Resume Tips
+                <span class="category-count">35</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                College to Corporate
+                <span class="category-count">19</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                Project Ideas
+                <span class="category-count">27</span>
+              </a>
+            </li>
+            <li class="category-item">
+              <a href="#" class="category-link">
+                Learning Roadmaps
+                <span class="category-count">15</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Newsletter -->
+        <section class="sidebar-section newsletter-section">
+          <h3 class="newsletter-title">Get Weekly Learning Tips</h3>
+          <form class="newsletter-form">
+            <input type="email" placeholder="Your email address" class="newsletter-input" required>
+            <button type="submit" class="newsletter-button">Subscribe</button>
+          </form>
+        </section>
+
+        <!-- Recent Posts -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-title">
+            <i class="fas fa-clock"></i> Recent Posts
+          </h3>
+          <ul class="recent-posts">
+            <li class="recent-post">
+              <a href="#" class="recent-post-link">
+                <h4 class="recent-post-title">How to Build a Strong Tech Portfolio</h4>
+                <span class="recent-post-date">June 12, 2023</span>
+              </a>
+            </li>
+            <li class="recent-post">
+              <a href="#" class="recent-post-link">
+                <h4 class="recent-post-title">Python vs JavaScript: Which to Learn First?</h4>
+                <span class="recent-post-date">June 8, 2023</span>
+              </a>
+            </li>
+            <li class="recent-post">
+              <a href="#" class="recent-post-link">
+                <h4 class="recent-post-title">My Internship Experience at Microsoft</h4>
+                <span class="recent-post-date">June 3, 2023</span>
+              </a>
+            </li>
+          </ul>
+        </section>
+
+        <!-- Popular Tags -->
+        <section class="sidebar-section">
+          <h3 class="sidebar-title">
+            <i class="fas fa-tags"></i> Popular Tags
+          </h3>
+          <div class="tags-container">
+            <span class="tag">#WebDev</span>
+            <span class="tag">#DataScience</span>
+            <span class="tag">#Interview</span>
+            <span class="tag">#Placement</span>
+            <span class="tag">#Projects</span>
+            <span class="tag">#Roadmaps</span>
+            <span class="tag">#Resume</span>
+            <span class="tag">#Internship</span>
+          </div>
+        </section>
+      </aside>
+    </div>
+  </main>
+
+  <!-- Blog Submission Modal -->
+  <div class="modal" id="submitModal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Submit Your Article</h3>
+        <button class="close-modal">&times;</button>
+      </div>
+      <form class="blog-form">
+        <div class="form-group">
+          <label for="blog-title" class="form-label">Article Title</label>
+          <input type="text" id="blog-title" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-author" class="form-label">Your Name</label>
+          <input type="text" id="blog-author" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-email" class="form-label">Email</label>
+          <input type="email" id="blog-email" class="form-input" required>
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-category" class="form-label">Category</label>
+          <select id="blog-category" class="form-select" required>
+            <option value="">Select a category</option>
+            <option value="web-dev">Web Development</option>
+            <option value="data-science">Data Science</option>
+            <option value="career">Career Tips</option>
+            <option value="college">College to Corporate</option>
+            <option value="projects">Project Ideas</option>
+            <option value="roadmaps">Learning Roadmaps</option>
+          </select>
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-tags" class="form-label">Tags (comma separated)</label>
+          <input type="text" id="blog-tags" class="form-input" placeholder="webdev, career, interview">
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-content" class="form-label">Article Content</label>
+          <textarea id="blog-content" class="form-textarea" required></textarea>
+        </div>
+        
+        <div class="form-group">
+          <label for="blog-image" class="form-label">Featured Image URL</label>
+          <input type="url" id="blog-image" class="form-input" placeholder="https://example.com/image.jpg">
+        </div>
+        
+        <button type="submit" class="form-submit">
+          <i class="fas fa-paper-plane"></i> Submit Article
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Floating Action Buttons -->
+  <div class="floating-buttons">
+    <button class="floating-button" id="darkModeToggle" title="Toggle Dark Mode">
+      <i class="fas fa-moon"></i>
+    </button>
+    <button class="floating-button" id="scrollToTopBtn" title="Scroll to Top">
+      <i class="fas fa-arrow-up"></i>
+    </button>
+    <button class="floating-button" id="feedbackBtn" title="Give Feedback">
+      <i class="fas fa-comment"></i>
+    </button>
+  </div>
+
+  <!-- Footer -->
+  <footer id="footer">
+    <div class="footer-content">
+      <div class="footer-logo">
+        <img src="image/studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+        <span class="footer-logo-text">StudyVibes</span>
+      </div>
+      <p class="footer-description">
+        Empowering students with knowledge, resources, and community to succeed in their tech careers.
+      </p>
+      <div class="footer-links">
+        <a href="index.html" class="footer-link">Home</a>
+        <a href="roadmaps.html" class="footer-link">Roadmaps</a>
+        <a href="guidance.html" class="footer-link">Guidance</a>
+        <a href="blog.html" class="footer-link">Blog</a>
+        <a href="aboutus.html" class="footer-link">About Us</a>
+        <a href="signinpages.html" class="footer-link">Login</a>
+      </div>
+      <div class="social-links">
+        <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+        <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+      </div>
+      <p class="copyright">
+        &copy; 2025 StudyVibes. All rights reserved. Made with <i class="fas fa-heart" style="color: #ff5252;"></i> for developers.
+      </p>
+    </div>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      // DOM Elements
+      const darkModeToggle = document.getElementById('darkModeToggle');
+      const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+      const feedbackBtn = document.getElementById('feedbackBtn');
+      const openSubmitModal = document.getElementById('openSubmitModal');
+      const submitModal = document.getElementById('submitModal');
+      const closeModal = document.querySelector('.close-modal');
+      const blogForm = document.querySelector('.blog-form');
+      const stars = document.querySelectorAll('.star');
+      const tags = document.querySelectorAll('.tag');
+
+      // State variables
+      let isDarkMode = localStorage.getItem('darkMode') === 'true';
+
+      // Initialize the page
+      function init() {
+        // Set dark mode if enabled
+        if (isDarkMode) {
+          document.body.classList.add('dark-mode');
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+        }
+
+        // Set up event listeners
+        setupEventListeners();
+
+        // Animate elements when they come into view
+        setupScrollAnimations();
+      }
+
+      // Set up all event listeners
+      function setupEventListeners() {
+        // Theme toggle
+        darkModeToggle.addEventListener('click', toggleDarkMode);
+
+        // Scroll to top
+        scrollToTopBtn.addEventListener('click', () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+          });
+        });
+
+        // Feedback button
+        feedbackBtn.addEventListener('click', () => {
+          alert('Thank you for your feedback! Please email us at feedback@studyvibes.com');
+        });
+
+        // Modal handling
+        openSubmitModal.addEventListener('click', () => {
+          submitModal.style.display = 'flex';
+        });
+
+        closeModal.addEventListener('click', () => {
+          submitModal.style.display = 'none';
+        });
+
+        window.addEventListener('click', (e) => {
+          if (e.target === submitModal) {
+            submitModal.style.display = 'none';
+          }
+        });
+
+        // Blog form submission
+        blogForm.addEventListener('submit', (e) => {
+          e.preventDefault();
+          alert('Thank you for your submission! Our team will review your article and get back to you soon.');
+          submitModal.style.display = 'none';
+          e.target.reset();
+        });
+
+        // Star rating interaction
+        stars.forEach(star => {
+          star.addEventListener('click', function() {
+            const ratingContainer = this.parentElement;
+            const stars = ratingContainer.querySelectorAll('.star');
+            const clickedIndex = Array.from(stars).indexOf(this);
+            
+            stars.forEach((s, index) => {
+              if (index <= clickedIndex) {
+                s.classList.add('active');
+              } else {
+                s.classList.remove('active');
+              }
+            });
+          });
+        });
+
+        // Tag filtering
+        tags.forEach(tag => {
+          tag.addEventListener('click', function() {
+            tags.forEach(t => t.classList.remove('active'));
+            this.classList.add('active');
+            // Here you would typically filter the blog posts
+            console.log(`Filtering by tag: ${this.textContent}`);
+          });
+        });
+
+        // Show scroll to top button when scrolling
+        window.addEventListener('scroll', () => {
+          if (window.pageYOffset > 300) {
+            scrollToTopBtn.style.display = 'flex';
+          } else {
+            scrollToTopBtn.style.display = 'none';
+          }
+        });
+      }
+
+      // Toggle dark/light mode
+      function toggleDarkMode() {
+        isDarkMode = !isDarkMode;
+        document.body.classList.toggle('dark-mode');
+        
+        if (isDarkMode) {
+          darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+          darkModeToggle.title = 'Toggle Light Mode';
+          localStorage.setItem('darkMode', 'true');
+        } else {
+          darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+          darkModeToggle.title = 'Toggle Dark Mode';
+          localStorage.setItem('darkMode', 'false');
+        }
+      }
+
+      // Set up scroll animations
+      function setupScrollAnimations() {
+        const animateOnScroll = () => {
+          const elements = document.querySelectorAll('.blog-card, .featured-card, .sidebar-section');
+          
+          elements.forEach(element => {
+            const elementPosition = element.getBoundingClientRect().top;
+            const windowHeight = window.innerHeight;
+            
+            if (elementPosition < windowHeight - 100) {
+              element.style.opacity = '1';
+              element.style.transform = 'translateY(0)';
+            }
+          });
+        };
+
+        // Initial check
+        animateOnScroll();
+        
+        // Check on scroll
+        window.addEventListener('scroll', animateOnScroll);
+      }
+
+      // Initialize the page
+      init();
+    });
+  </script>
+</body>
+</html>

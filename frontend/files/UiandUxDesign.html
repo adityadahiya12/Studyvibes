@@ -1,0 +1,2272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>UI/UX DesignRoadmap</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #2563eb;       /* Primary blue */
+            --primary-light: #93c5fd;       /* Lighter blue */
+            --primary-dark: #1d4ed8;        /* Darker blue */
+            --text-color: #1e293b;          /* Dark gray for text */
+            --light-text: #64748b;          /* Medium gray for secondary text */
+            --background-color: #f8fafc;    /* Light background */
+            --card-bg: #ffffff;             /* White for cards */
+            --border-color: #e2e8f0;        /* Light gray for borders */
+            --success-color: #10b981;       /* Green for success */
+            --warning-color: #f59e0b;       /* Yellow for warning */
+            --error-color: #ef4444;         /* Red for error */
+            --section-bg: #f1f5f9;          /* Very light gray for sections */
+        }
+
+        /* Dark Mode Variables */
+        .dark-mode {
+            --primary-color: #3b82f6;       /* Bright blue */
+            --primary-light: #60a5fa;       /* Lighter blue */
+            --primary-dark: #2563eb;        /* Primary blue */
+            --text-color: #f8fafc;          /* Light text */
+            --light-text: #cbd5e1;          /* Light gray for secondary text */
+            --background-color: #1e293b;    /* Dark background */
+            --card-bg: #334155;             /* Dark gray for cards */
+            --border-color: #475569;        /* Dark gray for borders */
+            --section-bg: #0f172a;          /* Very dark blue for sections */
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: var(--background-color);
+            transition: all 0.3s ease;
+        }
+
+        /* Header Styles */
+        .header {
+            background-color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            max-width: 1280px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 2rem;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            text-decoration: none;
+        }
+
+        .logo-icon {
+            width: 36px;
+            height: 36px;
+            object-fit: contain;
+        }
+
+        .logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: white;
+            letter-spacing: 0.5px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 1.5rem;
+            align-items: center;
+        }
+
+        .nav-links a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            transition: all 0.2s ease;
+            padding: 0.5rem 0;
+            position: relative;
+        }
+
+        .nav-links a:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background-color: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        /* Main Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Hero Section */
+        .hero {
+            text-align: center;
+            margin-bottom: 3rem;
+            position: relative;
+            overflow: hidden;
+            padding: 3rem 1rem;
+            border-radius: 12px;
+            background: linear-gradient(135deg, var(--primary-color), var(--primary-dark));
+            color: white;
+            box-shadow: 0 8px 24px rgba(93, 53, 177, 0.2);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIxMDAlIiBoZWlnaHQ9IjEwMCUiPjxkZWZzPjxwYXR0ZXJuIGlkPSJwYXR0ZXJuIiB3aWR0aD0iNDAiIGhlaWdodD0iNDAiIHBhdHRlcm5Vbml0cz0idXNlclNwYWNlT25Vc2UiIHBhdHRlcm5UcmFuc2Zvcm09InJvdGF0ZSg0NSkiPjxyZWN0IHdpZHRoPSIyMCIgaGVpZ2h0PSIyMCIgZmlsbD0icmdiYSgyNTUsMjU1LDI1NSwwLjA1KSIvPjwvcGF0dGVybj48L2RlZnM+PHJlY3Qgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgZmlsbD0idXJsKCNwYXR0ZXJuKSIvPjwvc3ZnPg==');
+            opacity: 0.6;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        h1 {
+            font-size: 2.8rem;
+            font-weight: 800;
+            margin-bottom: 1rem;
+            background: linear-gradient(to right, white, #e0e0e0);
+            -webkit-background-clip: text;
+            background-clip: text;
+            -webkit-text-fill-color: transparent;
+            line-height: 1.2;
+        }
+
+        .subtitle {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.9);
+            max-width: 700px;
+            margin: 0 auto 2rem;
+            line-height: 1.6;
+        }
+
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 0.8rem 1.8rem;
+            border-radius: 8px;
+            font-weight: 600;
+            text-decoration: none;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 1rem;
+        }
+
+        .btn-primary {
+            background-color: white;
+            color: var(--primary-color);
+            box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(255, 255, 255, 0.3);
+        }
+
+        .btn-outline {
+            background-color: transparent;
+            color: white;
+            border: 2px solid white;
+        }
+
+        .btn-outline:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+            transform: translateY(-2px);
+        }
+
+        /* Roadmap Styles */
+        .roadmap-container {
+            margin: 4rem 0;
+        }
+
+        .roadmap-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .roadmap-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            position: relative;
+            display: inline-block;
+        }
+
+        .roadmap-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+        }
+
+        .roadmap-description {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Journey Path */
+        .journey-path {
+            position: relative;
+            padding: 2rem 0;
+        }
+
+        /* Timeline center line */
+        .journey-path::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 4px;
+            background: linear-gradient(to bottom, var(--primary-color), var(--primary-light));
+            border-radius: 2px;
+            z-index: 1;
+        }
+
+        /* Stage Container */
+        .stage {
+            display: flex;
+            margin-bottom: 3rem;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .stage:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Left and Right Stages */
+        .stage-left {
+            justify-content: flex-start;
+            padding-right: 50%;
+            text-align: right;
+        }
+
+        .stage-right {
+            justify-content: flex-end;
+            padding-left: 50%;
+            text-align: left;
+        }
+
+        /* Stage Content */
+        .stage-content {
+            width: 100%;
+            max-width: 500px;
+            padding: 1.5rem;
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            position: relative;
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .stage-left .stage-content {
+            border-right: 4px solid var(--primary-color);
+        }
+
+        .stage-right .stage-content {
+            border-left: 4px solid var(--primary-color);
+        }
+
+        .stage-content:hover {
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+            transform: translateY(-5px);
+        }
+
+        /* Stage Dot */
+        .stage::after {
+            content: '';
+            position: absolute;
+            top: 20px;
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            background-color: var(--background-color);
+            border: 4px solid var(--primary-color);
+            z-index: 2;
+        }
+
+        .stage-left::after {
+            right: calc(50% - 12px);
+        }
+
+        .stage-right::after {
+            left: calc(50% - 12px);
+        }
+
+        /* Stage Title */
+        .stage-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .stage-left .stage-title {
+            justify-content: flex-end;
+        }
+
+        /* Skills List */
+        .skills-list {
+            list-style-type: none;
+        }
+
+        .skills-list li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            position: relative;
+        }
+
+        .stage-left .skills-list li {
+            justify-content: flex-end;
+        }
+
+        .skills-list li::before {
+            content: '▹';
+            color: var(--primary-color);
+            margin-right: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        .stage-left .skills-list li::before {
+            display: none;
+        }
+
+        .stage-left .skills-list li::after {
+            content: '▹';
+            color: var(--primary-color);
+            margin-left: 0.5rem;
+            font-size: 1.2rem;
+        }
+
+        /* Resources Section */
+        .resources-section {
+            padding: 4rem 0;
+            background-color: var(--section-bg);
+            border-radius: 12px;
+            margin: 3rem 0;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+
+        .section-title {
+            font-size: 2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+        }
+
+        .section-subtitle {
+            color: var(--light-text);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+
+        /* Resource Cards */
+        .resource-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .resource-card {
+            background-color: var(--card-bg);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            transition: all 0.3s ease;
+            display: flex;
+            flex-direction: column;
+            height: 100%;
+        }
+
+        .resource-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+        }
+
+        .resource-thumbnail {
+            height: 200px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .resource-thumbnail img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+
+        .resource-card:hover .resource-thumbnail img {
+            transform: scale(1.05);
+        }
+
+        .resource-level {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            background-color: var(--primary-color);
+            color: white;
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        .resource-info {
+            padding: 1.5rem;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .resource-title {
+            font-size: 1.25rem;
+            margin-bottom: 0.5rem;
+            color: var(--text-color);
+        }
+
+        .resource-description {
+            color: var(--light-text);
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+            flex-grow: 1;
+        }
+
+        .resource-meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1rem;
+            font-size: 0.9rem;
+            color: var(--light-text);
+        }
+
+        .resource-duration {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .resource-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .resource-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            background-color: var(--primary-color);
+            color: white;
+            border-radius: 6px;
+            font-weight: 500;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .resource-button:hover {
+            background-color: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .bookmark-btn {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 1.2rem;
+            transition: all 0.3s ease;
+        }
+
+        .bookmark-btn:hover {
+            color: var(--primary-color);
+        }
+
+        .bookmark-btn.bookmarked {
+            color: var(--primary-color);
+        }
+
+        /* Modal Styles */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.5);
+            z-index: 1000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background-color: var(--card-bg);
+            margin: 5% auto;
+            padding: 2rem;
+            border-radius: 12px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+            width: 90%;
+            max-width: 800px;
+            position: relative;
+            animation: modalFadeIn 0.3s ease;
+        }
+
+        @keyframes modalFadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .close-modal {
+            position: absolute;
+            top: 1rem;
+            right: 1rem;
+            font-size: 1.5rem;
+            color: var(--light-text);
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: all 0.3s ease;
+        }
+
+        .close-modal:hover {
+            color: var(--primary-color);
+            transform: rotate(90deg);
+        }
+
+        .modal-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .modal-title {
+            font-size: 1.8rem;
+            color: var(--primary-color);
+            margin-bottom: 0.5rem;
+        }
+
+        .modal-subtitle {
+            color: var(--light-text);
+            font-size: 1rem;
+        }
+
+        .modal-body {
+            margin-bottom: 2rem;
+        }
+
+        .modal-section {
+            margin-bottom: 1.5rem;
+        }
+
+        .modal-section-title {
+            font-size: 1.2rem;
+            color: var(--primary-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-resources {
+            list-style-type: none;
+        }
+
+        .modal-resources li {
+            padding: 0.5rem 0;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .modal-resources li::before {
+            content: '•';
+            color: var(--primary-color);
+            font-size: 1.5rem;
+            line-height: 0;
+        }
+
+        .modal-actions {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 2rem;
+        }
+
+        /* Progress Tracker */
+        .progress-tracker {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--card-bg);
+            padding: 1rem;
+            border-radius: 12px;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+            z-index: 900;
+            transition: all 0.3s ease;
+        }
+
+        .progress-tracker.collapsed {
+            transform: translateY(calc(100% - 40px));
+        }
+
+        .progress-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 0.5rem;
+            cursor: pointer;
+        }
+
+        .progress-title {
+            font-size: 1rem;
+            color: var(--primary-color);
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .toggle-progress {
+            background: none;
+            border: none;
+            color: var(--light-text);
+            cursor: pointer;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+        }
+
+        .toggle-progress:hover {
+            color: var(--primary-color);
+        }
+
+        .progress-bar-container {
+            margin-bottom: 0.5rem;
+        }
+
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background-color: var(--border-color);
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress {
+            height: 100%;
+            background: linear-gradient(to right, var(--primary-color), var(--primary-light));
+            border-radius: 4px;
+            transition: width 0.5s ease;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: var(--light-text);
+            text-align: center;
+        }
+
+        .progress-stages {
+            margin-top: 1rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .progress-stage {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.5rem 0;
+            border-bottom: 1px solid var(--border-color);
+            cursor: pointer;
+        }
+
+        .progress-stage:last-child {
+            border-bottom: none;
+        }
+
+        .progress-stage-checkbox {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid var(--border-color);
+            border-radius: 4px;
+            cursor: pointer;
+            position: relative;
+            transition: all 0.2s ease;
+        }
+
+        .progress-stage-checkbox:checked {
+            background-color: var(--primary-color);
+            border-color: var(--primary-color);
+        }
+
+        .progress-stage-checkbox:checked::after {
+            content: '✓';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 0.8rem;
+        }
+
+        .progress-stage-label {
+            font-size: 0.9rem;
+            color: var(--text-color);
+            flex-grow: 1;
+        }
+
+        .progress-stage.completed .progress-stage-label {
+            color: var(--light-text);
+            text-decoration: line-through;
+        }
+
+        /* Floating Action Buttons */
+        .floating-buttons {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            z-index: 900;
+        }
+
+        .floating-button {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--primary-color);
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: none;
+        }
+
+        .floating-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.3);
+            background-color: var(--primary-dark);
+        }
+
+        .floating-button i {
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            padding: 3rem 2rem;
+            text-align: center;
+            margin-top: 4rem;
+        }
+
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .footer-logo {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+            margin-bottom: 1.5rem;
+        }
+
+        .footer-logo-text {
+            font-size: 1.5rem;
+            font-weight: 700;
+        }
+
+        .footer-description {
+            max-width: 600px;
+            margin: 0 auto 2rem;
+            opacity: 0.9;
+            line-height: 1.6;
+        }
+
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-bottom: 2rem;
+            flex-wrap: wrap;
+        }
+
+        .footer-link {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .footer-link:hover {
+            opacity: 0.8;
+            text-decoration: underline;
+        }
+
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: all 0.3s ease;
+        }
+
+        .social-link:hover {
+            transform: translateY(-3px);
+            opacity: 0.9;
+        }
+
+        .copyright {
+            opacity: 0.8;
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 992px) {
+            .stage-left, .stage-right {
+                padding-left: 0;
+                padding-right: 0;
+                justify-content: flex-start;
+                text-align: left;
+            }
+
+            .stage::after {
+                left: 20px;
+                right: auto;
+            }
+
+            .journey-path::before {
+                left: 20px;
+            }
+
+            .stage-left .stage-content, 
+            .stage-right .stage-content {
+                border-left: 4px solid var(--primary-color);
+                border-right: none;
+            }
+
+            .stage-left .stage-title,
+            .stage-left .skills-list li {
+                justify-content: flex-start;
+            }
+
+            .stage-left .skills-list li::before {
+                display: inline;
+            }
+
+            .stage-left .skills-list li::after {
+                display: none;
+            }
+        }
+
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .nav-links {
+                gap: 1rem;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            h1 {
+                font-size: 2.2rem;
+            }
+
+            .subtitle {
+                font-size: 1rem;
+            }
+
+            .cta-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+
+            .resource-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .modal-content {
+                width: 95%;
+                margin: 2% auto;
+                padding: 1.5rem;
+            }
+
+            .floating-buttons {
+                flex-direction: row;
+                bottom: 10px;
+                left: 10px;
+            }
+
+            .floating-button {
+                width: 40px;
+                height: 40px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+
+            .roadmap-title, .section-title {
+                font-size: 1.5rem;
+            }
+
+            .stage-title {
+                font-size: 1.1rem;
+            }
+
+            .stage-content {
+                padding: 1rem;
+            }
+
+            .footer-links {
+                flex-direction: column;
+                gap: 1rem;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .stage {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .stage:nth-child(1) { animation-delay: 0.1s; }
+        .stage:nth-child(2) { animation-delay: 0.2s; }
+        .stage:nth-child(3) { animation-delay: 0.3s; }
+        .stage:nth-child(4) { animation-delay: 0.4s; }
+        .stage:nth-child(5) { animation-delay: 0.5s; }
+        .stage:nth-child(6) { animation-delay: 0.6s; }
+        .stage:nth-child(7) { animation-delay: 0.7s; }
+        .stage:nth-child(8) { animation-delay: 0.8s; }
+        .stage:nth-child(9) { animation-delay: 0.9s; }
+        .stage:nth-child(10) { animation-delay: 1s; }
+
+        .resource-card {
+            animation: fadeInUp 0.5s ease forwards;
+            opacity: 0;
+        }
+
+        .resource-card:nth-child(1) { animation-delay: 0.1s; }
+        .resource-card:nth-child(2) { animation-delay: 0.2s; }
+        .resource-card:nth-child(3) { animation-delay: 0.3s; }
+        .resource-card:nth-child(4) { animation-delay: 0.4s; }
+        .resource-card:nth-child(5) { animation-delay: 0.5s; }
+        .resource-card:nth-child(6) { animation-delay: 0.6s; }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-content">
+            <a href="#" class="logo">
+                <img src="\image\studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+                <span class="logo-text">StudyVibes</span>
+            </a>
+            <nav class="nav-links">
+                <a href="#roadmap"><i class="fas fa-map"></i> Roadmap</a>
+                <a href="#resources"><i class="fas fa-book"></i> Resources</a>
+                <a href="#about"><i class="fas fa-info-circle"></i> About</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+        <!-- Hero Section -->
+        <section class="hero">
+            <div class="hero-content">
+                <h1>Master UI/UX Designin 2025</h1>
+                <p class="subtitle">A comprehensive roadmap to become a professional UI/UX Designer  from beginner to advanced levels</p>
+                <div class="cta-buttons">
+                    <button class="btn btn-primary" id="startLearningBtn">
+                        <i class="fas fa-rocket"></i> Start Learning
+                    </button>
+                    <button class="btn btn-outline" id="downloadRoadmapBtn">
+                        <i class="fas fa-download"></i> Download Roadmap
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Roadmap Section -->
+        <!-- UI/UX DesignRoadmap HTML Section (replace UI/UX Designcontent with this) -->
+<section class="container" id="roadmap">
+  <div class="roadmap-header">
+    <h2 class="roadmap-title">UI/UX Design Roadmap</h2>
+    <p class="roadmap-description">A step-by-step roadmap to become a skilled UI/UX designer with expertise in design thinking, tools, and user experience principles</p>
+  </div>
+
+  <div class="journey-path">
+    <div class="stage stage-left" data-stage="1">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-lightbulb"></i> 1. UI/UX Fundamentals</h3>
+        <ul class="skills-list">
+          <li>What is UI vs UX?</li>
+          <li>Principles of Design</li>
+          <li>User-Centered Design (UCD)</li>
+          <li>Design Thinking Process</li>
+          <li>Basic UX Research Techniques</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-right" data-stage="2">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-users"></i> 2. User Research & Personas</h3>
+        <ul class="skills-list">
+          <li>Conducting Surveys and Interviews</li>
+          <li>User Journey Maps</li>
+          <li>Empathy Mapping</li>
+          <li>User Persona Creation</li>
+          <li>Competitive Analysis</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-left" data-stage="3">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-pencil-ruler"></i> 3. Wireframing & Prototyping</h3>
+        <ul class="skills-list">
+          <li>Low-Fidelity Wireframes</li>
+          <li>Mid & High-Fidelity Prototypes</li>
+          <li>Tools: Figma, Adobe XD, Balsamiq</li>
+          <li>Prototyping Interactions</li>
+          <li>User Flow Diagrams</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-right" data-stage="4">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-palette"></i> 4. Visual Design Principles</h3>
+        <ul class="skills-list">
+          <li>Typography Basics</li>
+          <li>Color Theory & Psychology</li>
+          <li>Layout and Spacing</li>
+          <li>Design Grids and Composition</li>
+          <li>Design Consistency & Branding</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-left" data-stage="5">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-icons"></i> 5. UI Design Tools & Components</h3>
+        <ul class="skills-list">
+          <li>Figma Advanced Features</li>
+          <li>Auto Layouts & Constraints</li>
+          <li>Design Systems & Components</li>
+          <li>Iconography and Illustrations</li>
+          <li>Asset Management</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-right" data-stage="6">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-mobile-alt"></i> 6. Responsive & Mobile Design</h3>
+        <ul class="skills-list">
+          <li>Responsive Design Principles</li>
+          <li>Mobile-First Design Approach</li>
+          <li>Designing for Multiple Breakpoints</li>
+          <li>Touch Targets and Mobile UX</li>
+          <li>Adaptive Layouts</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-left" data-stage="7">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-vial"></i> 7. Usability Testing & Accessibility</h3>
+        <ul class="skills-list">
+          <li>A/B Testing</li>
+          <li>Heuristic Evaluation</li>
+          <li>User Testing Sessions</li>
+          <li>Accessibility Guidelines (WCAG)</li>
+          <li>Inclusive Design Principles</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-right" data-stage="8">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-code"></i> 8. Handoff & Collaboration</h3>
+        <ul class="skills-list">
+          <li>Design to Developer Handoff</li>
+          <li>Exporting Assets</li>
+          <li>Using Figma Inspect Mode</li>
+          <li>Working with Frontend Teams</li>
+          <li>Design Documentation</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-left" data-stage="9">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-rocket"></i> 9. Portfolio & Case Studies</h3>
+        <ul class="skills-list">
+          <li>Creating Case Study Narratives</li>
+          <li>Showcasing UX Process</li>
+          <li>Dribbble & Behance Profiles</li>
+          <li>Personal Design Portfolio Website</li>
+          <li>Feedback & Iteration</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="stage stage-right" data-stage="10">
+      <div class="stage-content">
+        <h3 class="stage-title"><i class="fas fa-briefcase"></i> 10. Career Path & Growth</h3>
+        <ul class="skills-list">
+          <li>UI/UX Job Roles & Salaries</li>
+          <li>Freelancing vs Full-Time Design</li>
+          <li>Interview Questions & Whiteboard Challenges</li>
+          <li>Certifications (Google UX, NN/g)</li>
+          <li>Staying Updated with Trends</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+            <!-- Resources Section -->
+            <section class="resources-section" id="resources">
+                <div class="container">
+                    <div class="section-header">
+                        <h2 class="section-title">Learning Resources</h2>
+                        <p class="section-subtitle">Curated collection of the best tutorials, courses, and articles to help you master Cloud Computing</p>
+                    </div>
+
+                    <div class="resource-grid">
+                        <!-- Resource 1 -->
+                        <div class="resource-card" data-resource="1">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/cKEf8H9cQGM/hqdefault.jpg" alt="UI/UX DesignCourse">
+                                <span class="resource-level">Beginner</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Complete UI/UX DesignCourse</h3>
+                                <p class="resource-description">By Edureka - Comprehensive UI/UX Designtraining covering all fundamental concepts.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 15 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=cKEf8H9cQGM&list=PLwO5-rumi8A4J7h4Fm92TEC00gfZUk7ls" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource 2 -->
+                        <div class="resource-card" data-resource="2">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/3Kq1MIfTWCE/hqdefault.jpg" alt="Penetration Testing">
+                                <span class="resource-level">Intermediate</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Penetration Testing</h3>
+                                <p class="resource-description">By The Cyber Mentor - Practical penetration testing techniques and methodologies.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 8 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=3Kq1MIfTWCE&list=PLPzfPcir5uPTXQZb5sX0D0w7JRe4UY5Q1" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource 3 -->
+                        <div class="resource-card" data-resource="3">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/2_lswM1S264/hqdefault.jpg" alt="Web Security">
+                                <span class="resource-level">Intermediate</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Web Application Security</h3>
+                                <p class="resource-description">By HackerSploit - Web security and bug hunting techniques with practical examples.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 6 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=2_lswM1S264&list=PLBf0hzazHTGMJzHon4YXGscxUvsFpxrZT" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource 4 -->
+                        <div class="resource-card" data-resource="4">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/WnN6dbos5u8/hqdefault.jpg" alt="Network Security">
+                                <span class="resource-level">Beginner</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Network Security</h3>
+                                <p class="resource-description">By NullByte - Network hacking techniques and security measures explained clearly.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 4 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=WnN6dbos5u8" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource 5 -->
+                        <div class="resource-card" data-resource="5">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/3FNYvj2U0HM/hqdefault.jpg" alt="Malware Analysis">
+                                <span class="resource-level">Advanced</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Malware Analysis</h3>
+                                <p class="resource-description">By OALabs - Practical malware analysis techniques and reverse engineering.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 5 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=3FNYvj2U0HM&list=PLPzfPcir5uPTXQZb5sX0D0w7JRe4UY5Q1" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Resource 6 -->
+                        <div class="resource-card" data-resource="6">
+                            <div class="resource-thumbnail">
+                                <img src="https://i.ytimg.com/vi/2STTNYNF4lk/hqdefault.jpg" alt="Reverse Engineering">
+                                <span class="resource-level">Advanced</span>
+                            </div>
+                            <div class="resource-info">
+                                <h3 class="resource-title">Reverse Engineering</h3>
+                                <p class="resource-description">By LiveOverflow - Reverse engineering fundamentals with practical examples.</p>
+                                <div class="resource-meta">
+                                    <span class="resource-duration"><i class="far fa-clock"></i> 7 hours</span>
+                                    <span class="resource-type"><i class="far fa-play-circle"></i> Video</span>
+                                </div>
+                                <div class="resource-actions">
+                                    <a href="https://www.youtube.com/watch?v=2STTNYNF4lk&list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN" target="_blank" class="resource-button">
+                                        <i class="fas fa-play"></i> Watch
+                                    </a>
+                                    <button class="bookmark-btn" title="Bookmark">
+                                        <i class="far fa-bookmark"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- About Section -->
+            <section class="container" id="about">
+                <div class="roadmap-header">
+                    <h2 class="roadmap-title">About This Roadmap</h2>
+                    <p class="roadmap-description">This roadmap was carefully crafted by  experts to provide the most effective path to becoming an UI/UX Designer</p>
+                </div>
+
+                <div class="stage-content" style="max-width: 800px; margin: 0 auto;">
+                    <p style="margin-bottom: 1rem;">The UI/UX DesignRoadmap is designed to take you from absolute beginner to job-ready  professional through a structured, hands-on approach.</p>
+                    
+                    <h3 class="stage-title" style="margin: 1.5rem 0 1rem;"><i class="fas fa-lightbulb"></i> Key Features</h3>
+                    <ul class="skills-list">
+                        <li>Comprehensive coverage of all UI/UX Designdomains</li>
+                        <li>Practical labs and exercises at each stage</li>
+                        <li>Curated resources from the best  professionals</li>
+                        <li>Progress tracking to keep you motivated</li>
+                        <li>Regular updates to stay current with security trends</li>
+                    </ul>
+
+                    <div style="margin-top: 2rem; text-align: center;">
+                        <button class="btn btn-primary" id="contributeBtn" style="margin-right: 1rem;">
+                            <i class="fas fa-hands-helping"></i> Contribute
+                        </button>
+                        <button class="btn btn-outline" id="shareBtn">
+                            <i class="fas fa-share-alt"></i> Share
+                        </button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Modal -->
+        <div class="modal" id="stageModal">
+            <div class="modal-content">
+                <button class="close-modal">&times;</button>
+                <div class="modal-header">
+                    <h2 class="modal-title" id="modalTitle">Stage Details</h2>
+                    <p class="modal-subtitle" id="modalSubtitle">Detailed information about this stage</p>
+                </div>
+                <div class="modal-body">
+                    <div id="modalContent">
+                        <p>Select a stage to view detailed information.</p>
+                    </div>
+                </div>
+                <div class="modal-actions">
+                    <button class="btn btn-outline" id="markCompleteBtn">
+                        <i class="far fa-check-circle"></i> Mark as Complete
+                    </button>
+                    <button class="btn btn-primary" id="viewResourcesBtn">
+                        <i class="fas fa-external-link-alt"></i> View Resources
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Progress Tracker -->
+        <div class="progress-tracker" id="progressTracker">
+            <div class="progress-header">
+                <h3 class="progress-title"><i class="fas fa-tasks"></i> Your Progress</h3>
+                <button class="toggle-progress" id="toggleProgress">
+                    <i class="fas fa-chevron-down"></i>
+                </button>
+            </div>
+            <div class="progress-content" id="progressContent">
+                <div class="progress-bar-container">
+                    <div class="progress-bar">
+                        <div class="progress" id="progressBar"></div>
+                    </div>
+                </div>
+                <p class="progress-text" id="progressText">0% Complete</p>
+                <div class="progress-stages" id="progressStages">
+                    <!-- Progress stages will be added here by JavaScript -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Floating Action Buttons -->
+        <div class="floating-buttons">
+            <button class="floating-button" id="darkModeToggle" title="Toggle Dark Mode">
+                <i class="fas fa-moon"></i>
+            </button>
+            <button class="floating-button" id="scrollToTopBtn" title="Scroll to Top">
+                <i class="fas fa-arrow-up"></i>
+            </button>
+            <button class="floating-button" id="feedbackBtn" title="Give Feedback">
+                <i class="fas fa-comment"></i>
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <footer id="footer">
+            <div class="footer-content">
+                <div class="footer-logo">
+                    <img src="studyvibeslogo.png" alt="StudyVibes Logo" class="logo-icon">
+                    <span class="footer-logo-text">StudyVibes</span>
+                </div>
+                <p class="footer-description">
+                    Empowering  enthusiasts with structured roadmaps and curated resources to accelerate their learning journey.
+                </p>
+                <div class="footer-links">
+                    <a href="#" class="footer-link">Home</a>
+                    <a href="#roadmap" class="footer-link">Roadmap</a>
+                    <a href="#resources" class="footer-link">Resources</a>
+                    <a href="#about" class="footer-link">About</a>
+                    <a href="#" class="footer-link">Blog</a>
+                    <a href="#" class="footer-link">Contact</a>
+                </div>
+                <div class="social-links">
+                    <a href="#" class="social-link"><i class="fab fa-github"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-twitter"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-linkedin"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-youtube"></i></a>
+                    <a href="#" class="social-link"><i class="fab fa-discord"></i></a>
+                </div>
+                <p class="copyright">
+                    &copy; 2025 StudyVibes. All rights reserved. Made with <i class="fas fa-heart" style="color: #ff5252;"></i> for enthusiasts.
+                </p>
+            </div>
+        </footer>
+
+        <script>
+            document.addEventListener('DOMContentLoaded', function() {
+                // UI/UX DesignStage Details
+// UI/UX Design Stage Details
+const stageDetails = {
+  1: {
+    title: "UI/UX Fundamentals",
+    description: "Understand the core concepts of user interface and user experience design, including the differences between the two and the importance of user-centered design.",
+    topics: [
+      "What is UI vs UX?",
+      "Principles of Design",
+      "User-Centered Design (UCD)",
+      "Design Thinking Process",
+      "Basic UX Research Techniques"
+    ],
+    resources: [
+      "Course: 'Introduction to UI/UX' on Coursera",
+      "YouTube: AJ&Smart Design Thinking",
+      "Book: 'Don't Make Me Think' by Steve Krug",
+      "Blog: Nielsen Norman Group Articles",
+      "Guide: UX Design Process Cheat Sheet"
+    ],
+    projects: [
+      "Define a problem and apply design thinking",
+      "Sketch out a user-centered app idea",
+      "Create empathy maps for target users"
+    ]
+  },
+  2: {
+    title: "User Research & Personas",
+    description: "Learn to conduct research to understand user needs and create personas to guide design decisions.",
+    topics: [
+      "Conducting Surveys and Interviews",
+      "User Journey Maps",
+      "Empathy Mapping",
+      "User Persona Creation",
+      "Competitive Analysis"
+    ],
+    resources: [
+      "Course: Google UX Design Certificate",
+      "Tool: Miro or FigJam for Personas",
+      "Templates: UXPressia or Adobe",
+      "YouTube: User Research by CareerFoundry",
+      "Book: 'Interviewing Users' by Steve Portigal"
+    ],
+    projects: [
+      "Create 3 user personas",
+      "Map a complete user journey",
+      "Compare two similar apps using heuristics"
+    ]
+  },
+  3: {
+    title: "Wireframing & Prototyping",
+    description: "Create wireframes and interactive prototypes using industry tools.",
+    topics: [
+      "Low-Fidelity Wireframes",
+      "Mid & High-Fidelity Prototypes",
+      "Tools: Figma, Adobe XD, Balsamiq",
+      "Prototyping Interactions",
+      "User Flow Diagrams"
+    ],
+    resources: [
+      "Figma Learn Hub",
+      "YouTube: FreeCodeCamp UI Design with Figma",
+      "Tool: Adobe XD Tutorials",
+      "Book: 'Sprint' by Jake Knapp",
+      "Practice: WireframeChallenges.com"
+    ],
+    projects: [
+      "Wireframe a to-do app",
+      "Prototype an onboarding flow",
+      "Design a checkout screen"
+    ]
+  },
+  4: {
+    title: "Visual Design Principles",
+    description: "Learn how to make your designs visually appealing and functional.",
+    topics: [
+      "Typography Basics",
+      "Color Theory & Psychology",
+      "Layout and Spacing",
+      "Design Grids and Composition",
+      "Design Consistency & Branding"
+    ],
+    resources: [
+      "YouTube: DesignCourse Typography",
+      "Book: 'The Non-Designer's Design Book'",
+      "Tool: Coolors.co & TypeScale.com",
+      "Figma: Style Guide Templates",
+      "Article: Smashing Magazine Design Basics"
+    ],
+    projects: [
+      "Create a UI style guide",
+      "Redesign a login form",
+      "Create a branded mobile landing page"
+    ]
+  },
+  5: {
+    title: "UI Design Tools & Components",
+    description: "Master tools and reusable components that make up UI design systems.",
+    topics: [
+      "Figma Advanced Features",
+      "Auto Layouts & Constraints",
+      "Design Systems & Components",
+      "Iconography and Illustrations",
+      "Asset Management"
+    ],
+    resources: [
+      "Figma: Auto Layout Guide",
+      "YouTube: Design System Setup",
+      "Tool: Material UI Kit",
+      "Blog: Design Systems Handbook",
+      "Practice: Build Components from Scratch"
+    ],
+    projects: [
+      "Create a component library",
+      "Design a responsive navbar",
+      "Organize assets for a mobile app"
+    ]
+  },
+  6: {
+    title: "Responsive & Mobile Design",
+    description: "Design interfaces that adapt across devices and screen sizes.",
+    topics: [
+      "Responsive Design Principles",
+      "Mobile-First Design Approach",
+      "Designing for Multiple Breakpoints",
+      "Touch Targets and Mobile UX",
+      "Adaptive Layouts"
+    ],
+    resources: [
+      "Book: 'Mobile First' by Luke Wroblewski",
+      "YouTube: Kevin Powell on Responsive UI",
+      "Tool: Figma Breakpoints Plugin",
+      "Article: UXPin Responsive Patterns",
+      "Google Material Design Guidelines"
+    ],
+    projects: [
+      "Redesign a desktop site for mobile",
+      "Design adaptive product cards",
+      "Create a responsive pricing section"
+    ]
+  },
+  7: {
+    title: "Usability Testing & Accessibility",
+    description: "Evaluate usability and ensure accessibility for all users.",
+    topics: [
+      "A/B Testing",
+      "Heuristic Evaluation",
+      "User Testing Sessions",
+      "Accessibility Guidelines (WCAG)",
+      "Inclusive Design Principles"
+    ],
+    resources: [
+      "Tool: Maze for Usability Testing",
+      "Book: 'Accessibility for Everyone' by Laura Kalbag",
+      "Guide: WCAG Quick Reference",
+      "YouTube: A11y Design Basics",
+      "Plugin: Stark for Figma"
+    ],
+    projects: [
+      "Conduct usability testing on a prototype",
+      "Design a WCAG-compliant form",
+      "Analyze and fix contrast issues"
+    ]
+  },
+  8: {
+    title: "Handoff & Collaboration",
+    description: "Smoothly transition your designs into development and collaborate across teams.",
+    topics: [
+      "Design to Developer Handoff",
+      "Exporting Assets",
+      "Using Figma Inspect Mode",
+      "Working with Frontend Teams",
+      "Design Documentation"
+    ],
+    resources: [
+      "Figma Dev Mode",
+      "Guide: Zeplin vs Figma Inspect",
+      "YouTube: Handoff Best Practices",
+      "Blog: Collaboration for Designers",
+      "Course: Handoff to Frontend Teams"
+    ],
+    projects: [
+      "Prepare handoff for a dashboard",
+      "Create asset exports and specs",
+      "Document interactions for developers"
+    ]
+  },
+  9: {
+    title: "Portfolio & Case Studies",
+    description: "Showcase your design process and projects professionally.",
+    topics: [
+      "Creating Case Study Narratives",
+      "Showcasing UX Process",
+      "Dribbble & Behance Profiles",
+      "Personal Design Portfolio Website",
+      "Feedback & Iteration"
+    ],
+    resources: [
+      "Portfolio Examples: UXfolio, Semplice",
+      "Dribbble & Behance Guides",
+      "YouTube: Portfolio Tips by Flux",
+      "Tool: Webflow or Wix",
+      "Checklist: Design Case Study Structure"
+    ],
+    projects: [
+      "Publish 2 detailed case studies",
+      "Launch your portfolio website",
+      "Get feedback from design communities"
+    ]
+  },
+  10: {
+    title: "Career Path & Growth",
+    description: "Prepare for job applications, interviews, and growing in your UI/UX career.",
+    topics: [
+      "UI/UX Job Roles & Salaries",
+      "Freelancing vs Full-Time Design",
+      "Interview Questions & Whiteboard Challenges",
+      "Certifications (Google UX, NN/g)",
+      "Staying Updated with Trends"
+    ],
+    resources: [
+      "UX Interview Questions on Glassdoor",
+      "Certifications: Google UX, Nielsen Norman",
+      "Communities: Designer Hangout, UX Mastery",
+      "Podcasts: Design Better, UX Podcast",
+      "Newsletter: UX Collective Weekly"
+    ],
+    projects: [
+      "Apply to 5 design roles",
+      "Join a design mentorship program",
+      "Attend a virtual design conference"
+    ]
+  }
+};
+
+
+
+                // Resource details for modal
+                const resourceDetails = {
+                    1: {
+                        title: "Complete UI/UX DesignCourse",
+                        description: "This comprehensive UI/UX Designcourse by Edureka covers all the fundamentals you need to start your journey in cybersecurity. The tutorial starts from absolute basics and progresses to more advanced topics, with plenty of practical examples along the way.",
+                        level: "Beginner",
+                        duration: "15 hours",
+                        type: "Video Tutorial",
+                        author: "Edureka",
+                        url: "https://www.youtube.com/watch?v=cKEf8H9cQGM&list=PLwO5-rumi8A4J7h4Fm92TEC00gfZUk7ls",
+                        topics: [
+                            
+                        ]
+                    },
+                    2: {
+                        title: "Penetration Testing",
+                        description: "The Cyber Mentor's penetration testing course is perfect for beginners who want to learn practical UI/UX Designtechniques. The tutorial covers scanning, exploitation, post-exploitation, and more, with hands-on labs.",
+                        level: "Intermediate",
+                        duration: "8 hours",
+                        type: "Video Tutorial",
+                        author: "The Cyber Mentor",
+                        url: "https://www.youtube.com/watch?v=3Kq1MIfTWCE&list=PLPzfPcir5uPTXQZb5sX0D0w7JRe4UY5Q1",
+                        topics: [
+                            "Network scanning",
+                            "Vulnerability assessment",
+                            "Metasploit framework",
+                            "Privilege escalation",
+                            "Reporting"
+                        ]
+                    },
+                    3: {
+                        title: "Web Application Security",
+                        description: "Learn web application security and bug hunting with HackerSploit in this comprehensive tutorial series. The course covers OWASP Top 10 vulnerabilities with practical demonstrations.",
+                        level: "Intermediate",
+                        duration: "6 hours",
+                        type: "Video Tutorial",
+                        author: "HackerSploit",
+                        url: "https://www.youtube.com/watch?v=2_lswM1S264&list=PLBf0hzazHTGMJzHon4YXGscxUvsFpxrZT",
+                        topics: [
+                          
+                        ]
+                    },
+                    4: {
+                        title: "Network Security",
+                        description: "This network security tutorial by NullByte covers essential network hacking techniques and defensive measures. Learn about network scanning, packet analysis, and MITM attacks.",
+                        level: "Beginner",
+                        duration: "4 hours",
+                        type: "Video Tutorial",
+                        author: "NullByte",
+                        url: "https://www.youtube.com/watch?v=WnN6dbos5u8",
+                        topics: [
+                            
+                        ]
+                    },
+                    5: {
+                        title: "Malware Analysis",
+                        description: "Learn practical malware analysis techniques with OALabs in this hands-on tutorial series. The course covers static and dynamic analysis, reverse engineering, and more.",
+                        level: "Advanced",
+                        duration: "5 hours",
+                        type: "Video Tutorial",
+                        author: "OALabs",
+                        url: "https://www.youtube.com/watch?v=3FNYvj2U0HM&list=PLPzfPcir5uPTXQZb5sX0D0w7JRe4UY5Q1",
+                        topics: [
+                            
+                        ]
+                    },
+                    6: {
+                        title: "Reverse Engineering",
+                        description: "This beginner-friendly series by LiveOverflow introduces reverse engineering concepts with practical examples. Learn to analyze binaries and understand their functionality.",
+                        level: "Advanced",
+                        duration: "7 hours",
+                        type: "Video Tutorial",
+                        author: "LiveOverflow",
+                        url: "https://www.youtube.com/watch?v=2STTNYNF4lk&list=PLhixgUqwRTjxglIswKp9mpkfPNfHkzyeN",
+                        topics: [
+                            
+                        ]
+                    }
+                };
+
+                // DOM Elements
+                const modal = document.getElementById('stageModal');
+                const modalTitle = document.getElementById('modalTitle');
+                const modalSubtitle = document.getElementById('modalSubtitle');
+                const modalContent = document.getElementById('modalContent');
+                const closeModalBtn = document.querySelector('.close-modal');
+                const markCompleteBtn = document.getElementById('markCompleteBtn');
+                const viewResourcesBtn = document.getElementById('viewResourcesBtn');
+                const progressTracker = document.getElementById('progressTracker');
+                const toggleProgressBtn = document.getElementById('toggleProgress');
+                const progressContent = document.getElementById('progressContent');
+                const progressBar = document.getElementById('progressBar');
+                const progressText = document.getElementById('progressText');
+                const progressStages = document.getElementById('progressStages');
+                const darkModeToggle = document.getElementById('darkModeToggle');
+                const scrollToTopBtn = document.getElementById('scrollToTopBtn');
+                const feedbackBtn = document.getElementById('feedbackBtn');
+                const startLearningBtn = document.getElementById('startLearningBtn');
+                const downloadRoadmapBtn = document.getElementById('downloadRoadmapBtn');
+                const contributeBtn = document.getElementById('contributeBtn');
+                const shareBtn = document.getElementById('shareBtn');
+                const bookmarkBtns = document.querySelectorAll('.bookmark-btn');
+
+                // State variables
+                let currentStage = null;
+                let currentResource = null;
+                let completedStages = JSON.parse(localStorage.getItem('completedStages')) || [];
+                let bookmarkedResources = JSON.parse(localStorage.getItem('bookmarkedResources')) || [];
+                let isDarkMode = localStorage.getItem('darkMode') === 'true';
+                let isProgressCollapsed = false;
+
+                // Initialize the page
+                function init() {
+                    // Set dark mode if enabled
+                    if (isDarkMode) {
+                        document.body.classList.add('dark-mode');
+                        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                        darkModeToggle.title = 'Toggle Light Mode';
+                    }
+
+                    // Initialize bookmarks
+                    bookmarkedResources.forEach(resourceNum => {
+                        const btn = document.querySelector(`.resource-card[data-resource="${resourceNum}"] .bookmark-btn`);
+                        if (btn) {
+                            btn.classList.add('bookmarked');
+                            btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                        }
+                    });
+
+                    // Initialize progress tracker
+                    updateProgressTracker();
+                    renderProgressStages();
+
+                    // Set up event listeners
+                    setupEventListeners();
+
+                    // Animate elements when they come into view
+                    setupScrollAnimations();
+                }
+
+                // Set up all event listeners
+                function setupEventListeners() {
+                    // Stage click handlers
+                    document.querySelectorAll('.stage').forEach(stage => {
+                        stage.addEventListener('click', () => {
+                            const stageNum = parseInt(stage.getAttribute('data-stage'));
+                            openStageModal(stageNum);
+                        });
+                    });
+
+                    // Resource click handlers
+                    document.querySelectorAll('.resource-card').forEach(resource => {
+                        resource.addEventListener('click', (e) => {
+                            // Don't open modal if clicking on buttons or links
+                            if (e.target.closest('.resource-button') || e.target.closest('.bookmark-btn')) {
+                                return;
+                            }
+                            const resourceNum = parseInt(resource.getAttribute('data-resource'));
+                            openResourceModal(resourceNum);
+                        });
+                    });
+
+                    // Bookmark buttons
+                    bookmarkBtns.forEach(btn => {
+                        btn.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            const resourceCard = btn.closest('.resource-card');
+                            const resourceNum = parseInt(resourceCard.getAttribute('data-resource'));
+                            toggleBookmark(resourceNum, btn);
+                        });
+                    });
+
+                    // Modal buttons
+                    closeModalBtn.addEventListener('click', closeModal);
+                    markCompleteBtn.addEventListener('click', toggleStageCompletion);
+                    viewResourcesBtn.addEventListener('click', () => {
+                        if (currentStage) {
+                            window.location.href = '#resources';
+                            closeModal();
+                        }
+                    });
+
+                    // Progress tracker
+                    toggleProgressBtn.addEventListener('click', toggleProgressTracker);
+
+                    // Theme toggle
+                    darkModeToggle.addEventListener('click', toggleDarkMode);
+
+                    // Scroll to top
+                    scrollToTopBtn.addEventListener('click', () => {
+                        window.scrollTo({
+                            top: 0,
+                            behavior: 'smooth'
+                        });
+                    });
+
+                    // Feedback button
+                    feedbackBtn.addEventListener('click', () => {
+                        alert('Thank you for your feedback! Please email us at feedback@studyvibes.com');
+                    });
+
+                    // CTA buttons
+                    startLearningBtn.addEventListener('click', () => {
+                        window.location.href = '#roadmap';
+                    });
+
+                    downloadRoadmapBtn.addEventListener('click', downloadRoadmap);
+                    contributeBtn.addEventListener('click', () => {
+                        window.open('https://github.com/studyvibes/roadmaps', '_blank');
+                    });
+
+                    shareBtn.addEventListener('click', shareRoadmap);
+
+                    // Close modal when clicking outside
+                    window.addEventListener('click', (e) => {
+                        if (e.target === modal) {
+                            closeModal();
+                        }
+                    });
+
+                    // Show scroll to top button when scrolling
+                    window.addEventListener('scroll', () => {
+                        if (window.pageYOffset > 300) {
+                            scrollToTopBtn.style.display = 'flex';
+                        } else {
+                            scrollToTopBtn.style.display = 'none';
+                        }
+                    });
+                }
+
+                // Open stage modal with details
+                function openStageModal(stageNum) {
+                    currentStage = stageNum;
+                    currentResource = null;
+                    const stage = stageDetails[stageNum];
+
+                    modalTitle.textContent = `${stageNum}. ${stage.title}`;
+                    modalSubtitle.textContent = stage.description;
+
+                    let contentHTML = `
+                        <div class="modal-section">
+                            <h3 class="modal-section-title"><i class="fas fa-list-ul"></i> Topics Covered</h3>
+                            <ul class="modal-resources">
+                                ${stage.topics.map(topic => `<li>${topic}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3 class="modal-section-title"><i class="fas fa-project-diagram"></i> Project Ideas</h3>
+                            <ul class="modal-resources">
+                                ${stage.projects.map(project => `<li>${project}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3 class="modal-section-title"><i class="fas fa-book"></i> Recommended Resources</h3>
+                            <ul class="modal-resources">
+                                ${stage.resources.map(resource => `<li>${resource}</li>`).join('')}
+                            </ul>
+                        </div>
+                    `;
+
+                    modalContent.innerHTML = contentHTML;
+
+                    // Update mark as complete button
+                    if (completedStages.includes(stageNum)) {
+                        markCompleteBtn.innerHTML = '<i class="fas fa-times"></i> Mark as Incomplete';
+                        markCompleteBtn.classList.remove('btn-primary');
+                        markCompleteBtn.classList.add('btn-outline');
+                    } else {
+                        markCompleteBtn.innerHTML = '<i class="far fa-check-circle"></i> Mark as Complete';
+                        markCompleteBtn.classList.remove('btn-outline');
+                        markCompleteBtn.classList.add('btn-primary');
+                    }
+
+                    // Update view resources button
+                    viewResourcesBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> View Resources';
+                    viewResourcesBtn.onclick = () => {
+                        window.location.href = '#resources';
+                        closeModal();
+                    };
+
+                    modal.style.display = 'block';
+                }
+
+                // Open resource modal with details
+                function openResourceModal(resourceNum) {
+                    currentResource = resourceNum;
+                    currentStage = null;
+                    const resource = resourceDetails[resourceNum];
+
+                    modalTitle.textContent = resource.title;
+                    modalSubtitle.textContent = `${resource.level} | ${resource.duration} | ${resource.type}`;
+
+                    let contentHTML = `
+                        <div class="modal-section">
+                            <p>${resource.description}</p>
+                        </div>
+                        <div class="modal-section">
+                            <h3 class="modal-section-title"><i class="fas fa-list-ul"></i> Topics Covered</h3>
+                            <ul class="modal-resources">
+                                ${resource.topics.map(topic => `<li>${topic}</li>`).join('')}
+                            </ul>
+                        </div>
+                        <div class="modal-section">
+                            <h3 class="modal-section-title"><i class="fas fa-user"></i> Author</h3>
+                            <p>${resource.author}</p>
+                        </div>
+                    `;
+
+                    modalContent.innerHTML = contentHTML;
+
+                    // Update buttons for resource modal
+                    markCompleteBtn.style.display = 'none';
+                    viewResourcesBtn.innerHTML = '<i class="fas fa-external-link-alt"></i> Open Resource';
+                    viewResourcesBtn.onclick = () => {
+                        window.open(resource.url, '_blank');
+                        closeModal();
+                    };
+
+                    modal.style.display = 'block';
+                }
+
+                // Close modal
+                function closeModal() {
+                    modal.style.display = 'none';
+                    currentStage = null;
+                    currentResource = null;
+                }
+
+                // Toggle stage completion status
+                function toggleStageCompletion() {
+                    if (!currentStage) return;
+
+                    const index = completedStages.indexOf(currentStage);
+                    if (index > -1) {
+                        completedStages.splice(index, 1);
+                    } else {
+                        completedStages.push(currentStage);
+                        completedStages.sort((a, b) => a - b);
+                    }
+
+                    localStorage.setItem('completedStages', JSON.stringify(completedStages));
+                    updateProgressTracker();
+                    renderProgressStages();
+                    openStageModal(currentStage); // Refresh modal
+                }
+
+                // Toggle resource bookmark
+                function toggleBookmark(resourceNum, btn) {
+                    const index = bookmarkedResources.indexOf(resourceNum);
+                    if (index > -1) {
+                        bookmarkedResources.splice(index, 1);
+                        btn.classList.remove('bookmarked');
+                        btn.innerHTML = '<i class="far fa-bookmark"></i>';
+                    } else {
+                        bookmarkedResources.push(resourceNum);
+                        btn.classList.add('bookmarked');
+                        btn.innerHTML = '<i class="fas fa-bookmark"></i>';
+                    }
+
+                    localStorage.setItem('bookmarkedResources', JSON.stringify(bookmarkedResources));
+                }
+
+                // Update progress tracker
+                function updateProgressTracker() {
+                    const totalStages = Object.keys(stageDetails).length;
+                    const completedCount = completedStages.length;
+                    const progressPercentage = Math.round((completedCount / totalStages) * 100);
+
+                    progressBar.style.width = `${progressPercentage}%`;
+                    progressText.textContent = `${progressPercentage}% Complete`;
+                }
+
+                // Render progress stages in tracker
+                function renderProgressStages() {
+                    progressStages.innerHTML = '';
+                    
+                    Object.keys(stageDetails).forEach(stageNum => {
+                        const stage = stageDetails[stageNum];
+                        const isCompleted = completedStages.includes(parseInt(stageNum));
+                        
+                        const stageEl = document.createElement('div');
+                        stageEl.className = `progress-stage ${isCompleted ? 'completed' : ''}`;
+                        stageEl.innerHTML = `
+                            <input type="checkbox" class="progress-stage-checkbox" ${isCompleted ? 'checked' : ''}>
+                            <span class="progress-stage-label">${stageNum}. ${stage.title}</span>
+                        `;
+                        
+                        stageEl.addEventListener('click', (e) => {
+                            if (e.target.tagName !== 'INPUT') {
+                                openStageModal(parseInt(stageNum));
+                            }
+                        });
+                        
+                        const checkbox = stageEl.querySelector('.progress-stage-checkbox');
+                        checkbox.addEventListener('click', (e) => {
+                            e.stopPropagation();
+                            currentStage = parseInt(stageNum);
+                            toggleStageCompletion();
+                        });
+                        
+                        progressStages.appendChild(stageEl);
+                    });
+                }
+
+                // Toggle progress tracker collapse/expand
+                function toggleProgressTracker() {
+                    isProgressCollapsed = !isProgressCollapsed;
+                    
+                    if (isProgressCollapsed) {
+                        progressTracker.classList.add('collapsed');
+                        toggleProgressBtn.innerHTML = '<i class="fas fa-chevron-up"></i>';
+                    } else {
+                        progressTracker.classList.remove('collapsed');
+                        toggleProgressBtn.innerHTML = '<i class="fas fa-chevron-down"></i>';
+                    }
+                }
+
+                // Toggle dark/light mode
+                function toggleDarkMode() {
+                    isDarkMode = !isDarkMode;
+                    document.body.classList.toggle('dark-mode');
+                    
+                    if (isDarkMode) {
+                        darkModeToggle.innerHTML = '<i class="fas fa-sun"></i>';
+                        darkModeToggle.title = 'Toggle Light Mode';
+                        localStorage.setItem('darkMode', 'true');
+                    } else {
+                        darkModeToggle.innerHTML = '<i class="fas fa-moon"></i>';
+                        darkModeToggle.title = 'Toggle Dark Mode';
+                        localStorage.setItem('darkMode', 'false');
+                    }
+                }
+
+                // Download roadmap as JSON
+                function downloadRoadmap() {
+                    const roadmapData = {
+                        title: "UI/UX DesignRoadmap",
+                        description: "Comprehensive roadmap for becoming an ethical hacker",
+                        stages: stageDetails,
+                        resources: resourceDetails,
+                        completedStages: completedStages,
+                        generatedOn: new Date().toISOString()
+                    };
+                    
+                    const blob = new Blob([JSON.stringify(roadmapData, null, 2)], { type: 'application/json' });
+                    const url = URL.createObjectURL(blob);
+                    const a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'ethical-hacking-roadmap.json';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    // Show confirmation
+                    const originalText = downloadRoadmapBtn.innerHTML;
+                    downloadRoadmapBtn.innerHTML = '<i class="fas fa-check"></i> Downloaded!';
+                    setTimeout(() => {
+                        downloadRoadmapBtn.innerHTML = originalText;
+                    }, 2000);
+                }
+
+                // Share roadmap
+                function shareRoadmap() {
+                    if (navigator.share) {
+                        navigator.share({
+                            title: 'UI/UX DesignRoadmap',
+                            text: 'Check out this comprehensive UI/UX DesignRoadmap!',
+                            url: window.location.href
+                        }).catch(err => {
+                            console.log('Error sharing:', err);
+                            copyToClipboard();
+                        });
+                    } else {
+                        copyToClipboard();
+                    }
+                }
+
+                // Copy URL to clipboard
+                function copyToClipboard() {
+                    navigator.clipboard.writeText(window.location.href).then(() => {
+                        alert('Link copied to clipboard!');
+                    }).catch(err => {
+                        console.error('Could not copy text: ', err);
+                    });
+                }
+
+                // Set up scroll animations
+                function setupScrollAnimations() {
+                    const animateOnScroll = () => {
+                        const elements = document.querySelectorAll('.stage, .resource-card');
+                        
+                        elements.forEach(element => {
+                            const elementPosition = element.getBoundingClientRect().top;
+                            const windowHeight = window.innerHeight;
+                            
+                            if (elementPosition < windowHeight - 100) {
+                                element.style.opacity = '1';
+                                element.style.transform = 'translateY(0)';
+                            }
+                        });
+                    };
+
+                    // Initial check
+                    animateOnScroll();
+                    
+                    // Check on scroll
+                    window.addEventListener('scroll', animateOnScroll);
+                }
+
+                // Initialize the page
+                init();
+            });
+        </script>
+    </body>
+</html>
